@@ -156,7 +156,7 @@ export default function WhyKnowebSection() {
                         }}>
                             <div style={{
                                 fontSize: '2.4rem', fontWeight: 800,
-                                color: '#fff', lineHeight: 1,
+                                color: '#c6bfbfff', lineHeight: 1,
                                 marginBottom: '6px',
                                 fontFamily: 'Outfit, sans-serif',
                             }}>50+</div>
