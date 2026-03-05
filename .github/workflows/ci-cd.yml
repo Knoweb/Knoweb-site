@@ -38,16 +38,25 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
-    - name: Deploy to DigitalOcean Droplet via SSH
+    - uses: actions/checkout@v4
+
+    - name: Copy project files to Droplet via SCP
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "."
+        target: "~/knoweb-site"
+
+    - name: Execute SSH commands (Build & Restart)
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd ~/knoweb-site
-          git pull origin main
-          cd knoweb
+          cd ~/knoweb-site/knoweb
           npm install
           npm run build
           pm2 restart knoweb || pm2 start npm --name "knoweb" -- start
