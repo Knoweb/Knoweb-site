@@ -103,7 +103,7 @@ export default function AboutPage() {
                                 To be the trusted technology platform of choice for growing businesses across South Asia and beyond.
                             </h3>
                             <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '0.9rem' }}>
-                                Knoweb's vision is to become a recognized platform company serving businesses across multiple markets — delivering practical, reliable technology that creates measurable business improvement at scale.
+                                Knoweb&apos;s vision is to become a recognized platform company serving businesses across multiple markets — delivering practical, reliable technology that creates measurable business improvement at scale.
                             </p>
                         </div>
                         <div className="card-dark">
@@ -169,7 +169,7 @@ export default function AboutPage() {
                                 Sri Lanka to Global — A Structured Growth Path
                             </h2>
                             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem', marginBottom: '16px' }}>
-                                Knoweb's immediate market is Sri Lanka — building platform depth, client trust, and operational proof across multiple sectors. The architecture, standards, and positioning are global-ready from day one.
+                                Knoweb&apos;s immediate market is Sri Lanka — building platform depth, client trust, and operational proof across multiple sectors. The architecture, standards, and positioning are global-ready from day one.
                             </p>
                             <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '0.9rem' }}>
                                 Our growth pathway targets regional expansion across South Asia, with multi-currency, multi-language, and multi-regulatory capability built into our platform roadmap — not bolted on after growth.

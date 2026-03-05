@@ -83,7 +83,7 @@ export default function TargetAudienceSection() {
                         lineHeight: 1.7, maxWidth: '640px',
                         margin: '0 auto'
                     }}>
-                        "We build operational platforms for organizations ready to scale beyond manual processes."
+                        &quot;We build operational platforms for organizations ready to scale beyond manual processes.&quot;
                     </p>
                 </div>
 

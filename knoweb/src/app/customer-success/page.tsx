@@ -87,7 +87,7 @@ export default function CustomerSuccessPage() {
                                 Technology Only Works When People Use It Well
                             </h2>
                             <p style={{ color: '#6B7280', lineHeight: 1.7, marginBottom: '20px', fontSize: '0.95rem' }}>
-                                System adoption is the real challenge in digital transformation. The best platform fails if users don't know how to use it effectively. Knoweb's customer success model is built around ensuring your team gets full value from every investment.
+                                System adoption is the real challenge in digital transformation. The best platform fails if users don&apos;t know how to use it effectively. Knoweb&apos;s customer success model is built around ensuring your team gets full value from every investment.
                             </p>
                             <p style={{ color: '#6B7280', lineHeight: 1.7, fontSize: '0.95rem' }}>
                                 Our goal is a long-term partnership, not a completed project. We measure success by the operational improvement our customers achieve — not by the software we deploy.

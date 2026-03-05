@@ -12,7 +12,7 @@ export default function SolutionModelsSection() {
                         Three Core Solution Models
                     </h2>
                     <p style={{ color: '#4B5563', fontSize: '1.05rem', lineHeight: 1.7, maxWidth: '600px', margin: '0 auto' }}>
-                        Choose the engagement model that fits your business. Whether it's a ready SaaS platform, a custom-built enterprise system, or cutting-edge AI product development.
+                        Choose the engagement model that fits your business. Whether it&apos;s a ready SaaS platform, a custom-built enterprise system, or cutting-edge AI product development.
                     </p>
                 </div>
 
