@@ -62,13 +62,14 @@ export default function Header() {
     color: 'rgba(255,255,255,0.75)',
     textDecoration: 'none',
     fontSize: '0.82rem',
-    fontWeight: 500,
+    fontWeight: 600,
     padding: '6px 10px',
     borderRadius: '0',
     display: 'flex',
     alignItems: 'center',
-    transition: 'color 0.15s, background 0.15s',
+    transition: 'color 0.15s',
     whiteSpace: 'nowrap',
+    textTransform: 'uppercase',
   };
 
   return (
@@ -111,14 +112,15 @@ export default function Header() {
                 >
                   <button
                     style={{
-                      background: dropdownOpen ? 'rgba(0,79,235,0.08)' : 'none',
+                      background: 'none',
                       border: 'none', cursor: 'pointer',
                       color: dropdownOpen ? '#004FEB' : 'rgba(255,255,255,0.75)',
-                      fontSize: '0.82rem', fontWeight: 500,
+                      fontSize: '0.82rem', fontWeight: 600,
                       padding: '6px 10px', borderRadius: '0',
                       display: 'flex', alignItems: 'center', gap: '4px',
-                      transition: 'color 0.15s, background 0.15s',
+                      transition: 'color 0.15s',
                       fontFamily: 'Inter, sans-serif',
+                      textTransform: 'uppercase',
                     }}
                   >
                     {link.label}
@@ -130,63 +132,41 @@ export default function Header() {
                     </svg>
                   </button>
 
-                  {/* Mega-dropdown */}
+                  {/* Simple vertical menu */}
                   {dropdownOpen && (
                     <div
                       onMouseEnter={openDropdown}
                       onMouseLeave={closeDropdown}
                       style={{
-                        position: 'absolute', top: 'calc(100% + 8px)', left: '-12px',
-                        background: '#0F172A',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        borderRadius: '14px',
-                        padding: '8px',
-                        width: '320px',
-                        boxShadow: '0 20px 60px rgba(0,0,0,0.7)',
+                        position: 'absolute', top: 'calc(100% + 4px)', left: '-10px',
+                        background: '#111111',
+                        padding: '16px 0',
+                        minWidth: '220px',
                         zIndex: 200,
                         animation: 'fadeUp 0.15s ease',
                       }}
                     >
-                      <div style={{ padding: '8px 12px 10px', borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: '6px' }}>
-                        <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                          Solution Areas
-                        </div>
-                      </div>
                       {link.dropdown.map((item) => (
                         <Link
                           key={item.label}
                           href={item.href}
                           onClick={() => setDropdownOpen(false)}
                           style={{
-                            display: 'flex', alignItems: 'flex-start', gap: '12px',
-                            padding: '10px 12px', borderRadius: '0',
-                            textDecoration: 'none', transition: 'background 0.15s',
-                            color: 'rgba(255,255,255,0.85)',
+                            display: 'block',
+                            padding: '12px 24px',
+                            textDecoration: 'none',
+                            color: '#ffffff',
+                            fontSize: '0.85rem',
+                            fontWeight: 400,
+                            letterSpacing: '0.02em',
+                            transition: 'color 0.15s',
                           }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,79,235,0.06)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = '#ffffff')}
                         >
-                          <span style={{ fontSize: '1.1rem', lineHeight: 1.4 }}>{item.icon}</span>
-                          <div>
-                            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255,255,255,0.9)', marginBottom: '2px' }}>
-                              {item.label}
-                            </div>
-                            <div style={{ fontSize: '0.75rem', color: '#475569', lineHeight: 1.4 }}>
-                              {item.desc}
-                            </div>
-                          </div>
+                          {item.label.toUpperCase()}
                         </Link>
                       ))}
-                      <div style={{ padding: '10px 12px 4px', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '6px' }}>
-                        <Link
-                          href="/solutions"
-                          onClick={() => setDropdownOpen(false)}
-                          style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 600, color: '#004FEB', textDecoration: 'none' }}
-                        >
-                          View all solutions
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M6 2L10 6L6 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        </Link>
-                      </div>
                     </div>
                   )}
                 </div>
@@ -197,11 +177,9 @@ export default function Header() {
                   style={linkBase}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLAnchorElement).style.color = '#004FEB';
-                    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,79,235,0.07)';
                   }}
                   onMouseLeave={(e) => {
                     (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)';
-                    (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                   }}
                 >
                   {link.label}
