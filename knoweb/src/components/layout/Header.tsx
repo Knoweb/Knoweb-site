@@ -61,9 +61,9 @@ export default function Header() {
   const linkBase: React.CSSProperties = {
     color: 'rgba(255,255,255,0.75)',
     textDecoration: 'none',
-    fontSize: '0.82rem',
+    fontSize: '0.75rem',
     fontWeight: 600,
-    padding: '6px 10px',
+    padding: '6px 8px',
     borderRadius: '0',
     display: 'flex',
     alignItems: 'center',
@@ -88,18 +88,18 @@ export default function Header() {
         {/* ── Top nav row ── */}
         <div
           className="container-max"
-          style={{ display: 'flex', alignItems: 'center', height: navHeight, gap: '0', transition: 'height 0.25s ease' }}
+          style={{ maxWidth: '1440px', display: 'flex', alignItems: 'center', height: navHeight, gap: '0', transition: 'height 0.25s ease' }}
         >
           {/* Logo */}
           <Link
             href="/"
-            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0, marginRight: '32px' }}
+            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0, marginRight: '16px' }}
           >
-            <Image src="/knoweblogo.png" alt="Knoweb logo" width={180} height={48} style={{ objectFit: 'contain' }} priority />
+            <Image src="/knoweblogo.png" alt="Knoweb logo" width={160} height={42} style={{ objectFit: 'contain' }} priority />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="nav-desktop" style={{ alignItems: 'center', gap: '2px', flex: 1 }}>
+          <nav className="nav-desktop" style={{ alignItems: 'center', gap: '0', flex: 1, justifyContent: 'center' }}>
             {navLinks.map((link) =>
               link.dropdown ? (
                 /* Solutions with dropdown */
@@ -115,8 +115,8 @@ export default function Header() {
                       background: 'none',
                       border: 'none', cursor: 'pointer',
                       color: dropdownOpen ? '#004FEB' : 'rgba(255,255,255,0.75)',
-                      fontSize: '0.82rem', fontWeight: 600,
-                      padding: '6px 10px', borderRadius: '0',
+                      fontSize: '0.75rem', fontWeight: 600,
+                      padding: '6px 8px', borderRadius: '0',
                       display: 'flex', alignItems: 'center', gap: '4px',
                       transition: 'color 0.15s',
                       fontFamily: 'Inter, sans-serif',
