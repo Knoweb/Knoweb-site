@@ -215,8 +215,8 @@ export default function HeroSection() {
                      }}
                  >
                     <Image
-                        src="/hero-team.png"
-                        alt="Knoweb team collaborating at work"
+                        src="/hero-dashboard.png"
+                        alt="Knoweb SaaS Dashboard Analytics Mockup"
                         width={960}
                         height={540}
                         style={{ display: 'block', width: '100%', height: '540px', objectFit: 'cover', objectPosition: 'center' }}
