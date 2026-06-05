@@ -4,20 +4,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const brandLogos = [
-    { name: 'Dialog', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.6rem', fontWeight: 700, color: 'rgba(255,255,255,0.25)' } },
-    { name: 'Cargills', style: { fontFamily: 'Outfit, sans-serif', fontSize: '1.4rem', fontWeight: 800, letterSpacing: '-0.03em', color: 'rgba(255,255,255,0.2)' } },
-    { name: 'Softlogic', style: { fontFamily: 'Inter, sans-serif', fontSize: '1.25rem', fontWeight: 900, letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.18)' } },
-    { name: 'Hemas', style: { fontFamily: 'Outfit, sans-serif', fontSize: '1.5rem', fontWeight: 700, color: 'rgba(255,255,255,0.22)' } },
-    { name: 'MAS Holdings', style: { fontFamily: 'Inter, sans-serif', fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.04em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.18)' } },
-    { name: 'Haycarb', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', fontWeight: 700, color: 'rgba(255,255,255,0.22)' } },
+    { name: 'Dialog', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.6rem', fontWeight: 700, color: 'rgba(0,0,0,0.25)' } },
+    { name: 'Cargills', style: { fontFamily: 'Outfit, sans-serif', fontSize: '1.4rem', fontWeight: 800, letterSpacing: '-0.03em', color: 'rgba(0,0,0,0.2)' } },
+    { name: 'Softlogic', style: { fontFamily: 'Inter, sans-serif', fontSize: '1.25rem', fontWeight: 900, letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: 'rgba(0,0,0,0.18)' } },
+    { name: 'Hemas', style: { fontFamily: 'Outfit, sans-serif', fontSize: '1.5rem', fontWeight: 700, color: 'rgba(0,0,0,0.22)' } },
+    { name: 'MAS Holdings', style: { fontFamily: 'Inter, sans-serif', fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.04em', textTransform: 'uppercase' as const, color: 'rgba(0,0,0,0.18)' } },
+    { name: 'Haycarb', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '1.4rem', fontWeight: 700, color: 'rgba(0,0,0,0.22)' } },
 ];
-
 export default function HeroSection() {
     return (
         <section
             style={{
-                background: '#0B0F14',
-                color: '#fff',
+                background: '#ffffff',
+                color: 'var(--text-primary)',
                 paddingTop: '140px',
                 paddingBottom: '0',
                 position: 'relative',
@@ -28,12 +27,12 @@ export default function HeroSection() {
                 alignItems: 'center',
             }}
         >
-            {/* Large dark blob shapes in background */}
+            {/* Large subtle blue blob shapes in background */}
             <div style={{
                 position: 'absolute', top: '-120px', left: '-180px',
                 width: '700px', height: '700px',
                 borderRadius: '50%',
-                background: 'rgba(255,255,255,0.025)',
+                background: 'rgba(0,79,235,0.015)',
                 filter: 'blur(2px)',
                 pointerEvents: 'none',
             }} />
@@ -41,15 +40,15 @@ export default function HeroSection() {
                 position: 'absolute', top: '-80px', right: '-200px',
                 width: '650px', height: '650px',
                 borderRadius: '50%',
-                background: 'rgba(255,255,255,0.02)',
+                background: 'rgba(0,79,235,0.01)',
                 filter: 'blur(2px)',
                 pointerEvents: 'none',
             }} />
-            {/* Subtle green glow top center */}
+            {/* Subtle blue glow top center */}
             <div style={{
                 position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
                 width: '700px', height: '300px',
-                background: 'radial-gradient(ellipse at 50% 0%, rgba(0,79,235,0.07) 0%, transparent 70%)',
+                background: 'radial-gradient(ellipse at 50% 0%, rgba(0,79,235,0.05) 0%, transparent 70%)',
                 pointerEvents: 'none',
             }} />
 
@@ -67,8 +66,8 @@ export default function HeroSection() {
                 <div
                     style={{
                         display: 'inline-flex', alignItems: 'center', gap: '10px',
-                        background: '#13171F',
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        background: '#EEF2FF',
+                        border: '1px solid rgba(0,87,255,0.1)',
                         padding: '8px 20px 8px 10px',
                         borderRadius: '6px',
                         marginBottom: '32px',
@@ -88,7 +87,7 @@ export default function HeroSection() {
                     </span>
                     <span style={{
                         fontSize: '0.72rem', fontWeight: 800,
-                        color: '#ffffff',
+                        color: '#0057FF',
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
                     }}>
@@ -98,16 +97,16 @@ export default function HeroSection() {
 
                 {/* Headline */}
                 <h1
-                    style={{
-                        fontFamily: 'Outfit, sans-serif',
-                        fontSize: 'clamp(2.4rem, 5.5vw, 4rem)',
-                        fontWeight: 800, lineHeight: 1.1,
-                        color: '#fff', marginBottom: '24px',
-                        letterSpacing: '-0.025em',
-                        maxWidth: '780px',
-                        animation: 'heroFadeIn 0.7s ease-out 0.1s both',
-                    }}
-                >
+                     style={{
+                         fontFamily: 'Outfit, sans-serif',
+                         fontSize: 'clamp(2.4rem, 5.5vw, 4rem)',
+                         fontWeight: 800, lineHeight: 1.1,
+                         color: 'var(--text-primary)', marginBottom: '24px',
+                         letterSpacing: '-0.025em',
+                         maxWidth: '780px',
+                         animation: 'heroFadeIn 0.7s ease-out 0.1s both',
+                     }}
+                 >
                     Where Smart Software Meets{' '}
                     <span
                         style={{
@@ -124,7 +123,7 @@ export default function HeroSection() {
                 {/* Subtitle */}
                 <p
                     style={{
-                        color: 'rgba(255,255,255,0.55)',
+                        color: 'var(--text-secondary)',
                         fontSize: '1.05rem',
                         lineHeight: 1.7,
                         marginBottom: '44px',
@@ -179,22 +178,22 @@ export default function HeroSection() {
                         href="/solutions"
                         style={{
                             display: 'inline-flex', alignItems: 'center', gap: '8px',
-                            background: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.14)',
-                            color: 'rgba(255,255,255,0.8)',
+                            background: '#F3F4F6',
+                            border: '1px solid #E5E7EB',
+                            color: '#374151',
                             textDecoration: 'none',
                             fontSize: '0.92rem', fontWeight: 600,
                             padding: '14px 32px', borderRadius: '0',
                             transition: 'all 0.22s ease',
                         }}
                         onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.09)';
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.25)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = '#E5E7EB';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = '#D1D5DB';
                             (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.05)';
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.14)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = '#F3F4F6';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = '#E5E7EB';
                             (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
                         }}
                     >
@@ -202,19 +201,19 @@ export default function HeroSection() {
                     </Link>
                 </div>
 
-                {/* Hero Image */}
-                <div
-                    style={{
-                        width: '100%', maxWidth: '960px',
-                        borderRadius: '24px',
-                        overflow: 'hidden',
-                        border: '8px solid #2A3650',
-                        boxShadow: '0 40px 100px rgba(0,0,0,0.7)',
-                        animation: 'heroSlideUp 0.9s cubic-bezier(0.1,0,0.2,1) 0.3s both',
-                        position: 'relative',
-                        background: '#111827',
-                    }}
-                >
+                 {/* Hero Image */}
+                 <div
+                     style={{
+                         width: '100%', maxWidth: '960px',
+                         borderRadius: '24px',
+                         overflow: 'hidden',
+                         border: '8px solid #F3F4F6',
+                         boxShadow: 'var(--shadow-lg)',
+                         animation: 'heroSlideUp 0.9s cubic-bezier(0.1,0,0.2,1) 0.3s both',
+                         position: 'relative',
+                         background: '#ffffff',
+                     }}
+                 >
                     <Image
                         src="/hero-team.png"
                         alt="Knoweb team collaborating at work"
@@ -226,16 +225,16 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            {/* ── Brand Logos Strip ── */}
-            <div
-                style={{
-                    width: '100%',
-                    borderTop: '1px solid rgba(255,255,255,0.06)',
-                    marginTop: '72px',
-                    padding: '36px 0 48px',
-                    background: 'rgba(255,255,255,0.015)',
-                }}
-            >
+             {/* ── Brand Logos Strip ── */}
+             <div
+                 style={{
+                     width: '100%',
+                     borderTop: '1px solid #E5E7EB',
+                     marginTop: '72px',
+                     padding: '36px 0 48px',
+                     background: '#F9FAFB',
+                 }}
+             >
                 <div
                     className="container-max"
                     style={{

@@ -7,9 +7,9 @@ export default function WhyKnowebSection() {
     return (
         <section
             style={{
-                background: '#0B0F14',
+                background: '#ffffff',
                 padding: '100px 0',
-                borderTop: '1px solid rgba(255,255,255,0.06)',
+                borderTop: '1px solid #E5E7EB',
             }}
         >
             <div className="container-max">
@@ -44,7 +44,7 @@ export default function WhyKnowebSection() {
                                 fontFamily: 'Outfit, sans-serif',
                                 fontSize: 'clamp(1.8rem, 3.5vw, 2.7rem)',
                                 fontWeight: 800, lineHeight: 1.15,
-                                color: '#F1F5F9', marginBottom: '24px',
+                                color: 'var(--text-primary)', marginBottom: '24px',
                                 letterSpacing: '-0.02em',
                             }}
                         >
@@ -54,7 +54,7 @@ export default function WhyKnowebSection() {
 
                         <p
                             style={{
-                                color: 'rgba(255,255,255,0.55)',
+                                color: 'var(--text-secondary)',
                                 fontSize: '1.05rem', lineHeight: 1.75,
                                 marginBottom: '20px', maxWidth: '500px',
                             }}
@@ -62,17 +62,17 @@ export default function WhyKnowebSection() {
                             Most businesses don&apos;t need more software complexity — they need
                             platforms that work on day one. Knoweb was built on a simple belief:
                             prioritize{' '}
-                            <strong style={{ color: 'rgba(255,255,255,0.8)' }}>practical systems over complexity</strong>,
+                            <strong style={{ color: 'var(--text-primary)' }}>practical systems over complexity</strong>,
                             focus relentlessly on{' '}
-                            <strong style={{ color: 'rgba(255,255,255,0.8)' }}>measurable business improvement</strong>,
+                            <strong style={{ color: 'var(--text-primary)' }}>measurable business improvement</strong>,
                             and stand by our clients as a{' '}
-                            <strong style={{ color: 'rgba(255,255,255,0.8)' }}>long-term technology partner</strong>{' '}
+                            <strong style={{ color: 'var(--text-primary)' }}>long-term technology partner</strong>{' '}
                             through every stage of growth.
                         </p>
 
                         <p
                             style={{
-                                color: 'rgba(255,255,255,0.45)',
+                                color: 'var(--text-muted)',
                                 fontSize: '0.98rem', lineHeight: 1.7,
                                 marginBottom: '36px', maxWidth: '500px',
                             }}
@@ -87,9 +87,9 @@ export default function WhyKnowebSection() {
                             href="/about"
                             style={{
                                 display: 'inline-flex', alignItems: 'center', gap: '8px',
-                                background: 'rgba(255,255,255,0.06)',
-                                border: '1px solid rgba(255,255,255,0.14)',
-                                color: 'rgba(255,255,255,0.85)',
+                                background: '#F3F4F6',
+                                border: '1px solid #E5E7EB',
+                                color: '#374151',
                                 textDecoration: 'none',
                                 fontSize: '0.9rem', fontWeight: 600,
                                 padding: '12px 28px', borderRadius: '0',
@@ -103,9 +103,9 @@ export default function WhyKnowebSection() {
                                 (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
                             }}
                             onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)';
-                                (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.14)';
-                                (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.85)';
+                                (e.currentTarget as HTMLAnchorElement).style.background = '#F3F4F6';
+                                (e.currentTarget as HTMLAnchorElement).style.borderColor = '#E5E7EB';
+                                (e.currentTarget as HTMLAnchorElement).style.color = '#374151';
                                 (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
                             }}
                         >
@@ -130,7 +130,7 @@ export default function WhyKnowebSection() {
                         {/* Main image */}
                         <div style={{
                             position: 'relative', zIndex: 1,
-                            border: '1px solid rgba(255,255,255,0.12)',
+                            border: '1px solid #E5E7EB',
                             overflow: 'hidden',
                             marginLeft: '28px',
                             marginRight: '0',
@@ -156,7 +156,7 @@ export default function WhyKnowebSection() {
                         }}>
                             <div style={{
                                 fontSize: '2.4rem', fontWeight: 800,
-                                color: '#c6bfbfff', lineHeight: 1,
+                                color: '#ffffff', lineHeight: 1,
                                 marginBottom: '6px',
                                 fontFamily: 'Outfit, sans-serif',
                             }}>50+</div>

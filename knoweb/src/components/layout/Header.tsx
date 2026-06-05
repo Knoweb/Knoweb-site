@@ -59,7 +59,7 @@ export default function Header() {
 
   /* ── shared link hover styles ── */
   const linkBase: React.CSSProperties = {
-    color: 'rgba(255,255,255,0.75)',
+    color: '#374151',
     textDecoration: 'none',
     fontSize: '0.75rem',
     fontWeight: 600,
@@ -78,9 +78,9 @@ export default function Header() {
       <header
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-          background: scrolled ? 'rgba(11,15,20,0.97)' : '#0B0F14',
-          borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)'}`,
-          boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.5)' : 'none',
+          background: scrolled ? 'rgba(255,255,255,0.95)' : '#ffffff',
+          borderBottom: `1px solid ${scrolled ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0.05)'}`,
+          boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
           backdropFilter: scrolled ? 'blur(16px)' : 'none',
           transition: 'all 0.25s ease',
         }}
@@ -114,7 +114,7 @@ export default function Header() {
                     style={{
                       background: 'none',
                       border: 'none', cursor: 'pointer',
-                      color: dropdownOpen ? '#004FEB' : 'rgba(255,255,255,0.75)',
+                      color: dropdownOpen ? '#004FEB' : '#374151',
                       fontSize: '0.75rem', fontWeight: 600,
                       padding: '6px 8px', borderRadius: '0',
                       display: 'flex', alignItems: 'center', gap: '4px',
@@ -139,7 +139,9 @@ export default function Header() {
                       onMouseLeave={closeDropdown}
                       style={{
                         position: 'absolute', top: 'calc(100% + 4px)', left: '-10px',
-                        background: '#111111',
+                        background: '#ffffff',
+                        border: '1px solid #E5E7EB',
+                        boxShadow: 'var(--shadow-md)',
                         padding: '16px 0',
                         minWidth: '220px',
                         zIndex: 200,
@@ -155,14 +157,14 @@ export default function Header() {
                             display: 'block',
                             padding: '12px 24px',
                             textDecoration: 'none',
-                            color: '#ffffff',
+                            color: '#374151',
                             fontSize: '0.85rem',
-                            fontWeight: 400,
+                            fontWeight: 500,
                             letterSpacing: '0.02em',
                             transition: 'color 0.15s',
                           }}
                           onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
-                          onMouseLeave={(e) => (e.currentTarget.style.color = '#ffffff')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
                         >
                           {item.label.toUpperCase()}
                         </Link>
@@ -179,7 +181,7 @@ export default function Header() {
                     (e.currentTarget as HTMLAnchorElement).style.color = '#004FEB';
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)';
+                    (e.currentTarget as HTMLAnchorElement).style.color = '#374151';
                   }}
                 >
                   {link.label}
@@ -192,9 +194,9 @@ export default function Header() {
           <div className="btn-group-desktop" style={{ alignItems: 'center', gap: '10px', marginLeft: '16px', flexShrink: 0 }}>
             <Link
               href="/contact"
-              style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '0.82rem', fontWeight: 500, padding: '6px 14px', borderRadius: '0', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
+              style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.82rem', fontWeight: 500, padding: '6px 14px', borderRadius: '0', transition: 'color 0.15s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#4B5563')}
             >
               Request Demo
             </Link>
@@ -208,17 +210,17 @@ export default function Header() {
                 padding: '8px 20px', borderRadius: '0',
                 display: 'flex', alignItems: 'center', gap: '6px',
                 transition: 'all 0.2s ease',
-                boxShadow: '0 0 14px rgba(0,79,235,0.3)',
+                boxShadow: '0 0 14px rgba(0,79,235,0.2)',
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.background = '#0040C8';
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 24px rgba(0,79,235,0.5)';
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 24px rgba(0,79,235,0.4)';
                 (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)';
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.background = '#004FEB';
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 14px rgba(0,79,235,0.3)';
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 14px rgba(0,79,235,0.2)';
                 (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
               }}
             >
@@ -234,7 +236,7 @@ export default function Header() {
             className="mobile-toggle"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
-            style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', padding: '8px', borderRadius: '0', color: 'rgba(255,255,255,0.8)' }}
+            style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', padding: '8px', borderRadius: '0', color: '#374151' }}
           >
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
               {mobileOpen ? (
@@ -252,8 +254,8 @@ export default function Header() {
 
         {/* ── Pill bar ── */}
         <div style={{
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          background: 'rgba(255,255,255,0.02)',
+          borderTop: '1px solid #E5E7EB',
+          background: '#F9FAFB',
           padding: '6px 0',
           display: mobileOpen ? 'none' : 'flex',
           justifyContent: 'center',
@@ -261,11 +263,11 @@ export default function Header() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0' }}>
             {pillItems.map((item, i) => (
               <span key={item} style={{ display: 'flex', alignItems: 'center', gap: '0' }}>
-                <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#475569', letterSpacing: '0.02em', padding: '2px 12px' }}>
+                <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#4b5563', letterSpacing: '0.02em', padding: '2px 12px' }}>
                   {item}
                 </span>
                 {i < pillItems.length - 1 && (
-                  <span style={{ color: 'rgba(255,255,255,0.12)', fontSize: '0.8rem' }}>•</span>
+                  <span style={{ color: '#E5E7EB', fontSize: '0.8rem' }}>•</span>
                 )}
               </span>
             ))}
@@ -286,9 +288,9 @@ export default function Header() {
         style={{
           position: 'fixed', top: 0, right: 0, bottom: 0, zIndex: 1001,
           width: '300px', maxWidth: '85vw',
-          background: '#0F172A',
-          borderLeft: '1px solid rgba(255,255,255,0.08)',
-          boxShadow: '-8px 0 40px rgba(0,0,0,0.6)',
+          background: '#ffffff',
+          borderLeft: '1px solid #E5E7EB',
+          boxShadow: 'var(--shadow-lg)',
           transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
           display: 'flex', flexDirection: 'column',
@@ -296,7 +298,7 @@ export default function Header() {
         }}
       >
         {/* Panel header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 20px', borderBottom: '1px solid #E5E7EB' }}>
           <Link href="/" onClick={() => setMobileOpen(false)} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
             <Image src="/knoweblogo.png" alt="Knoweb logo" width={160} height={42} style={{ objectFit: 'contain' }} priority />
           </Link>
@@ -318,11 +320,11 @@ export default function Header() {
                     width: '100%', background: 'none', border: 'none', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '11px 10px', borderRadius: '0',
-                    color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', fontWeight: 600,
+                    color: '#374151', fontSize: '0.9rem', fontWeight: 600,
                     fontFamily: 'Inter, sans-serif', textAlign: 'left',
                     transition: 'background 0.15s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,79,235,0.06)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,79,235,0.04)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   {link.label}
@@ -340,12 +342,12 @@ export default function Header() {
                         style={{
                           display: 'flex', alignItems: 'center', gap: '10px',
                           padding: '9px 10px', borderRadius: '0',
-                          textDecoration: 'none', color: '#94A3B8',
+                          textDecoration: 'none', color: '#6B7280',
                           fontSize: '0.825rem', fontWeight: 500,
                           transition: 'background 0.15s, color 0.15s',
                         }}
-                        onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,79,235,0.06)'; (e.currentTarget as HTMLAnchorElement).style.color = '#004FEB'; }}
-                        onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; (e.currentTarget as HTMLAnchorElement).style.color = '#94A3B8'; }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,79,235,0.04)'; (e.currentTarget as HTMLAnchorElement).style.color = '#004FEB'; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; (e.currentTarget as HTMLAnchorElement).style.color = '#6B7280'; }}
                       >
                         <span style={{ fontSize: '0.95rem' }}>{item.icon}</span>
                         {item.label}
@@ -361,12 +363,12 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 style={{
                   display: 'block', padding: '11px 10px', borderRadius: '0',
-                  color: 'rgba(255,255,255,0.75)', textDecoration: 'none',
+                  color: '#374151', textDecoration: 'none',
                   fontSize: '0.9rem', fontWeight: 500,
                   transition: 'background 0.15s, color 0.15s',
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,79,235,0.06)'; (e.currentTarget as HTMLAnchorElement).style.color = '#004FEB'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)'; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,79,235,0.04)'; (e.currentTarget as HTMLAnchorElement).style.color = '#004FEB'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; (e.currentTarget as HTMLAnchorElement).style.color = '#374151'; }}
               >
                 {link.label}
               </Link>
@@ -375,7 +377,7 @@ export default function Header() {
         </nav>
 
         {/* Mobile CTAs */}
-        <div style={{ padding: '16px 20px 28px', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div style={{ padding: '16px 20px 28px', borderTop: '1px solid #E5E7EB', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
@@ -385,7 +387,7 @@ export default function Header() {
               color: '#ffffff', textDecoration: 'none',
               fontWeight: 700, fontSize: '0.875rem',
               padding: '12px', borderRadius: '0',
-              boxShadow: '0 0 18px rgba(0,79,235,0.35)',
+              boxShadow: '0 0 18px rgba(0,79,235,0.2)',
             }}
           >
             Talk to Sales
@@ -395,8 +397,8 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: 'transparent', border: '1px solid rgba(255,255,255,0.12)',
-              color: 'rgba(255,255,255,0.7)', textDecoration: 'none',
+              background: 'transparent', border: '1px solid #D1D5DB',
+              color: '#4B5563', textDecoration: 'none',
               fontWeight: 600, fontSize: '0.875rem',
               padding: '11px', borderRadius: '0',
               transition: 'border-color 0.15s',
