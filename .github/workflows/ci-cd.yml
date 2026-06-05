@@ -39,6 +39,7 @@ jobs:
         path: |
           knoweb/.next
           !knoweb/.next/cache
+        include-hidden-files: true
 
   deploy:
     needs: build
