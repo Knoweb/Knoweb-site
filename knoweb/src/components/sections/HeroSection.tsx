@@ -15,9 +15,12 @@ export default function HeroSection() {
     return (
         <section
             style={{
-                background: '#ffffff',
+                backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/hero-bg.jpg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
                 color: 'var(--text-primary)',
-                paddingTop: '140px',
+                paddingTop: '80px',
                 paddingBottom: '0',
                 position: 'relative',
                 overflow: 'hidden',
@@ -60,40 +63,10 @@ export default function HeroSection() {
                     display: 'flex', flexDirection: 'column',
                     alignItems: 'center', textAlign: 'center',
                     width: '100%',
+                    flex: 1,
+                    justifyContent: 'center',
                 }}
             >
-                {/* Badge */}
-                <div
-                    style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '10px',
-                        background: '#EEF2FF',
-                        border: '1px solid rgba(0,87,255,0.1)',
-                        padding: '8px 20px 8px 10px',
-                        borderRadius: '6px',
-                        marginBottom: '32px',
-                        animation: 'heroFadeIn 0.6s ease-out forwards',
-                    }}
-                >
-                    {/* Colored icon — styled like the Clutch badge in the reference */}
-                    <span style={{
-                        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                        width: '26px', height: '26px', borderRadius: '50%',
-                        background: '#004FEB',
-                        flexShrink: 0,
-                    }}>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
-                        </svg>
-                    </span>
-                    <span style={{
-                        fontSize: '0.72rem', fontWeight: 800,
-                        color: '#0057FF',
-                        letterSpacing: '0.1em',
-                        textTransform: 'uppercase',
-                    }}>
-                        Trusted By Growing Businesses Across Sri Lanka
-                    </span>
-                </div>
 
                 {/* Headline */}
                 <h1
@@ -140,7 +113,7 @@ export default function HeroSection() {
                     style={{
                         display: 'flex', gap: '16px', flexWrap: 'wrap',
                         justifyContent: 'center',
-                        marginBottom: '72px',
+                        marginBottom: '0px',
                         animation: 'heroFadeIn 0.7s ease-out 0.3s both',
                     }}
                 >
@@ -200,29 +173,6 @@ export default function HeroSection() {
                         Explore Solutions
                     </Link>
                 </div>
-
-                 {/* Hero Image */}
-                 <div
-                     style={{
-                         width: '100%', maxWidth: '960px',
-                         borderRadius: '24px',
-                         overflow: 'hidden',
-                         border: '8px solid #F3F4F6',
-                         boxShadow: 'var(--shadow-lg)',
-                         animation: 'heroSlideUp 0.9s cubic-bezier(0.1,0,0.2,1) 0.3s both',
-                         position: 'relative',
-                         background: '#ffffff',
-                     }}
-                 >
-                    <Image
-                        src="/hero-dashboard.png"
-                        alt="Knoweb SaaS Dashboard Analytics Mockup"
-                        width={960}
-                        height={540}
-                        style={{ display: 'block', width: '100%', height: '540px', objectFit: 'cover', objectPosition: 'center' }}
-                        priority
-                    />
-                </div>
             </div>
 
              {/* ── Brand Logos Strip ── */}
@@ -230,9 +180,10 @@ export default function HeroSection() {
                  style={{
                      width: '100%',
                      borderTop: '1px solid #E5E7EB',
-                     marginTop: '72px',
+                     marginTop: 'auto',
                      padding: '36px 0 48px',
-                     background: '#F9FAFB',
+                     background: 'rgba(255, 255, 255, 0.6)',
+                     backdropFilter: 'blur(8px)',
                  }}
              >
                 <div

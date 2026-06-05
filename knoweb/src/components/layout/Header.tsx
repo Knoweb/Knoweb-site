@@ -25,7 +25,6 @@ const navLinks = [
   { label: 'Resources', href: '/resources' },
 ];
 
-const pillItems = ['SaaS Platforms', 'Custom Software', 'AI Product Development'];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -252,27 +251,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* ── Pill bar ── */}
-        <div style={{
-          borderTop: '1px solid #E5E7EB',
-          background: '#F9FAFB',
-          padding: '6px 0',
-          display: mobileOpen ? 'none' : 'flex',
-          justifyContent: 'center',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0' }}>
-            {pillItems.map((item, i) => (
-              <span key={item} style={{ display: 'flex', alignItems: 'center', gap: '0' }}>
-                <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#4b5563', letterSpacing: '0.02em', padding: '2px 12px' }}>
-                  {item}
-                </span>
-                {i < pillItems.length - 1 && (
-                  <span style={{ color: '#E5E7EB', fontSize: '0.8rem' }}>•</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
+
       </header>
 
       {/* ── MOBILE OVERLAY ── */}
