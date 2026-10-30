@@ -103,14 +103,15 @@ export default function ContactPage() {
                             </div>
 
                             {/* Quick links */}
-                            <div style={{ background: '#F8FAFF', border: '1px solid #E5E7EB', borderRadius: '12px', padding: '24px' }}>
+                            <div style={{ background: '#F8FAFF', border: '1px solid #E5E7EB', borderRadius: '12px', padding: '24px', marginBottom: '20px' }}>
                                 <div style={{ fontWeight: 700, color: '#0A0F1E', fontSize: '0.9rem', marginBottom: '16px' }}>Quick Actions</div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                     {[
                                         { label: 'Request a Demo', href: '#contact-form' },
-                                        { label: 'Talk to Sales', href: '#contact-form' },
+                                        { label: 'Explore SaaS Products', href: '/saas' },
+                                        { label: 'Explore Practical ERP', href: '/erp' },
                                         { label: 'Explore Solutions', href: '/solutions' },
-                                        { label: 'View Platforms', href: '/products' },
+                                        { label: 'Development & Services', href: '/services' },
                                     ].map((a) => (
                                         <Link key={a.label} href={a.href} style={{
                                             display: 'flex',
@@ -127,11 +128,42 @@ export default function ContactPage() {
                                         }}>
                                             {a.label}
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                                <path d="M2 6H10M6 2L10 6L6 10" stroke="#0057FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M2 6H10M6 2L10 6L6 10" stroke="#004FEB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </Link>
                                     ))}
                                 </div>
+                            </div>
+
+                            {/* QuickAssist Urgent Support Highlight Box */}
+                            <div style={{
+                                background: '#FFFFFF',
+                                border: '2px solid #004FEB',
+                                borderRadius: '12px',
+                                padding: '24px',
+                                boxShadow: '0 4px 18px rgba(0,79,235,0.08)'
+                            }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#004FEB', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', marginBottom: '8px' }}>
+                                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#004FEB' }} />
+                                    Urgent Problem Guidance
+                                </div>
+                                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.2rem', fontWeight: 800, color: '#0A192F', marginBottom: '6px' }}>
+                                    QuickAssist Triage
+                                </h3>
+                                <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '16px' }}>
+                                    Facing software errors, an unresponsive developer, or a broken system? Get fast technical assessment and clear next steps.
+                                </p>
+                                <Link href="/quickassist" style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    color: '#004FEB',
+                                    fontWeight: 700,
+                                    fontSize: '0.9rem',
+                                    textDecoration: 'none'
+                                }}>
+                                    Go to QuickAssist &gt;
+                                </Link>
                             </div>
                         </div>
 

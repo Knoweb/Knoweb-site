@@ -2,284 +2,325 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
-
-const socialIcons = [
-    {
-        label: 'Instagram',
-        href: '#',
-        icon: (
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
-        ),
-    },
-    {
-        label: 'Facebook',
-        href: '#',
-        icon: (
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-            </svg>
-        ),
-    },
-    {
-        label: 'LinkedIn',
-        href: '#',
-        icon: (
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-        ),
-    },
-    {
-        label: 'X / Twitter',
-        href: '#',
-        icon: (
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-        ),
-    },
-];
 
 const quickLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'How We Work', href: '/how-we-work' },
-    { label: 'Customer Success', href: '/customer-success' },
-    { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '/' },
+  { label: 'SaaS Products', href: '/saas' },
+  { label: 'Practical ERP', href: '/erp' },
+  { label: 'Industry Solutions', href: '/solutions' },
+  { label: 'Services', href: '/services' },
+  { label: 'QuickAssist (Tech Help)', href: '/quickassist', highlight: true },
+  { label: 'About Knoweb', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const serviceLinks = [
-    { label: 'SaaS Platforms', href: '/products' },
-    { label: 'Custom Software', href: '/custom-enterprise' },
-    { label: 'AI Development', href: '/custom-enterprise' },
-    { label: 'Accounting & Finance', href: '/solutions#accounting' },
-    { label: 'HR & Workforce', href: '/solutions#hr' },
-    { label: 'Retail & Hospitality', href: '/solutions#retail' },
+  { label: 'Website Development & E-Commerce', href: '/services#web-dev' },
+  { label: 'Website Takeover & Management', href: '/services#web-takeover' },
+  { label: 'Custom Software Development', href: '/services#custom-dev' },
+  { label: 'Existing Software Modernization', href: '/services#modernization' },
+  { label: 'Regular Maintenance & Support', href: '/services#maintenance' },
+  { label: 'System Integration & Automation', href: '/services#integration' },
+  { label: 'Digital Marketing & Social Media', href: '/services#digital-marketing' },
 ];
 
 export default function Footer() {
-    const [email, setEmail] = useState('');
+  const linkStyle: React.CSSProperties = {
+    color: '#475569',
+    fontSize: '0.88rem',
+    textDecoration: 'none',
+    transition: 'color 0.18s ease',
+    display: 'inline-block',
+  };
 
-    const linkStyle: React.CSSProperties = {
-        color: '#6B7280',
-        fontSize: '0.9rem',
-        textDecoration: 'none',
-        transition: 'color 0.18s',
-        display: 'block',
-    };
-
-    return (
-        <footer
-            style={{
-                background: '#F9FAFB',
-                borderTop: '1px solid #E5E7EB',
-            }}
+  return (
+    <footer
+      style={{
+        background: '#F8FAFC',
+        borderTop: '1px solid #E2E8F0',
+        paddingTop: '56px',
+        paddingBottom: '32px',
+      }}
+    >
+      <div className="container-max">
+        {/* Main 4-column Grid */}
+        <div
+          className="footer-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.4fr 1fr 1.3fr 1.1fr',
+            gap: '40px',
+            paddingBottom: '44px',
+            borderBottom: '1px solid #E2E8F0',
+          }}
         >
-            <div className="container-max" style={{ padding: '64px 24px 0' }}>
+          {/* Col 1: Brand & Bio */}
+          <div>
+            <Link
+              href="/"
+              style={{
+                textDecoration: 'none',
+                display: 'inline-block',
+                marginBottom: '16px',
+              }}
+            >
+              <Image
+                src="/knoweblogo.png"
+                alt="Knoweb"
+                width={150}
+                height={38}
+                style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
+              />
+            </Link>
 
-                {/* ── Main 4-column grid ── */}
-                <div
-                    className="footer-main-grid"
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1.5fr 1fr 1fr 1.6fr',
-                        gap: '48px',
-                        paddingBottom: '52px',
-                        alignItems: 'flex-start',
-                    }}
+            <p
+              style={{
+                color: '#475569',
+                fontSize: '0.9rem',
+                lineHeight: 1.6,
+                maxWidth: '300px',
+                marginBottom: '18px',
+              }}
+            >
+              Practical software, configurable ERP, custom development and digital services.
+              Solutions for new projects and existing systems.
+            </p>
+
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 14px',
+                borderRadius: '8px',
+                background: 'rgba(0, 79, 235, 0.08)',
+                border: '1px solid rgba(0, 79, 235, 0.2)',
+              }}
+            >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#004FEB',
+                }}
+              />
+              <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#004FEB' }}>
+                Need urgent help?{' '}
+                <Link
+                  href="/quickassist"
+                  style={{ color: '#004FEB', textDecoration: 'underline' }}
                 >
-
-                    {/* ── Col 1: Brand ── */}
-                    <div style={{ paddingTop: '0' }}>
-                        {/* Logo — aligned to same top line as column headings */}
-                        <Link href="/" style={{ textDecoration: 'none', display: 'block', lineHeight: 0, marginBottom: '10px' }}>
-                            <Image
-                                src="/knoweblogo.png"
-                                alt="Knoweb"
-                                width={250}
-                                height={100}
-                                style={{ objectFit: 'contain', objectPosition: 'left top', maxWidth: '100%', display: 'block' }}
-                            />
-                        </Link>
-
-                        <p style={{ color: '#6B7280', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: '260px', marginBottom: '22px', marginTop: '0' }}>
-                            We build practical SaaS platforms and custom software systems that drive real business results.
-                        </p>
-
-                        {/* Social Icons */}
-                        <div style={{ display: 'flex', gap: '10px' }}>
-                            {socialIcons.map((s) => (
-                                <Link
-                                    key={s.label}
-                                    href={s.href}
-                                    title={s.label}
-                                    style={{
-                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        width: '38px', height: '38px',
-                                        background: '#111827',
-                                        borderRadius: '50%',
-                                        color: '#fff',
-                                        textDecoration: 'none',
-                                        transition: 'background 0.2s, transform 0.2s',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        (e.currentTarget as HTMLAnchorElement).style.background = '#004FEB';
-                                        (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        (e.currentTarget as HTMLAnchorElement).style.background = '#111827';
-                                        (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
-                                    }}
-                                >
-                                    {s.icon}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* ── Col 2: Quick Links ── */}
-                    <div style={{ paddingTop: '0' }}>
-                        <h4 style={{ color: '#111827', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: '20px', lineHeight: '100px', height: '100px', display: 'flex', alignItems: 'flex-start', paddingTop: '0' }}>
-                            Quick Links
-                        </h4>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '13px' }}>
-                            {quickLinks.map((l) => (
-                                <li key={l.label}>
-                                    <Link
-                                        href={l.href}
-                                        style={linkStyle}
-                                        onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
-                                        onMouseLeave={(e) => (e.currentTarget.style.color = '#6B7280')}
-                                    >
-                                        {l.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* ── Col 3: Services ── */}
-                    <div>
-                        <h4 style={{ color: '#111827', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: '20px', lineHeight: '100px', height: '100px', display: 'flex', alignItems: 'flex-start', paddingTop: '0' }}>
-                            Services
-                        </h4>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '13px' }}>
-                            {serviceLinks.map((l) => (
-                                <li key={l.label}>
-                                    <Link
-                                        href={l.href}
-                                        style={linkStyle}
-                                        onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
-                                        onMouseLeave={(e) => (e.currentTarget.style.color = '#6B7280')}
-                                    >
-                                        {l.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* ── Col 4: Newsletter ── */}
-                    <div>
-                        <h4 style={{ color: '#111827', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: '8px', lineHeight: '100px', height: '100px', display: 'flex', alignItems: 'flex-start', paddingTop: '0' }}>
-                            Get the Latest Insights
-                        </h4>
-                        <p style={{ color: '#6B7280', fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '20px', marginTop: '0' }}>
-                            Platform updates, industry guides, and practical tech content — delivered to your inbox.
-                        </p>
-
-                        <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Enter your email *"
-                                style={{
-                                    width: '100%', padding: '12px 16px',
-                                    background: '#fff',
-                                    border: '1px solid #D1D5DB',
-                                    borderRadius: '0',
-                                    color: '#111827', fontSize: '0.875rem',
-                                    outline: 'none',
-                                    transition: 'border-color 0.2s, box-shadow 0.2s',
-                                }}
-                                onFocus={(e) => {
-                                    e.currentTarget.style.borderColor = '#004FEB';
-                                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(0,79,235,0.1)';
-                                }}
-                                onBlur={(e) => {
-                                    e.currentTarget.style.borderColor = '#D1D5DB';
-                                    e.currentTarget.style.boxShadow = 'none';
-                                }}
-                            />
-                            <button
-                                type="submit"
-                                style={{
-                                    width: '100%', padding: '12px',
-                                    background: '#111827',
-                                    color: '#fff', border: 'none',
-                                    borderRadius: '0', fontWeight: 700,
-                                    fontSize: '0.9rem', cursor: 'pointer',
-                                    transition: 'all 0.2s ease',
-                                    letterSpacing: '0.01em',
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.background = '#004FEB';
-                                    e.currentTarget.style.color = '#ffffff';
-                                    e.currentTarget.style.transform = 'translateY(-1px)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.background = '#111827';
-                                    e.currentTarget.style.color = '#fff';
-                                    e.currentTarget.style.transform = 'translateY(0)';
-                                }}
-                            >
-                                Subscribe Now
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                {/* ── Divider ── */}
-                <div style={{ borderTop: '1px solid #E5E7EB' }} />
-
-                {/* ── Bottom bar ── */}
-                <div style={{ padding: '22px 0', textAlign: 'center' }}>
-                    <p style={{ color: '#9CA3AF', fontSize: '0.85rem' }}>
-                        Copyright © {new Date().getFullYear()} Knoweb (Pvt.) Ltd. All rights reserved.{' '}
-                        <Link
-                            href="#"
-                            style={{ color: '#9CA3AF', textDecoration: 'none', transition: 'color 0.2s' }}
-                            onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = '#9CA3AF')}
-                        >
-                            Privacy Policy
-                        </Link>
-                        {' · '}
-                        <Link
-                            href="#"
-                            style={{ color: '#9CA3AF', textDecoration: 'none', transition: 'color 0.2s' }}
-                            onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = '#9CA3AF')}
-                        >
-                            Terms of Service
-                        </Link>
-                    </p>
-                </div>
+                  QuickAssist
+                </Link>
+              </span>
             </div>
+          </div>
 
-            {/* Responsive */}
-            <style>{`
+          {/* Col 2: Navigation Links */}
+          <div>
+            <h4
+              style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontSize: '1rem',
+                fontWeight: 700,
+                color: '#0A192F',
+                marginBottom: '16px',
+              }}
+            >
+              Navigation
+            </h4>
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '10px',
+              }}
+            >
+              {quickLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    style={{
+                      ...linkStyle,
+                      color: item.highlight ? '#004FEB' : '#475569',
+                      fontWeight: item.highlight ? 700 : 500,
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = item.highlight ? '#004FEB' : '#475569')
+                    }
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Services & Solutions */}
+          <div>
+            <h4
+              style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontSize: '1rem',
+                fontWeight: 700,
+                color: '#0A192F',
+                marginBottom: '16px',
+              }}
+            >
+              Services &amp; Delivery
+            </h4>
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '10px',
+              }}
+            >
+              {serviceLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    style={linkStyle}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#475569')}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Quick Contact */}
+          <div>
+            <h4
+              style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontSize: '1rem',
+                fontWeight: 700,
+                color: '#0A192F',
+                marginBottom: '16px',
+              }}
+            >
+              Start a Discussion
+            </h4>
+            <p
+              style={{
+                color: '#475569',
+                fontSize: '0.88rem',
+                lineHeight: 1.6,
+                marginBottom: '18px',
+              }}
+            >
+              Discuss your project scope, request a software demonstration, or get rapid troubleshooting
+              guidance.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <Link
+                href="/contact"
+                style={{
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  background: '#004FEB',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  fontSize: '0.88rem',
+                  padding: '10px 18px',
+                  borderRadius: '8px',
+                  transition: 'background 0.2s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#0040C8')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#004FEB')}
+              >
+                Contact Knoweb
+              </Link>
+              <Link
+                href="/quickassist"
+                style={{
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  background: '#FFFFFF',
+                  color: '#004FEB',
+                  border: '1px solid rgba(0, 79, 235, 0.3)',
+                  fontWeight: 600,
+                  fontSize: '0.88rem',
+                  padding: '9px 18px',
+                  borderRadius: '8px',
+                  transition: 'background 0.2s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0, 79, 235, 0.06)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#FFFFFF')}
+              >
+                Get QuickAssist &gt;
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div
+          style={{
+            paddingTop: '24px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px',
+            color: '#64748B',
+            fontSize: '0.84rem',
+          }}
+        >
+          <div>
+            © {new Date().getFullYear()} Knoweb (Pvt.) Ltd. All rights reserved. Practical software &amp; digital solutions.
+          </div>
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <Link
+              href="/about"
+              style={{ color: '#64748B', textDecoration: 'none' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              style={{ color: '#64748B', textDecoration: 'none' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}
+            >
+              Contact
+            </Link>
+            <Link
+              href="/quickassist"
+              style={{ color: '#004FEB', textDecoration: 'none', fontWeight: 600 }}
+            >
+              QuickAssist
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
         @media (max-width: 900px) {
-          .footer-main-grid { grid-template-columns: 1fr 1fr !important; }
+          .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
         }
         @media (max-width: 580px) {
-          .footer-main-grid { grid-template-columns: 1fr !important; }
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
-        </footer>
-    );
+    </footer>
+  );
 }
