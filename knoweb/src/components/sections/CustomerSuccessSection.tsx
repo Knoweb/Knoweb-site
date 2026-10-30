@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const caseStudies = [
     {
@@ -62,12 +63,12 @@ export default function CustomerSuccessSection() {
                                 overflow: 'hidden',
                                 position: 'relative',
                             }}>
-                                <img
+                                <Image
                                     src={study.image}
                                     alt={study.title}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                     style={{
-                                        width: '100%',
-                                        height: '100%',
                                         objectFit: 'cover'
                                     }}
                                 />
