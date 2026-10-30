@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import AnimatedKnowebLogo from '@/components/ui/AnimatedKnowebLogo';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -69,12 +69,10 @@ export default function Header() {
               flexShrink: 0,
             }}
           >
-            <Image
-              src="/knoweblogo-cropped.png"
-              alt="Knoweb Logo"
-              width={160}
-              height={38}
-              style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
+            <AnimatedKnowebLogo
+              variant="webp"
+              size="md"
+              style={{ height: '36px', width: 'auto' }}
               priority
             />
           </Link>

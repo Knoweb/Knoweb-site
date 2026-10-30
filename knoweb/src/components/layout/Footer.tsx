@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import AnimatedKnowebLogo from '@/components/ui/AnimatedKnowebLogo';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -64,12 +64,10 @@ export default function Footer() {
                 marginBottom: '16px',
               }}
             >
-              <Image
-                src="/knoweblogo-cropped.png"
-                alt="Knoweb"
-                width={160}
-                height={38}
-                style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
+              <AnimatedKnowebLogo
+                variant="webp"
+                size="md"
+                style={{ height: '36px', width: 'auto' }}
               />
             </Link>
 
