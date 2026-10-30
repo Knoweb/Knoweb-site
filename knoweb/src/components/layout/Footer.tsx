@@ -65,9 +65,9 @@ export default function Footer() {
               }}
             >
               <Image
-                src="/knoweblogo.png"
+                src="/knoweblogo-cropped.png"
                 alt="Knoweb"
-                width={150}
+                width={160}
                 height={38}
                 style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
               />
