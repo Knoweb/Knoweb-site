@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -58,7 +59,7 @@ export default function Header() {
             height: '62px',
           }}
         >
-          {/* Logo — "KNOWEB" in bold white as in the wireframe screenshot */}
+          {/* Logo — exact Knoweb logo image matching the wireframe */}
           <Link
             href="/"
             style={{
@@ -68,18 +69,14 @@ export default function Header() {
               flexShrink: 0,
             }}
           >
-            <span
-              style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontSize: '1.45rem',
-                fontWeight: 900,
-                color: '#FFFFFF',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-              }}
-            >
-              KNOWEB
-            </span>
+            <Image
+              src="/knoweb-logo-nav.png"
+              alt="KNOWEB"
+              width={160}
+              height={36}
+              style={{ objectFit: 'contain', width: 'auto', height: '32px' }}
+              priority
+            />
           </Link>
 
           {/* Desktop Nav Links — Home, SaaS, ERP, Solutions, Services, QuickAssist, About, Contact */}
