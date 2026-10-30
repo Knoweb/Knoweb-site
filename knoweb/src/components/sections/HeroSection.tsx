@@ -23,7 +23,7 @@ export default function HeroSection() {
             overflow: 'hidden',
           }}
         >
-          {/* Subtle decorative grid/glow */}
+          {/* Subtle decorative glow */}
           <div
             style={{
               position: 'absolute',
@@ -39,12 +39,40 @@ export default function HeroSection() {
 
           <div
             style={{
-              maxWidth: '820px',
+              maxWidth: '840px',
               position: 'relative',
               zIndex: 1,
             }}
           >
-            {/* Headline */}
+            {/* Welcome Tag from doc */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'rgba(0, 79, 235, 0.08)',
+                color: '#004FEB',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                padding: '4px 10px',
+                borderRadius: '6px',
+                marginBottom: '16px',
+              }}
+            >
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#004FEB',
+                }}
+              />
+              Welcome to Knoweb
+            </div>
+
+            {/* Headline matching Wireframe Part 1 */}
             <h1
               style={{
                 fontFamily: 'Outfit, sans-serif',
@@ -52,28 +80,28 @@ export default function HeroSection() {
                 fontWeight: 800,
                 lineHeight: 1.15,
                 color: '#0A192F',
-                marginBottom: '20px',
+                marginBottom: '18px',
                 letterSpacing: '-0.025em',
               }}
             >
-              Practical Software & Digital Solutions
+              Practical Software &amp; Digital Solutions
             </h1>
 
-            {/* Subheading / Description */}
+            {/* Subheading / Description matching Wireframe Part 1 & Document */}
             <p
               style={{
-                fontSize: 'clamp(1rem, 1.8vw, 1.18rem)',
+                fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
                 lineHeight: 1.6,
                 color: '#475569',
                 marginBottom: '32px',
-                maxWidth: '720px',
+                maxWidth: '740px',
               }}
             >
               Business software, ERP, custom development and digital services.
               <br className="hidden sm:inline" /> Solutions for new projects and existing systems.
             </p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons matching Wireframe Part 1 */}
             <div
               style={{
                 display: 'flex',
