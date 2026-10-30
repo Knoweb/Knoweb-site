@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       style={{
-        paddingTop: '108px',
+        paddingTop: '92px',
         paddingBottom: '32px',
         background: '#FFFFFF',
       }}
