@@ -59,7 +59,7 @@ export default function Header() {
             height: '62px',
           }}
         >
-          {/* Logo — exact Knoweb logo image matching the wireframe */}
+          {/* Logo — Official Knoweb brand logo */}
           <Link
             href="/"
             style={{
@@ -70,11 +70,11 @@ export default function Header() {
             }}
           >
             <Image
-              src="/knoweb-logo-nav.png"
-              alt="KNOWEB"
+              src="/knoweblogo-cropped.png"
+              alt="Knoweb Logo"
               width={160}
-              height={36}
-              style={{ objectFit: 'contain', width: 'auto', height: '32px' }}
+              height={38}
+              style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
               priority
             />
           </Link>
