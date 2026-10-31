@@ -65,9 +65,9 @@ export default function Footer() {
               }}
             >
               <AnimatedKnowebLogo
-                variant="webp"
                 size="md"
-                style={{ height: '36px', width: 'auto' }}
+                width={160}
+                height={37}
               />
             </Link>
 

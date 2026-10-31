@@ -5,7 +5,7 @@ import AnimatedKnowebLogo from '@/components/ui/AnimatedKnowebLogo';
 
 export default function LogoAnimationShowcase() {
   const [bgTheme, setBgTheme] = useState<'navy' | 'white' | 'slate' | 'checker'>('navy');
-  const [variant, setVariant] = useState<'webp' | 'gif' | 'css'>('webp');
+  const [variant, setVariant] = useState<'sprite' | 'gif'>('sprite');
   const [speed, setSpeed] = useState<number>(10);
   const [sizeScale, setSizeScale] = useState<'sm' | 'md' | 'lg' | 'full'>('lg');
   const [copied, setCopied] = useState<boolean>(false);
@@ -232,12 +232,11 @@ export default function LogoAnimationShowcase() {
             >
               Format Engine
             </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
               {(
                 [
-                  ['webp', 'WebP (32-bit)'],
-                  ['gif', 'GIF (Universal)'],
-                  ['css', 'CSS / SVG (60fps)'],
+                  ['sprite', 'CSS Sprite (32-bit Alpha)'],
+                  ['gif', 'Animated GIF (Universal)'],
                 ] as const
               ).map(([k, label]) => (
                 <button
@@ -399,32 +398,10 @@ export default function LogoAnimationShowcase() {
               gap: '16px',
             }}
           >
-            {/* Download 1: WebP Master */}
+            {/* Download 1: Genuine Animated GIF */}
             <a
-              href="/knoweb-logo-animated.webp"
-              download="knoweb-logo-animated.webp"
-              style={{
-                textDecoration: 'none',
-                background: 'rgba(0, 200, 255, 0.08)',
-                border: '1px solid rgba(0, 200, 255, 0.3)',
-                padding: '18px 20px',
-                borderRadius: '12px',
-                display: 'block',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <div style={{ color: '#00E5FF', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>
-                ⬇ Animated WebP (Master)
-              </div>
-              <div style={{ color: '#94A3B8', fontSize: '0.82rem' }}>
-                1200 × 275 px • 32-bit Alpha • 4.3 MB
-              </div>
-            </a>
-
-            {/* Download 2: WebP Optimized Navbar */}
-            <a
-              href="/knoweb-logo-animated-nav.webp"
-              download="knoweb-logo-animated-nav.webp"
+              href="/knoweb-logo-animated.gif"
+              download="knoweb-logo-animated.gif"
               style={{
                 textDecoration: 'none',
                 background: 'rgba(0, 200, 255, 0.15)',
@@ -435,18 +412,40 @@ export default function LogoAnimationShowcase() {
                 transition: 'all 0.2s ease',
               }}
             >
+              <div style={{ color: '#00E5FF', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>
+                ⚡ Animated GIF (Looping)
+              </div>
+              <div style={{ color: '#94A3B8', fontSize: '0.82rem' }}>
+                320 × 74 px • 48 Frames • 48 KB
+              </div>
+            </a>
+
+            {/* Download 2: WebP Sprite Sheet */}
+            <a
+              href="/knoweb-logo-spritesheet.webp"
+              download="knoweb-logo-spritesheet.webp"
+              style={{
+                textDecoration: 'none',
+                background: 'rgba(0, 200, 255, 0.08)',
+                border: '1px solid rgba(0, 200, 255, 0.3)',
+                padding: '18px 20px',
+                borderRadius: '12px',
+                display: 'block',
+                transition: 'all 0.2s ease',
+              }}
+            >
               <div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>
-                ⚡ WebP Web-Optimized (Navbar)
+                ⬇ WebP Sprite Sheet
               </div>
               <div style={{ color: '#00E5FF', fontSize: '0.82rem' }}>
-                400 × 92 px • 694 KB (Recommended)
+                320 × 3552 px • 32-bit Alpha • 484 KB
               </div>
             </a>
 
-            {/* Download 3: GIF Master */}
+            {/* Download 3: PNG Sprite Sheet */}
             <a
-              href="/knoweb-logo-animated.gif"
-              download="knoweb-logo-animated.gif"
+              href="/knoweb-logo-spritesheet.png"
+              download="knoweb-logo-spritesheet.png"
               style={{
                 textDecoration: 'none',
                 background: 'rgba(255, 255, 255, 0.04)',
@@ -458,17 +457,17 @@ export default function LogoAnimationShowcase() {
               }}
             >
               <div style={{ color: '#E2E8F0', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>
-                ⬇ Animated GIF (Master)
+                ⬇ PNG Sprite Sheet (Master)
               </div>
               <div style={{ color: '#94A3B8', fontSize: '0.82rem' }}>
-                1200 × 275 px • GIF89a Looping • 3.2 MB
+                320 × 3552 px • RGBA Lossless • 1.5 MB
               </div>
             </a>
 
-            {/* Download 4: GIF Optimized Navbar */}
+            {/* Download 4: Static Foreground */}
             <a
-              href="/knoweb-logo-animated-nav.gif"
-              download="knoweb-logo-animated-nav.gif"
+              href="/knoweb-logo-static-foreground.png"
+              download="knoweb-logo-static-foreground.png"
               style={{
                 textDecoration: 'none',
                 background: 'rgba(255, 255, 255, 0.04)',
@@ -480,10 +479,10 @@ export default function LogoAnimationShowcase() {
               }}
             >
               <div style={{ color: '#E2E8F0', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>
-                ⬇ Animated GIF (Navbar)
+                ⬇ Static Foreground PNG
               </div>
               <div style={{ color: '#94A3B8', fontSize: '0.82rem' }}>
-                400 × 92 px • Universal Email/Docs • 513 KB
+                1200 × 275 px • High-Res Cutout
               </div>
             </a>
           </div>
@@ -505,7 +504,7 @@ export default function LogoAnimationShowcase() {
             <button
               onClick={() =>
                 copyCode(
-                  `<AnimatedKnowebLogo variant="webp" size="md" priority />`
+                  `<AnimatedKnowebLogo size="md" />`
                 )
               }
               style={{
@@ -537,22 +536,21 @@ export default function LogoAnimationShowcase() {
               border: '1px solid rgba(255, 255, 255, 0.05)',
             }}
           >
-{`// Option A: React / Next.js Component (Recommended)
+{`// Option A: React / Next.js Component (Recommended - 0 sizing glitches, 32-bit alpha)
 import AnimatedKnowebLogo from '@/components/ui/AnimatedKnowebLogo';
 
 export default function Header() {
   return (
     <AnimatedKnowebLogo
-      variant="webp"      // 'webp' | 'gif' | 'css'
-      size="md"          // 'sm' (140px) | 'md' (160px) | 'lg' (240px) | 'full'
-      priority
+      size="md"          // 'sm' (140px) | 'md' (160px) | 'lg' (240px)
+      speed={10}         // 10s rotation period
     />
   );
 }
 
-// Option B: Standard HTML <img> tag (Zero dependencies)
+// Option B: Standard Animated GIF
 <img
-  src="/knoweb-logo-animated-nav.webp"
+  src="/knoweb-logo-animated.gif"
   alt="KNOWEB"
   width="160"
   height="37"

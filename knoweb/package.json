@@ -11,7 +11,9 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.0",
+    "gif-encoder-2": "^1.0.5",
     "next": "16.1.6",
+    "omggif": "^1.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "tailwind-merge": "^3.5.0"
