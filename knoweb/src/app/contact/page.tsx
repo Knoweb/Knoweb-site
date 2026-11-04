@@ -74,9 +74,9 @@ export default function ContactPage() {
 
             // Coordinates for No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka
             const pinCoords: [number, number] = [6.0428, 80.2186];
-            // On desktop, offset center slightly west so the pin appears beside the card on the right
+            // On desktop, offset center slightly west so the pin and popup appear comfortably beside the card on the right
             const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-            const centerCoords: [number, number] = isDesktop ? [6.0428, 80.2142] : pinCoords;
+            const centerCoords: [number, number] = isDesktop ? [6.0428, 80.2115] : pinCoords;
 
             const map = L.map(mapContainerRef.current, {
                 center: centerCoords,
@@ -88,11 +88,11 @@ export default function ContactPage() {
             // Position zoom controls in the top-right corner
             L.control.zoom({ position: 'topright' }).addTo(map);
 
-            // Clean, high-contrast CartoDB Voyager tiles
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+            // OpenStreetMap Standard Tiles (100% Free, No API Key Required)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors',
                 maxZoom: 19,
-                subdomains: 'abcd',
+                subdomains: ['a', 'b', 'c'],
             }).addTo(map);
 
             // Sleek Custom Red Marker Pin matching reference
@@ -202,7 +202,7 @@ export default function ContactPage() {
                     style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(135deg, rgba(7, 18, 36, 0.38) 0%, rgba(10, 25, 47, 0.18) 50%, rgba(7, 18, 36, 0.32) 100%)',
+                        background: 'linear-gradient(135deg, rgba(7, 18, 36, 0.25) 0%, rgba(10, 25, 47, 0.10) 50%, rgba(7, 18, 36, 0.20) 100%)',
                         pointerEvents: 'none',
                         zIndex: 2,
                     }}
