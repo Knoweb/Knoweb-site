@@ -30,91 +30,342 @@ export default function QuickAssistPage() {
   };
 
   return (
-    <div style={{ paddingTop: '96px', paddingBottom: '80px', background: '#FFFFFF' }}>
-      {/* ── Breadcrumb & Hero ── */}
-      <section style={{ borderBottom: '1px solid #E2E8F0', paddingBottom: '48px', background: '#F8FAFC' }}>
-        <div className="container-max" style={{ paddingTop: '28px' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              fontSize: '0.85rem',
-              color: '#64748B',
-              marginBottom: '20px',
-            }}
-          >
-            <Link href="/" style={{ color: '#64748B', textDecoration: 'none' }}>
-              Home
-            </Link>
-            <span>/</span>
-            <span style={{ color: '#004FEB', fontWeight: 600 }}>QuickAssist</span>
-          </div>
+    <div style={{ background: '#FFFFFF', paddingBottom: '80px' }}>
+      {/* ── Modern Dark Glassmorphic Hero Section with hero-team.png ── */}
+      <section
+        style={{
+          position: 'relative',
+          paddingTop: '68px',
+          paddingBottom: '68px',
+          backgroundColor: '#071224',
+          backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.78) 0%, rgba(10, 25, 47, 0.64) 50%, rgba(7, 18, 36, 0.82) 100%), url('/hero-team.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+          backgroundRepeat: 'no-repeat',
+          overflow: 'hidden',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        }}
+      >
+        <style>{`
+          @keyframes pulseDot {
+            0% { transform: scale(0.9); opacity: 0.9; }
+            50% { transform: scale(2.2); opacity: 0; }
+            100% { transform: scale(2.2); opacity: 0; }
+          }
 
+          .qa-hero-card {
+            transition: all 0.4s ease;
+          }
+          .qa-hero-card:hover {
+            border-color: rgba(0, 229, 255, 0.38) !important;
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 35px rgba(0, 229, 255, 0.12) !important;
+          }
+
+          @media (max-width: 960px) {
+            .qa-hero-grid {
+              grid-template-columns: 1fr !important;
+              gap: 36px !important;
+            }
+            .qa-hero-card {
+              padding: 32px 24px !important;
+              border-radius: 18px !important;
+            }
+          }
+        `}</style>
+
+        {/* Ambient background glows */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '-50px',
+            right: '6%',
+            width: '520px',
+            height: '520px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.05) 50%, transparent 70%)',
+            pointerEvents: 'none',
+            filter: 'blur(32px)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-70px',
+            left: '6%',
+            width: '460px',
+            height: '460px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0, 102, 255, 0.14) 0%, transparent 68%)',
+            pointerEvents: 'none',
+            filter: 'blur(30px)',
+          }}
+        />
+
+        <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
           <div
+            className="qa-hero-card"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: 'rgba(0, 79, 235, 0.1)',
-              color: '#004FEB',
-              fontSize: '0.78rem',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              padding: '6px 12px',
-              borderRadius: '6px',
-              marginBottom: '16px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 32, 59, 0.42) 40%, rgba(7, 18, 36, 0.52) 100%)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              borderRadius: '24px',
+              border: '1px solid rgba(255, 255, 255, 0.22)',
+              padding: '48px 44px',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px rgba(0, 229, 255, 0.06)',
             }}
           >
-            <span
+            {/* Inner ambient card cyan glow */}
+            <div
               style={{
-                width: '8px',
-                height: '8px',
+                position: 'absolute',
+                top: '-20px',
+                right: '25%',
+                width: '380px',
+                height: '380px',
                 borderRadius: '50%',
-                background: '#004FEB',
+                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.14) 0%, transparent 70%)',
+                pointerEvents: 'none',
+                filter: 'blur(28px)',
               }}
             />
-            Technical Problem Triage &amp; Guidance
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1.25fr 0.95fr',
+                gap: '40px',
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 2,
+              }}
+              className="qa-hero-grid"
+            >
+              {/* Left Column: Information & Text */}
+              <div>
+                {/* Breadcrumb */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '0.85rem',
+                    color: '#94A3B8',
+                    marginBottom: '18px',
+                  }}
+                >
+                  <Link href="/" style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                    Home
+                  </Link>
+                  <span style={{ color: '#64748B' }}>/</span>
+                  <span style={{ color: '#00E5FF', fontWeight: 600 }}>QuickAssist</span>
+                </div>
+
+                {/* Badge Tag */}
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'rgba(7, 18, 36, 0.65)',
+                    border: '1px solid rgba(0, 229, 255, 0.42)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    color: '#00E5FF',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    padding: '6px 14px',
+                    borderRadius: '999px',
+                    marginBottom: '18px',
+                    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.35)',
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '7px',
+                      height: '7px',
+                      borderRadius: '50%',
+                      background: '#00E5FF',
+                      boxShadow: '0 0 8px #00E5FF',
+                    }}
+                  />
+                  Technical Problem Triage &amp; Guidance
+                </div>
+
+                {/* Main Headline */}
+                <h1
+                  style={{
+                    fontFamily: 'Outfit, sans-serif',
+                    fontSize: 'clamp(2.1rem, 3.8vw, 3.1rem)',
+                    fontWeight: 800,
+                    lineHeight: 1.18,
+                    color: '#FFFFFF',
+                    marginBottom: '16px',
+                    letterSpacing: '-0.025em',
+                    textShadow: '0 3px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.6)',
+                  }}
+                >
+                  QuickAssist — Not Sure What to Do?
+                </h1>
+
+                {/* Subtitle / Problem Callout */}
+                <p
+                  style={{
+                    fontSize: 'clamp(1.05rem, 1.5vw, 1.18rem)',
+                    fontWeight: 600,
+                    lineHeight: 1.55,
+                    color: '#F8FAFC',
+                    marginBottom: '12px',
+                    textShadow: '0 2px 12px rgba(0, 0, 0, 0.7)',
+                  }}
+                >
+                  Facing software errors, poor support, an unavailable developer or website problems?
+                </p>
+
+                {/* Description */}
+                <p
+                  style={{
+                    fontSize: '0.96rem',
+                    lineHeight: 1.65,
+                    color: '#CBD5E1',
+                    marginBottom: '24px',
+                    maxWidth: '620px',
+                    textShadow: '0 1px 8px rgba(0, 0, 0, 0.6)',
+                  }}
+                >
+                  Tell us what&apos;s happening. Knoweb QuickAssist helps you understand the situation and explore possible next steps. Any technical assessment or follow-up work is agreed separately.
+                </p>
+
+                {/* Feature Pills */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  {[
+                    { icon: '⚡', label: 'Response within 24 Hours' },
+                    { icon: '🛡️', label: 'Independent Technical Review' },
+                    { icon: '🤝', label: 'No Lock-in Consultation' },
+                  ].map((feat) => (
+                    <div
+                      key={feat.label}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        background: 'rgba(13, 32, 59, 0.65)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        padding: '6px 12px',
+                        borderRadius: '8px',
+                        color: '#E2E8F0',
+                        fontSize: '0.8rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      <span>{feat.icon}</span>
+                      <span>{feat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column: Hero Team Image Showcase */}
+              <div style={{ position: 'relative' }}>
+                <div
+                  style={{
+                    position: 'relative',
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    border: '1px solid rgba(0, 229, 255, 0.35)',
+                    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(0, 229, 255, 0.15)',
+                    background: '#0D203B',
+                  }}
+                >
+                  {/* Team image */}
+                  <img
+                    src="/hero-team.png"
+                    alt="Knoweb Technical Team"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'cover',
+                      maxHeight: '380px',
+                      transition: 'transform 0.4s ease',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+
+                  {/* Gradient vignette overlay at bottom of image */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to top, rgba(7, 18, 36, 0.88) 0%, rgba(7, 18, 36, 0.18) 50%, transparent 100%)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                  {/* Status badge pinned at bottom */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '16px',
+                      left: '16px',
+                      right: '16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      background: 'rgba(7, 18, 36, 0.88)',
+                      backdropFilter: 'blur(10px)',
+                      WebkitBackdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(0, 229, 255, 0.4)',
+                      borderRadius: '12px',
+                      padding: '10px 14px',
+                      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
+                    }}
+                  >
+                    <span
+                      style={{
+                        position: 'relative',
+                        display: 'flex',
+                        width: '10px',
+                        height: '10px',
+                      }}
+                    >
+                      <span
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: '50%',
+                          background: '#00E5FF',
+                          animation: 'pulseDot 2s infinite',
+                          opacity: 0.75,
+                        }}
+                      />
+                      <span
+                        style={{
+                          position: 'relative',
+                          width: '10px',
+                          height: '10px',
+                          borderRadius: '50%',
+                          background: '#00E5FF',
+                        }}
+                      />
+                    </span>
+                    <div>
+                      <div style={{ color: '#FFFFFF', fontSize: '0.82rem', fontWeight: 700 }}>
+                        Knoweb Technical Specialists
+                      </div>
+                      <div style={{ color: '#94A3B8', fontSize: '0.74rem' }}>
+                        Ready to diagnose &amp; guide your issue
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <h1
-            style={{
-              fontFamily: 'Outfit, sans-serif',
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 800,
-              color: '#0A192F',
-              lineHeight: 1.2,
-              marginBottom: '16px',
-              maxWidth: '840px',
-            }}
-          >
-            QuickAssist — Not Sure What to Do?
-          </h1>
-
-          <p
-            style={{
-              fontSize: '1.15rem',
-              lineHeight: 1.6,
-              color: '#334155',
-              maxWidth: '780px',
-              marginBottom: '14px',
-            }}
-          >
-            Facing software errors, poor support, an unavailable developer or website problems?
-          </p>
-
-          <p
-            style={{
-              fontSize: '0.98rem',
-              lineHeight: 1.65,
-              color: '#64748B',
-              maxWidth: '740px',
-              margin: 0,
-            }}
-          >
-            Tell us what&apos;s happening. Knoweb QuickAssist helps you understand the situation and explore possible next steps. Any technical assessment or follow-up work is agreed separately.
-          </p>
         </div>
       </section>
 
