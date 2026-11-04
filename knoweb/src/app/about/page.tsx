@@ -20,18 +20,163 @@ const principles = [
 export default function AboutPage() {
     return (
         <>
-            <section className="page-hero">
-                <div className="container-max">
-                    <div className="breadcrumb">
-                        <Link href="/">Home</Link>
-                        <span>/</span>
-                        <span>About</span>
+            <section
+                style={{
+                    position: 'relative',
+                    paddingTop: '72px',
+                    paddingBottom: '72px',
+                    backgroundColor: '#0D203B',
+                    backgroundImage: `linear-gradient(135deg, rgba(13, 32, 59, 0.84) 0%, rgba(10, 25, 47, 0.72) 50%, rgba(13, 32, 59, 0.88) 100%), url('/knowebbc.jpg')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center 40%',
+                    backgroundRepeat: 'no-repeat',
+                    overflow: 'hidden',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                }}
+            >
+                {/* Ambient background glows */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '-40px',
+                        right: '5%',
+                        width: '500px',
+                        height: '500px',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, rgba(0, 102, 255, 0.06) 50%, transparent 70%)',
+                        pointerEvents: 'none',
+                        filter: 'blur(30px)',
+                    }}
+                />
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: '-80px',
+                        left: '8%',
+                        width: '450px',
+                        height: '450px',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, transparent 68%)',
+                        pointerEvents: 'none',
+                        filter: 'blur(30px)',
+                    }}
+                />
+
+                <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
+                    {/* Modern Glassmorphic Hero Card */}
+                    <div
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(13, 32, 59, 0.72) 0%, rgba(10, 25, 47, 0.58) 100%)',
+                            backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(255, 255, 255, 0.14)',
+                            padding: '48px 44px',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+                        }}
+                    >
+                        {/* Inner ambient card cyan glow */}
+                        <div
+                            style={{
+                                position: 'absolute',
+                                top: '10%',
+                                right: '-30px',
+                                width: '380px',
+                                height: '380px',
+                                borderRadius: '50%',
+                                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.05) 55%, transparent 75%)',
+                                pointerEvents: 'none',
+                                filter: 'blur(25px)',
+                            }}
+                        />
+
+                        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 2 }}>
+                            {/* Breadcrumb */}
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    fontSize: '0.85rem',
+                                    marginBottom: '20px',
+                                }}
+                            >
+                                <Link
+                                    href="/"
+                                    style={{
+                                        color: '#00E5FF',
+                                        textDecoration: 'none',
+                                        fontWeight: 500,
+                                        transition: 'color 0.2s ease',
+                                    }}
+                                >
+                                    Home
+                                </Link>
+                                <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>/</span>
+                                <span style={{ color: '#E2E8F0', fontWeight: 500 }}>About</span>
+                            </div>
+
+                            {/* Tag */}
+                            <div
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    background: 'rgba(0, 200, 255, 0.12)',
+                                    border: '1px solid rgba(0, 200, 255, 0.32)',
+                                    color: '#00E5FF',
+                                    fontSize: '0.8rem',
+                                    fontWeight: 700,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.06em',
+                                    padding: '5px 14px',
+                                    borderRadius: '999px',
+                                    marginBottom: '18px',
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        width: '7px',
+                                        height: '7px',
+                                        borderRadius: '50%',
+                                        background: '#00E5FF',
+                                        boxShadow: '0 0 8px #00E5FF',
+                                    }}
+                                />
+                                About Knoweb
+                            </div>
+
+                            {/* Headline */}
+                            <h1
+                                style={{
+                                    fontFamily: 'Outfit, sans-serif',
+                                    fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
+                                    fontWeight: 800,
+                                    lineHeight: 1.18,
+                                    color: '#FFFFFF',
+                                    marginBottom: '16px',
+                                    letterSpacing: '-0.02em',
+                                    textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
+                                }}
+                            >
+                                About Knoweb (Pvt.) Ltd
+                            </h1>
+
+                            {/* Subtitle */}
+                            <p
+                                style={{
+                                    fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
+                                    lineHeight: 1.65,
+                                    color: '#CBD5E1',
+                                    maxWidth: '740px',
+                                }}
+                            >
+                                A hybrid technology company delivering subscription-based SaaS platforms and custom software solutions — built for growing businesses and designed for global standards.
+                            </p>
+                        </div>
                     </div>
-                    <div className="tag-dark" style={{ marginBottom: '20px' }}>About Knoweb</div>
-                    <h1>About Knoweb (Pvt.) Ltd</h1>
-                    <p>
-                        A hybrid technology company delivering subscription-based SaaS platforms and custom software solutions — built for growing businesses and designed for global standards.
-                    </p>
                 </div>
             </section>
 
