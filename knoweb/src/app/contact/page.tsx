@@ -3,6 +3,38 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
+interface LeafletMapInstance {
+    remove: () => void;
+}
+
+interface LeafletControl {
+    addTo: (map: LeafletMapInstance) => void;
+}
+
+interface LeafletLayer {
+    addTo: (map: LeafletMapInstance) => LeafletLayer;
+}
+
+interface LeafletMarker extends LeafletLayer {
+    bindPopup: (content: string) => { openPopup: () => void };
+}
+
+interface LeafletGlobal {
+    map: (element: HTMLElement, options?: Record<string, unknown>) => LeafletMapInstance;
+    control: {
+        zoom: (options?: Record<string, unknown>) => LeafletControl;
+    };
+    tileLayer: (url: string, options?: Record<string, unknown>) => LeafletLayer;
+    divIcon: (options?: Record<string, unknown>) => unknown;
+    marker: (coords: [number, number], options?: Record<string, unknown>) => LeafletMarker;
+}
+
+declare global {
+    interface Window {
+        L?: LeafletGlobal;
+    }
+}
+
 const inquiryTypes = [
     'SaaS Platform Enquiry',
     'Custom Software Project',
@@ -26,7 +58,7 @@ export default function ContactPage() {
     const mapContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        let mapInstance: any = null;
+        let mapInstance: LeafletMapInstance | null = null;
 
         // 1. Ensure Leaflet CSS is loaded in document head
         if (!document.getElementById('leaflet-css')) {
@@ -37,7 +69,7 @@ export default function ContactPage() {
             document.head.appendChild(link);
         }
 
-        const initMap = (L: any) => {
+        const initMap = (L: LeafletGlobal) => {
             if (!mapContainerRef.current || mapInstance) return;
 
             // Coordinates for No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka
@@ -81,7 +113,8 @@ export default function ContactPage() {
                 popupAnchor: [0, -38],
             });
 
-            const marker = L.marker(pinCoords, { icon: redPinIcon }).addTo(map);
+            const marker = L.marker(pinCoords, { icon: redPinIcon });
+            marker.addTo(map);
             marker.bindPopup(`
                 <div style="font-family: Outfit, Inter, sans-serif; padding: 4px 6px; min-width: 190px;">
                     <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
@@ -98,8 +131,8 @@ export default function ContactPage() {
         };
 
         // 2. Ensure Leaflet JS is loaded
-        if ((window as any).L) {
-            initMap((window as any).L);
+        if (typeof window !== 'undefined' && window.L) {
+            initMap(window.L);
         } else {
             const existingScript = document.getElementById('leaflet-js');
             if (!existingScript) {
@@ -108,15 +141,15 @@ export default function ContactPage() {
                 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
                 script.async = true;
                 script.onload = () => {
-                    if ((window as any).L) {
-                        initMap((window as any).L);
+                    if (window.L) {
+                        initMap(window.L);
                     }
                 };
                 document.body.appendChild(script);
             } else {
                 existingScript.addEventListener('load', () => {
-                    if ((window as any).L) {
-                        initMap((window as any).L);
+                    if (window.L) {
+                        initMap(window.L);
                     }
                 });
             }
