@@ -3,72 +3,149 @@
 import Link from 'next/link';
 
 export default function HeroSection() {
+  const headlineWords = ['Practical', 'Software', '&', 'Digital', 'Solutions'];
+  let letterIndex = 0;
+
   return (
     <section
       style={{
         position: 'relative',
-        paddingTop: '124px',
-        paddingBottom: '76px',
-        backgroundImage: `linear-gradient(135deg, rgba(13, 32, 59, 0.94) 0%, rgba(10, 25, 47, 0.90) 50%, rgba(13, 32, 59, 0.96) 100%), url('/knowebbc.jpg')`,
+        paddingTop: '130px',
+        paddingBottom: '86px',
+        backgroundColor: '#0D203B',
+        backgroundImage: `linear-gradient(135deg, rgba(13, 32, 59, 0.82) 0%, rgba(10, 25, 47, 0.70) 50%, rgba(13, 32, 59, 0.85) 100%), url('/knowebbc.jpg')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center 48%',
         backgroundRepeat: 'no-repeat',
         overflow: 'hidden',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
       }}
     >
+      {/* Scoped Keyframes & Interactive Hover Rules */}
+      <style>{`
+        @keyframes heroLetterReveal {
+          0% {
+            opacity: 0;
+            transform: translateY(18px);
+            filter: blur(4px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+          }
+        }
+
+        @keyframes heroFadeSlideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(22px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Glass Card Container */
+        .hero-glass-card {
+          transition: all 0.35s ease;
+        }
+        .hero-glass-card:hover {
+          border-color: rgba(0, 229, 255, 0.32) !important;
+          box-shadow: 0 28px 75px rgba(0, 0, 0, 0.55), 0 0 40px rgba(0, 212, 255, 0.14) !important;
+        }
+
+        /* Welcome Badge Hover */
+        .hero-badge-tag {
+          transition: all 0.3s ease;
+        }
+        .hero-badge-tag:hover,
+        .hero-glass-card:hover .hero-badge-tag {
+          border-color: rgba(0, 229, 255, 0.65) !important;
+          box-shadow: 0 0 18px rgba(0, 229, 255, 0.45), inset 0 0 10px rgba(0, 229, 255, 0.22) !important;
+          color: #FFFFFF !important;
+        }
+
+        /* Main Headline Hover (Glowing & Subtle Scale) */
+        .hero-headline-container {
+          display: inline-block;
+          transform-origin: left center;
+          transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+        .hero-headline-container:hover,
+        .hero-glass-card:hover .hero-headline-container {
+          transform: scale(1.02);
+          text-shadow: 0 0 18px rgba(255, 255, 255, 0.65), 0 0 38px rgba(0, 229, 255, 0.4) !important;
+        }
+
+        /* Subtitle Hover */
+        .hero-subtitle-text {
+          transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .hero-subtitle-text:hover,
+        .hero-glass-card:hover .hero-subtitle-text {
+          color: #F1F5F9 !important;
+          text-shadow: 0 0 16px rgba(0, 229, 255, 0.4) !important;
+        }
+      `}</style>
+
       {/* Ambient background glows */}
       <div
         style={{
           position: 'absolute',
-          top: '-60px',
-          right: '5%',
-          width: '450px',
-          height: '450px',
+          top: '-40px',
+          right: '4%',
+          width: '560px',
+          height: '560px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 200, 255, 0.12) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, rgba(0, 102, 255, 0.08) 50%, transparent 70%)',
           pointerEvents: 'none',
+          filter: 'blur(30px)',
         }}
       />
       <div
         style={{
           position: 'absolute',
-          bottom: '-80px',
-          left: '10%',
-          width: '500px',
-          height: '500px',
+          bottom: '-100px',
+          left: '8%',
+          width: '520px',
+          height: '520px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 102, 255, 0.10) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, transparent 68%)',
           pointerEvents: 'none',
+          filter: 'blur(35px)',
         }}
       />
 
       <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
         {/* Modern Glassmorphic Hero Card */}
         <div
+          className="hero-glass-card"
           style={{
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderRadius: '20px',
+            background: 'linear-gradient(135deg, rgba(13, 32, 59, 0.70) 0%, rgba(10, 25, 47, 0.58) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            borderRadius: '24px',
             border: '1px solid rgba(255, 255, 255, 0.14)',
-            padding: '56px 44px',
+            padding: '58px 48px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.35)',
+            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
           }}
         >
-          {/* Inner ambient card glow */}
+          {/* Inner ambient card cyan glow */}
           <div
             style={{
               position: 'absolute',
-              top: '-50px',
-              right: '-50px',
-              width: '320px',
-              height: '320px',
+              top: '10%',
+              right: '-40px',
+              width: '420px',
+              height: '420px',
               borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(0, 229, 255, 0.18) 0%, rgba(0, 102, 255, 0.05) 55%, transparent 75%)',
               pointerEvents: 'none',
+              filter: 'blur(25px)',
             }}
           />
 
@@ -79,23 +156,9 @@ export default function HeroSection() {
               zIndex: 2,
             }}
           >
-            {/* Inline reveal keyframes for instant smooth rendering */}
-            <style>{`
-              @keyframes heroTextReveal {
-                0% {
-                  opacity: 0;
-                  transform: translateY(26px);
-                }
-                100% {
-                  opacity: 1;
-                  transform: translateY(0);
-                }
-              }
-            `}</style>
-
             {/* Welcome Tag */}
             <div
-              className="hero-reveal-tag"
+              className="hero-badge-tag"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -110,7 +173,7 @@ export default function HeroSection() {
                 padding: '5px 14px',
                 borderRadius: '999px',
                 marginBottom: '20px',
-                animation: 'heroTextReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both',
+                animation: 'heroFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both',
               }}
             >
               <span
@@ -125,9 +188,9 @@ export default function HeroSection() {
               Welcome to Knoweb
             </div>
 
-            {/* Headline */}
+            {/* Headline with Staggered Letter-by-Letter Reveal */}
             <h1
-              className="hero-reveal-heading"
+              className="hero-headline-container"
               style={{
                 fontFamily: 'Outfit, sans-serif',
                 fontSize: 'clamp(2.3rem, 4.4vw, 3.6rem)',
@@ -137,22 +200,51 @@ export default function HeroSection() {
                 marginBottom: '18px',
                 letterSpacing: '-0.025em',
                 textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
-                animation: 'heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both',
               }}
             >
-              Practical Software &amp; Digital Solutions
+              {headlineWords.map((word, wIdx) => {
+                const chars = word.split('');
+                return (
+                  <span
+                    key={wIdx}
+                    style={{
+                      display: 'inline-block',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {chars.map((char) => {
+                      const delay = (0.08 + letterIndex * 0.034).toFixed(3);
+                      letterIndex++;
+                      return (
+                        <span
+                          key={letterIndex}
+                          style={{
+                            display: 'inline-block',
+                            animation: `heroLetterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s both`,
+                          }}
+                        >
+                          {char}
+                        </span>
+                      );
+                    })}
+                    {wIdx < headlineWords.length - 1 && (
+                      <span style={{ display: 'inline-block', width: '0.28em' }}>&nbsp;</span>
+                    )}
+                  </span>
+                );
+              })}
             </h1>
 
-            {/* Subheading / Description */}
+            {/* Subheading / Description (Gently fades in right after headline finishes) */}
             <p
-              className="hero-reveal-subtitle"
+              className="hero-subtitle-text"
               style={{
                 fontSize: 'clamp(1.05rem, 1.8vw, 1.2rem)',
                 lineHeight: 1.65,
                 color: '#CBD5E1',
                 marginBottom: '36px',
                 maxWidth: '760px',
-                animation: 'heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both',
+                animation: 'heroFadeSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.38s both',
               }}
             >
               Business software, ERP, custom development and digital services.
@@ -161,13 +253,12 @@ export default function HeroSection() {
 
             {/* Action Buttons */}
             <div
-              className="hero-reveal-actions"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 alignItems: 'center',
                 gap: '16px',
-                animation: 'heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both',
+                animation: 'heroFadeSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.58s both',
               }}
             >
               <Link
@@ -180,19 +271,19 @@ export default function HeroSection() {
                   fontSize: '0.96rem',
                   padding: '13px 28px',
                   borderRadius: '10px',
-                  transition: 'all 0.22s ease',
+                  transition: 'all 0.28s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 4px 18px rgba(0, 102, 255, 0.4)',
+                  boxShadow: '0 4px 20px rgba(0, 102, 255, 0.45)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 102, 255, 0.55)';
+                  e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 102, 255, 0.7), 0 0 20px rgba(0, 229, 255, 0.45)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 18px rgba(0, 102, 255, 0.4)';
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 102, 255, 0.45)';
                 }}
               >
                 Explore Solutions
@@ -211,26 +302,28 @@ export default function HeroSection() {
                 href="/contact"
                 style={{
                   textDecoration: 'none',
-                  background: 'rgba(255, 255, 255, 0.08)',
+                  background: 'rgba(255, 255, 255, 0.07)',
                   color: '#FFFFFF',
                   fontWeight: 600,
                   fontSize: '0.96rem',
                   padding: '12px 26px',
                   borderRadius: '10px',
-                  border: '1.5px solid rgba(255, 255, 255, 0.28)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.24)',
                   backdropFilter: 'blur(8px)',
-                  transition: 'all 0.22s ease',
+                  transition: 'all 0.28s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.14)';
+                  e.currentTarget.style.borderColor = 'rgba(0, 229, 255, 0.6)';
+                  e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 229, 255, 0.3)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.07)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.24)';
+                  e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >

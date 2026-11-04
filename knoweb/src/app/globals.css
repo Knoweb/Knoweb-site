@@ -886,8 +886,32 @@ textarea::placeholder {
 }
 
 /* ============================================================
-   HERO ON-LOAD REVEAL ANIMATIONS
+   HERO LETTER-BY-LETTER & REVEAL ANIMATIONS
    ============================================================ */
+
+@keyframes heroLetterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @keyframes heroTextReveal {
   0% {
@@ -900,18 +924,45 @@ textarea::placeholder {
   }
 }
 
-.hero-reveal-tag {
-  animation: heroTextReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+/* Glass Card Interactive Hover */
+.hero-glass-card {
+  transition: all 0.35s ease;
+}
+.hero-glass-card:hover {
+  border-color: rgba(0, 229, 255, 0.32) !important;
+  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.55), 0 0 40px rgba(0, 212, 255, 0.14) !important;
 }
 
-.hero-reveal-heading {
-  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+/* Badge hover */
+.hero-badge-tag {
+  transition: all 0.3s ease;
+}
+.hero-badge-tag:hover,
+.hero-glass-card:hover .hero-badge-tag {
+  border-color: rgba(0, 229, 255, 0.65) !important;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.45), inset 0 0 10px rgba(0, 229, 255, 0.22) !important;
+  color: #FFFFFF !important;
 }
 
-.hero-reveal-subtitle {
-  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+/* Headline hover (when hovering card or headline) */
+.hero-headline-container {
+  display: inline-block;
+  transform-origin: left center;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+.hero-headline-container:hover,
+.hero-glass-card:hover .hero-headline-container {
+  transform: scale(1.02);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.65), 0 0 38px rgba(0, 229, 255, 0.4) !important;
 }
 
-.hero-reveal-actions {
-  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both;
+/* Subtitle hover */
+.hero-subtitle-text {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
+.hero-subtitle-text:hover,
+.hero-glass-card:hover .hero-subtitle-text {
+  color: #F1F5F9 !important;
+  text-shadow: 0 0 16px rgba(0, 229, 255, 0.4) !important;
+}
+
