@@ -31,21 +31,22 @@ export default function ContactPage() {
 
     return (
         <>
+            {/* Contact Hero with Google Maps Background */}
             <section
                 style={{
                     position: 'relative',
-                    paddingTop: '76px',
-                    paddingBottom: '76px',
+                    paddingTop: '68px',
+                    paddingBottom: '68px',
                     backgroundColor: '#071224',
-                    backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.45) 0%, rgba(10, 25, 47, 0.25) 50%, rgba(7, 18, 36, 0.50) 100%), url('/galle-map.jpg')`,
+                    backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.22) 0%, rgba(10, 25, 47, 0.10) 50%, rgba(7, 18, 36, 0.32) 100%), url('/galle-map.jpg')`,
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'center 35%',
                     backgroundRepeat: 'no-repeat',
                     overflow: 'hidden',
                     borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                 }}
             >
-                {/* Interactive Map Radar Keyframes */}
+                {/* Interactive Map Radar & Hover Blur Keyframes */}
                 <style>{`
                     @keyframes mapBeaconPulse {
                         0% {
@@ -61,230 +62,183 @@ export default function ContactPage() {
                             opacity: 0;
                         }
                     }
+
+                    .contact-desc-hover-box {
+                        background: transparent;
+                        backdrop-filter: none;
+                        -webkit-backdrop-filter: none;
+                        border: 1px solid transparent;
+                        border-radius: 12px;
+                        transition: all 0.4s ease;
+                    }
+
+                    .contact-desc-hover-box:hover,
+                    .contact-card-container:hover .contact-desc-hover-box {
+                        backdrop-filter: blur(12px) !important;
+                        -webkit-backdrop-filter: blur(12px) !important;
+                        background: rgba(13, 32, 59, 0.45) !important;
+                        border: 1px solid rgba(0, 229, 255, 0.3) !important;
+                        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35) !important;
+                    }
                 `}</style>
 
-                {/* Subtle Ambient background glows */}
+                {/* Prominent Red Pin Marker on the Map at Makuluwa Location */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '-40px',
-                        right: '5%',
-                        width: '500px',
-                        height: '500px',
-                        borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, rgba(0, 102, 255, 0.06) 50%, transparent 70%)',
+                        top: '32%',
+                        left: '50%',
+                        transform: 'translate(-50%, -100%)',
+                        zIndex: 1,
                         pointerEvents: 'none',
-                        filter: 'blur(30px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
                     }}
-                />
-                <div
-                    style={{
-                        position: 'absolute',
-                        bottom: '-80px',
-                        left: '8%',
-                        width: '450px',
-                        height: '450px',
-                        borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(0, 102, 255, 0.14) 0%, transparent 68%)',
-                        pointerEvents: 'none',
-                        filter: 'blur(30px)',
-                    }}
-                />
+                >
+                    <svg
+                        width="36"
+                        height="44"
+                        viewBox="0 0 24 30"
+                        fill="none"
+                        style={{ filter: 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(234, 67, 53, 0.9))' }}
+                    >
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12C0 20.25 10.5 28.88 11.25 29.5C11.47 29.68 11.73 29.78 12 29.78C12.27 29.78 12.53 29.68 12.75 29.5C13.5 28.88 24 20.25 24 12C24 5.37 18.63 0 12 0Z"
+                            fill="#EA4335"
+                        />
+                        <circle cx="12" cy="11" r="4.5" fill="#FFFFFF" />
+                        <circle cx="12" cy="11" r="2.3" fill="#B31412" />
+                    </svg>
+                </div>
 
-                <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
-                    {/* Modern Translucent Frosted Glass Card */}
+                <div className="container-max" style={{ position: 'relative', zIndex: 2 }}>
                     <div
+                        className="contact-card-container"
                         style={{
-                            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 32, 59, 0.32) 40%, rgba(7, 18, 36, 0.42) 100%)',
-                            backdropFilter: 'blur(16px)',
-                            WebkitBackdropFilter: 'blur(16px)',
-                            borderRadius: '24px',
-                            border: '1px solid rgba(255, 255, 255, 0.22)',
-                            padding: '48px 44px',
+                            maxWidth: '820px',
                             position: 'relative',
-                            overflow: 'hidden',
-                            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px rgba(0, 229, 255, 0.06)',
                         }}
                     >
-                        {/* Inner ambient card cyan glow */}
+                        {/* Tag */}
                         <div
                             style={{
-                                position: 'absolute',
-                                top: '5%',
-                                right: '-30px',
-                                width: '420px',
-                                height: '420px',
-                                borderRadius: '50%',
-                                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.04) 55%, transparent 75%)',
-                                pointerEvents: 'none',
-                                filter: 'blur(28px)',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                background: 'rgba(7, 18, 36, 0.65)',
+                                border: '1px solid rgba(0, 200, 255, 0.45)',
+                                backdropFilter: 'blur(8px)',
+                                WebkitBackdropFilter: 'blur(8px)',
+                                color: '#00E5FF',
+                                fontSize: '0.8rem',
+                                fontWeight: 700,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.06em',
+                                padding: '5px 14px',
+                                borderRadius: '999px',
+                                marginBottom: '16px',
+                                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.35)',
                             }}
-                        />
-
-                        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 2 }}>
-                            {/* Breadcrumb */}
-                            <div
+                        >
+                            <span
                                 style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '8px',
-                                    fontSize: '0.85rem',
-                                    marginBottom: '20px',
-                                    textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
+                                    width: '7px',
+                                    height: '7px',
+                                    borderRadius: '50%',
+                                    background: '#00E5FF',
+                                    boxShadow: '0 0 8px #00E5FF',
                                 }}
-                            >
-                                <Link
-                                    href="/"
-                                    style={{
-                                        color: '#00E5FF',
-                                        textDecoration: 'none',
-                                        fontWeight: 500,
-                                        transition: 'color 0.2s ease',
-                                    }}
-                                >
-                                    Home
-                                </Link>
-                                <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>/</span>
-                                <span style={{ color: '#E2E8F0', fontWeight: 500 }}>Contact</span>
-                            </div>
+                            />
+                            Get in Touch
+                        </div>
 
-                            {/* Tag */}
-                            <div
-                                style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: '8px',
-                                    background: 'rgba(0, 200, 255, 0.14)',
-                                    border: '1px solid rgba(0, 200, 255, 0.42)',
-                                    backdropFilter: 'blur(8px)',
-                                    WebkitBackdropFilter: 'blur(8px)',
-                                    color: '#00E5FF',
-                                    fontSize: '0.8rem',
-                                    fontWeight: 700,
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.06em',
-                                    padding: '5px 14px',
-                                    borderRadius: '999px',
-                                    marginBottom: '18px',
-                                }}
-                            >
-                                <span
-                                    style={{
-                                        width: '7px',
-                                        height: '7px',
-                                        borderRadius: '50%',
-                                        background: '#00E5FF',
-                                        boxShadow: '0 0 8px #00E5FF',
-                                    }}
-                                />
-                                Get in Touch
-                            </div>
+                        {/* Headline */}
+                        <h1
+                            style={{
+                                fontFamily: 'Outfit, sans-serif',
+                                fontSize: 'clamp(2.3rem, 4.2vw, 3.4rem)',
+                                fontWeight: 800,
+                                lineHeight: 1.15,
+                                color: '#FFFFFF',
+                                marginBottom: '16px',
+                                letterSpacing: '-0.025em',
+                                textShadow: '0 3px 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7)',
+                            }}
+                        >
+                            Start a Conversation
+                        </h1>
 
-                            {/* Headline */}
-                            <h1
-                                style={{
-                                    fontFamily: 'Outfit, sans-serif',
-                                    fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
-                                    fontWeight: 800,
-                                    lineHeight: 1.18,
-                                    color: '#FFFFFF',
-                                    marginBottom: '16px',
-                                    letterSpacing: '-0.02em',
-                                    textShadow: '0 2px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.5)',
-                                }}
-                            >
-                                Start a Conversation
-                            </h1>
-
-                            {/* Subtitle */}
+                        {/* Interactive Hover Blur Description Box */}
+                        <div
+                            className="contact-desc-hover-box"
+                            style={{
+                                padding: '16px 20px',
+                                margin: '0 -20px 22px -20px',
+                            }}
+                        >
                             <p
                                 style={{
                                     fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
                                     lineHeight: 1.65,
-                                    color: '#F1F5F9',
+                                    color: '#F8FAFC',
                                     maxWidth: '740px',
-                                    marginBottom: '24px',
-                                    textShadow: '0 1px 12px rgba(0, 0, 0, 0.75)',
+                                    margin: 0,
+                                    textShadow: '0 2px 14px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 0, 0, 0.75)',
                                 }}
                             >
                                 Whether you need a platform demo, a custom software discussion, or simply want to explore your options — we are ready to talk.
                             </p>
+                        </div>
 
-                            {/* Live Galle Location Badge with Google Maps link */}
-                            <div
+                        {/* Address Bar Pill (Address text with cyan indicator icon only) */}
+                        <div
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                background: 'rgba(7, 18, 36, 0.78)',
+                                border: '1px solid rgba(0, 229, 255, 0.38)',
+                                borderRadius: '999px',
+                                padding: '10px 20px',
+                                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+                                backdropFilter: 'blur(8px)',
+                                WebkitBackdropFilter: 'blur(8px)',
+                            }}
+                        >
+                            {/* Cyan Indicator Dot with Pulse */}
+                            <div style={{ position: 'relative', width: '12px', height: '12px', flexShrink: 0 }}>
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        inset: '-4px',
+                                        borderRadius: '50%',
+                                        background: '#00E5FF',
+                                        animation: 'mapBeaconPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite',
+                                    }}
+                                />
+                                <div
+                                    style={{
+                                        position: 'relative',
+                                        width: '12px',
+                                        height: '12px',
+                                        borderRadius: '50%',
+                                        background: '#00E5FF',
+                                        boxShadow: '0 0 10px #00E5FF',
+                                    }}
+                                />
+                            </div>
+                            <span
                                 style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    flexWrap: 'wrap',
-                                    gap: '12px',
-                                    background: 'rgba(7, 18, 36, 0.65)',
-                                    border: '1px solid rgba(0, 229, 255, 0.35)',
-                                    borderRadius: '12px',
-                                    padding: '10px 18px',
-                                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.35)',
+                                    color: '#FFFFFF',
+                                    fontSize: '0.88rem',
+                                    fontWeight: 600,
+                                    letterSpacing: '0.01em',
+                                    textShadow: '0 1px 4px rgba(0,0,0,0.6)',
                                 }}
                             >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    {/* Pulsing Radar Pin */}
-                                    <div style={{ position: 'relative', width: '12px', height: '12px' }}>
-                                        <div
-                                            style={{
-                                                position: 'absolute',
-                                                inset: '-4px',
-                                                borderRadius: '50%',
-                                                background: '#00E5FF',
-                                                animation: 'mapBeaconPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite',
-                                            }}
-                                        />
-                                        <div
-                                            style={{
-                                                position: 'relative',
-                                                width: '12px',
-                                                height: '12px',
-                                                borderRadius: '50%',
-                                                background: '#00E5FF',
-                                                boxShadow: '0 0 10px #00E5FF',
-                                            }}
-                                        />
-                                    </div>
-                                    <span style={{ color: '#FFFFFF', fontSize: '0.88rem', fontWeight: 600 }}>
-                                        No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka
-                                    </span>
-                                </div>
-                                <a
-                                    href="https://www.google.com/maps/search/?api=1&query=No.+11%2F1%2F2%2C+Udugama+Road%2C+Makuluwa%2C+Galle%2C+Sri+Lanka"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        color: '#00E5FF',
-                                        fontSize: '0.82rem',
-                                        fontWeight: 600,
-                                        textDecoration: 'none',
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: '4px',
-                                        background: 'rgba(0, 229, 255, 0.12)',
-                                        border: '1px solid rgba(0, 229, 255, 0.4)',
-                                        borderRadius: '6px',
-                                        padding: '4px 10px',
-                                        transition: 'all 0.2s ease',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = 'rgba(0, 229, 255, 0.25)';
-                                        e.currentTarget.style.transform = 'translateY(-1px)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.background = 'rgba(0, 229, 255, 0.12)';
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                    }}
-                                >
-                                    Open in Google Maps
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                        <line x1="7" y1="17" x2="17" y2="7" />
-                                        <polyline points="7 7 17 7 17 17" />
-                                    </svg>
-                                </a>
-                            </div>
+                                No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka
+                            </span>
                         </div>
                     </div>
                 </div>
