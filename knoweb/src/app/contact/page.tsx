@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const inquiryTypes = [
@@ -23,6 +23,112 @@ export default function ContactPage() {
         message: '',
     });
     const [submitted, setSubmitted] = useState(false);
+    const mapContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        let mapInstance: any = null;
+
+        // 1. Ensure Leaflet CSS is loaded in document head
+        if (!document.getElementById('leaflet-css')) {
+            const link = document.createElement('link');
+            link.id = 'leaflet-css';
+            link.rel = 'stylesheet';
+            link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+            document.head.appendChild(link);
+        }
+
+        const initMap = (L: any) => {
+            if (!mapContainerRef.current || mapInstance) return;
+
+            // Coordinates for No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka
+            const pinCoords: [number, number] = [6.0428, 80.2186];
+            // On desktop, offset center slightly west so the pin appears beside the card on the right
+            const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+            const centerCoords: [number, number] = isDesktop ? [6.0428, 80.2142] : pinCoords;
+
+            const map = L.map(mapContainerRef.current, {
+                center: centerCoords,
+                zoom: 16,
+                scrollWheelZoom: false,
+                zoomControl: false,
+            });
+
+            // Position zoom controls in the top-right corner
+            L.control.zoom({ position: 'topright' }).addTo(map);
+
+            // Clean, high-contrast CartoDB Voyager tiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+                maxZoom: 19,
+                subdomains: 'abcd',
+            }).addTo(map);
+
+            // Sleek Custom Red Marker Pin matching reference
+            const redPinIcon = L.divIcon({
+                className: 'custom-map-pin',
+                html: `
+                    <div style="position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                        <div style="position: absolute; bottom: 3px; width: 14px; height: 14px; border-radius: 50%; background: rgba(234, 67, 53, 0.4); animation: mapBeaconPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;"></div>
+                        <svg width="34" height="42" viewBox="0 0 24 30" fill="none" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(234,67,53,0.7)); transform: translateY(-2px);">
+                            <path d="M12 0C5.37 0 0 5.37 0 12C0 20.25 10.5 28.88 11.25 29.5C11.47 29.68 11.73 29.78 12 29.78C12.27 29.78 12.53 29.68 12.75 29.5C13.5 28.88 24 20.25 24 12C24 5.37 18.63 0 12 0Z" fill="#EA4335"/>
+                            <circle cx="12" cy="11" r="4.5" fill="#FFFFFF"/>
+                            <circle cx="12" cy="11" r="2.2" fill="#B31412"/>
+                        </svg>
+                    </div>
+                `,
+                iconSize: [34, 42],
+                iconAnchor: [17, 40],
+                popupAnchor: [0, -38],
+            });
+
+            const marker = L.marker(pinCoords, { icon: redPinIcon }).addTo(map);
+            marker.bindPopup(`
+                <div style="font-family: Outfit, Inter, sans-serif; padding: 4px 6px; min-width: 190px;">
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                        <span style="width: 7px; height: 7px; border-radius: 50%; background: #00E5FF; box-shadow: 0 0 6px #00E5FF;"></span>
+                        <span style="font-weight: 700; color: #FFFFFF; font-size: 13px;">Knoweb (Pvt) Ltd</span>
+                    </div>
+                    <div style="color: #CBD5E1; font-size: 11.5px; line-height: 1.45;">
+                        No. 11/1/2, Udugama Road,<br/>Makuluwa, Galle, Sri Lanka
+                    </div>
+                </div>
+            `).openPopup();
+
+            mapInstance = map;
+        };
+
+        // 2. Ensure Leaflet JS is loaded
+        if ((window as any).L) {
+            initMap((window as any).L);
+        } else {
+            const existingScript = document.getElementById('leaflet-js');
+            if (!existingScript) {
+                const script = document.createElement('script');
+                script.id = 'leaflet-js';
+                script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+                script.async = true;
+                script.onload = () => {
+                    if ((window as any).L) {
+                        initMap((window as any).L);
+                    }
+                };
+                document.body.appendChild(script);
+            } else {
+                existingScript.addEventListener('load', () => {
+                    if ((window as any).L) {
+                        initMap((window as any).L);
+                    }
+                });
+            }
+        }
+
+        return () => {
+            if (mapInstance) {
+                mapInstance.remove();
+                mapInstance = null;
+            }
+        };
+    }, []);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -31,215 +137,175 @@ export default function ContactPage() {
 
     return (
         <>
-            {/* Contact Hero with Google Maps Background */}
+            {/* Contact Hero with Interactive Leaflet Map Background */}
             <section
                 style={{
                     position: 'relative',
+                    minHeight: '440px',
+                    display: 'flex',
+                    alignItems: 'center',
                     paddingTop: '68px',
                     paddingBottom: '68px',
                     backgroundColor: '#071224',
-                    backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.22) 0%, rgba(10, 25, 47, 0.10) 50%, rgba(7, 18, 36, 0.32) 100%), url('/galle-map.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center 35%',
-                    backgroundRepeat: 'no-repeat',
                     overflow: 'hidden',
                     borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                 }}
             >
-                {/* Interactive Map Radar & Hover Blur Keyframes */}
+                {/* Embedded Leaflet Map */}
+                <div
+                    ref={mapContainerRef}
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: 1,
+                        background: '#0a1628 url(/galle-map.jpg) center 35%/cover no-repeat',
+                    }}
+                />
+
+                {/* Subtle gradient vignette overlay to ensure text contrast while keeping map vivid */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(135deg, rgba(7, 18, 36, 0.38) 0%, rgba(10, 25, 47, 0.18) 50%, rgba(7, 18, 36, 0.32) 100%)',
+                        pointerEvents: 'none',
+                        zIndex: 2,
+                    }}
+                />
+
+                {/* Custom Map and Card Styles */}
                 <style>{`
                     @keyframes mapBeaconPulse {
                         0% {
                             transform: scale(0.7);
-                            opacity: 0.9;
+                            opacity: 0.95;
                         }
                         70% {
-                            transform: scale(2.4);
+                            transform: scale(2.5);
                             opacity: 0;
                         }
                         100% {
-                            transform: scale(2.4);
+                            transform: scale(2.5);
                             opacity: 0;
                         }
                     }
 
-                    .contact-desc-hover-box {
-                        background: transparent;
-                        backdrop-filter: none;
-                        -webkit-backdrop-filter: none;
-                        border: 1px solid transparent;
-                        border-radius: 12px;
-                        transition: all 0.4s ease;
+                    .contact-hero-card {
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 32, 59, 0.38) 40%, rgba(7, 18, 36, 0.48) 100%);
+                        backdrop-filter: blur(16px);
+                        -webkit-backdrop-filter: blur(16px);
+                        border-radius: 24px;
+                        border: 1px solid rgba(255, 255, 255, 0.22);
+                        padding: 44px 44px;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px rgba(0, 229, 255, 0.06);
+                        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                     }
 
-                    .contact-desc-hover-box:hover,
-                    .contact-card-container:hover .contact-desc-hover-box {
+                    .contact-hero-card:hover {
+                        border-color: rgba(0, 229, 255, 0.4);
+                        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 30px rgba(0, 229, 255, 0.12);
+                    }
+
+                    .leaflet-popup-content-wrapper {
+                        background: rgba(13, 32, 59, 0.92) !important;
                         backdrop-filter: blur(12px) !important;
                         -webkit-backdrop-filter: blur(12px) !important;
-                        background: rgba(13, 32, 59, 0.45) !important;
-                        border: 1px solid rgba(0, 229, 255, 0.3) !important;
-                        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35) !important;
+                        color: #FFFFFF !important;
+                        border: 1px solid rgba(0, 229, 255, 0.35) !important;
+                        border-radius: 12px !important;
+                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45) !important;
+                    }
+
+                    .leaflet-popup-tip {
+                        background: rgba(13, 32, 59, 0.92) !important;
+                    }
+
+                    .leaflet-popup-close-button {
+                        color: #94A3B8 !important;
+                        padding: 6px !important;
+                    }
+
+                    .leaflet-control-zoom a {
+                        background: rgba(13, 32, 59, 0.88) !important;
+                        color: #FFFFFF !important;
+                        border-color: rgba(255, 255, 255, 0.15) !important;
+                        backdrop-filter: blur(8px) !important;
+                        -webkit-backdrop-filter: blur(8px) !important;
+                    }
+
+                    .leaflet-control-zoom a:hover {
+                        background: #004FEB !important;
+                        color: #FFFFFF !important;
+                    }
+
+                    @media (max-width: 640px) {
+                        .contact-hero-card {
+                            padding: 32px 24px;
+                            border-radius: 18px;
+                        }
                     }
                 `}</style>
 
-                {/* Prominent Red Pin Marker on the Map at Makuluwa Location */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '32%',
-                        left: '50%',
-                        transform: 'translate(-50%, -100%)',
-                        zIndex: 1,
-                        pointerEvents: 'none',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <svg
-                        width="36"
-                        height="44"
-                        viewBox="0 0 24 30"
-                        fill="none"
-                        style={{ filter: 'drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(234, 67, 53, 0.9))' }}
-                    >
-                        <path
-                            d="M12 0C5.37 0 0 5.37 0 12C0 20.25 10.5 28.88 11.25 29.5C11.47 29.68 11.73 29.78 12 29.78C12.27 29.78 12.53 29.68 12.75 29.5C13.5 28.88 24 20.25 24 12C24 5.37 18.63 0 12 0Z"
-                            fill="#EA4335"
-                        />
-                        <circle cx="12" cy="11" r="4.5" fill="#FFFFFF" />
-                        <circle cx="12" cy="11" r="2.3" fill="#B31412" />
-                    </svg>
-                </div>
-
-                <div className="container-max" style={{ position: 'relative', zIndex: 2 }}>
+                <div className="container-max" style={{ position: 'relative', zIndex: 10, width: '100%' }}>
                     <div
-                        className="contact-card-container"
+                        className="contact-hero-card"
                         style={{
-                            maxWidth: '820px',
+                            maxWidth: '740px',
                             position: 'relative',
                         }}
                     >
-                        {/* Tag */}
+                        {/* Ambient inner glow */}
                         <div
                             style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '8px',
-                                background: 'rgba(7, 18, 36, 0.65)',
-                                border: '1px solid rgba(0, 200, 255, 0.45)',
-                                backdropFilter: 'blur(8px)',
-                                WebkitBackdropFilter: 'blur(8px)',
-                                color: '#00E5FF',
-                                fontSize: '0.8rem',
-                                fontWeight: 700,
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.06em',
-                                padding: '5px 14px',
-                                borderRadius: '999px',
-                                marginBottom: '16px',
-                                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.35)',
+                                position: 'absolute',
+                                top: '-20px',
+                                right: '-30px',
+                                width: '300px',
+                                height: '300px',
+                                borderRadius: '50%',
+                                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.14) 0%, transparent 70%)',
+                                pointerEvents: 'none',
+                                filter: 'blur(24px)',
                             }}
-                        >
-                            <span
-                                style={{
-                                    width: '7px',
-                                    height: '7px',
-                                    borderRadius: '50%',
-                                    background: '#00E5FF',
-                                    boxShadow: '0 0 8px #00E5FF',
-                                }}
-                            />
-                            Get in Touch
-                        </div>
+                        />
 
                         {/* Headline */}
                         <h1
                             style={{
                                 fontFamily: 'Outfit, sans-serif',
-                                fontSize: 'clamp(2.3rem, 4.2vw, 3.4rem)',
+                                fontSize: 'clamp(2.4rem, 4.4vw, 3.6rem)',
                                 fontWeight: 800,
                                 lineHeight: 1.15,
                                 color: '#FFFFFF',
-                                marginBottom: '16px',
+                                marginBottom: '18px',
                                 letterSpacing: '-0.025em',
-                                textShadow: '0 3px 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7)',
+                                textShadow: '0 3px 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 0.7)',
+                                position: 'relative',
+                                zIndex: 2,
                             }}
                         >
                             Start a Conversation
                         </h1>
 
-                        {/* Interactive Hover Blur Description Box */}
-                        <div
-                            className="contact-desc-hover-box"
+                        {/* Description Paragraph */}
+                        <p
                             style={{
-                                padding: '16px 20px',
-                                margin: '0 -20px 22px -20px',
+                                fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
+                                lineHeight: 1.65,
+                                color: '#F8FAFC',
+                                maxWidth: '660px',
+                                margin: 0,
+                                textShadow: '0 2px 14px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 0, 0, 0.65)',
+                                position: 'relative',
+                                zIndex: 2,
                             }}
                         >
-                            <p
-                                style={{
-                                    fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
-                                    lineHeight: 1.65,
-                                    color: '#F8FAFC',
-                                    maxWidth: '740px',
-                                    margin: 0,
-                                    textShadow: '0 2px 14px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 0, 0, 0.75)',
-                                }}
-                            >
-                                Whether you need a platform demo, a custom software discussion, or simply want to explore your options — we are ready to talk.
-                            </p>
-                        </div>
-
-                        {/* Address Bar Pill (Address text with cyan indicator icon only) */}
-                        <div
-                            style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '10px',
-                                background: 'rgba(7, 18, 36, 0.78)',
-                                border: '1px solid rgba(0, 229, 255, 0.38)',
-                                borderRadius: '999px',
-                                padding: '10px 20px',
-                                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
-                                backdropFilter: 'blur(8px)',
-                                WebkitBackdropFilter: 'blur(8px)',
-                            }}
-                        >
-                            {/* Cyan Indicator Dot with Pulse */}
-                            <div style={{ position: 'relative', width: '12px', height: '12px', flexShrink: 0 }}>
-                                <div
-                                    style={{
-                                        position: 'absolute',
-                                        inset: '-4px',
-                                        borderRadius: '50%',
-                                        background: '#00E5FF',
-                                        animation: 'mapBeaconPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite',
-                                    }}
-                                />
-                                <div
-                                    style={{
-                                        position: 'relative',
-                                        width: '12px',
-                                        height: '12px',
-                                        borderRadius: '50%',
-                                        background: '#00E5FF',
-                                        boxShadow: '0 0 10px #00E5FF',
-                                    }}
-                                />
-                            </div>
-                            <span
-                                style={{
-                                    color: '#FFFFFF',
-                                    fontSize: '0.88rem',
-                                    fontWeight: 600,
-                                    letterSpacing: '0.01em',
-                                    textShadow: '0 1px 4px rgba(0,0,0,0.6)',
-                                }}
-                            >
-                                No. 11/1/2, Udugama Road, Makuluwa, Galle, Sri Lanka
-                            </span>
-                        </div>
+                            Whether you need a platform demo, a custom software discussion, or simply want to explore your options — we are ready to talk.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -312,18 +378,18 @@ export default function ContactPage() {
                                         { label: 'Development & Services', href: '/services' },
                                     ].map((a) => (
                                         <Link key={a.label} href={a.href} style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'space-between',
-                                            color: '#374151',
-                                            textDecoration: 'none',
-                                            fontSize: '0.875rem',
-                                            padding: '10px 12px',
-                                            background: '#fff',
-                                            border: '1px solid #E5E7EB',
-                                            borderRadius: '8px',
-                                            fontWeight: 500,
-                                        }}>
+                                             display: 'flex',
+                                             alignItems: 'center',
+                                             justifyContent: 'space-between',
+                                             color: '#374151',
+                                             textDecoration: 'none',
+                                             fontSize: '0.875rem',
+                                             padding: '10px 12px',
+                                             background: '#fff',
+                                             border: '1px solid #E5E7EB',
+                                             borderRadius: '8px',
+                                             fontWeight: 500,
+                                         }}>
                                             {a.label}
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                                                 <path d="M2 6H10M6 2L10 6L6 10" stroke="#004FEB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -507,7 +573,6 @@ export default function ContactPage() {
                     </div>
                 </div>
             </section>
-
         </>
     );
 }
