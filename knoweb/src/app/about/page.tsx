@@ -230,7 +230,17 @@ export default function AboutPage() {
             </section>
 
             {/* Vision & Mission */}
-            <section className="section-pad section-dark">
+            <section
+                style={{
+                    backgroundColor: '#071224',
+                    backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.06) 0%, transparent 65%)',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                    padding: '80px 0',
+                    position: 'relative',
+                    overflow: 'hidden',
+                }}
+            >
                 <div className="container-max">
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
                         <div className="card-dark">
@@ -251,7 +261,7 @@ export default function AboutPage() {
                             <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#fff', marginBottom: '14px' }}>
                                 To be the trusted technology platform of choice for growing businesses across South Asia and beyond.
                             </h3>
-                            <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '0.9rem' }}>
+                            <p style={{ color: '#CBD5E1', lineHeight: 1.7, fontSize: '0.9rem' }}>
                                 Knoweb&apos;s vision is to become a recognized platform company serving businesses across multiple markets — delivering practical, reliable technology that creates measurable business improvement at scale.
                             </p>
                         </div>
@@ -271,7 +281,7 @@ export default function AboutPage() {
                             <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#fff', marginBottom: '14px' }}>
                                 To deliver practical business systems that genuinely improve how organizations operate and grow.
                             </h3>
-                            <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '0.9rem' }}>
+                            <p style={{ color: '#CBD5E1', lineHeight: 1.7, fontSize: '0.9rem' }}>
                                 We are committed to building technology that works — not technology that impresses. Every platform, every custom system, and every support interaction must contribute to real, measurable operational improvement for our clients.
                             </p>
                         </div>
@@ -320,7 +330,7 @@ export default function AboutPage() {
                             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem', marginBottom: '16px' }}>
                                 Knoweb&apos;s immediate market is Sri Lanka — building platform depth, client trust, and operational proof across multiple sectors. The architecture, standards, and positioning are global-ready from day one.
                             </p>
-                            <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '0.9rem' }}>
+                            <p style={{ color: '#CBD5E1', lineHeight: 1.7, fontSize: '0.9rem' }}>
                                 Our growth pathway targets regional expansion across South Asia, with multi-currency, multi-language, and multi-regulatory capability built into our platform roadmap — not bolted on after growth.
                             </p>
                         </div>

@@ -248,16 +248,19 @@ h6 {
 }
 
 .card-dark {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(13, 32, 59, 0.90) 0%, rgba(7, 18, 36, 0.96) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.30);
   border-radius: var(--radius-xl);
-  padding: 32px;
+  padding: 36px 32px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease;
 }
 
 .card-dark:hover {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: var(--border-hover);
+  background: linear-gradient(135deg, rgba(17, 40, 71, 0.95) 0%, rgba(10, 25, 47, 0.98) 100%);
+  border-color: rgba(0, 229, 255, 0.55);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 25px rgba(0, 229, 255, 0.15);
+  transform: translateY(-3px);
 }
 
 /* ============================================================
@@ -393,7 +396,7 @@ h6 {
    ============================================================ */
 
 .section-dark {
-  background: var(--bg-surface);
+  background: #071224;
 }
 
 .surface-light {
@@ -954,4 +957,137 @@ textarea::placeholder {
   color: #F1F5F9 !important;
   text-shadow: 0 0 16px rgba(0, 229, 255, 0.4) !important;
 }
+
+/* ============================================================
+   LIGHT / DARK THEME SYSTEM
+   ============================================================ */
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark, [data-theme="dark"] {
+  --bg-base: #071224;
+  --bg-surface: #0B192E;
+  --bg-surface-alt: #0D203B;
+  --bg-card: #0E223D;
+  --bg-card-hover: #132A4B;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(0, 229, 255, 0.35);
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #071224 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark main {
+  background-color: #071224;
+}
+
+/* Surface & Sections in Dark Mode */
+html.dark .surface-light,
+html.dark .surface-mid,
+html.dark .section-surface {
+  background: #0B192E !important;
+  color: #F8FAFC !important;
+}
+
+html.dark .card {
+  background: #0E223D !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .card:hover {
+  background: #132A4B !important;
+  border-color: rgba(0, 229, 255, 0.35) !important;
+}
+
+html.dark .section-header h2 {
+  color: #FFFFFF !important;
+}
+
+html.dark .section-header p {
+  color: #94A3B8 !important;
+}
+
+/* Form inputs & controls in Dark Mode */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #0E223D !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+  border-color: #00E5FF !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748B !important;
+}
+
+/* QuickAssist & other forms in Dark Mode */
+html.dark .qa-grid > div {
+  background: #0E223D !important;
+  border-color: rgba(0, 229, 255, 0.35) !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .qa-grid h2,
+html.dark .qa-grid h3 {
+  color: #FFFFFF !important;
+}
+
+html.dark .qa-grid p {
+  color: #CBD5E1 !important;
+}
+
+/* Global Light-Section Inversion in Dark Mode */
+html.dark section[style*="background: #FFFFFF"],
+html.dark section[style*="background: #ffffff"],
+html.dark section[style*="background: rgb(255, 255, 255)"],
+html.dark section[style*="background: #F8FAFC"],
+html.dark section[style*="background: #F8FAFF"],
+html.dark section[style*="background: #F0F5FA"],
+html.dark div[style*="background: #FFFFFF"],
+html.dark div[style*="background: #ffffff"],
+html.dark div[style*="background: rgb(255, 255, 255)"],
+html.dark div[style*="background: #F8FAFC"],
+html.dark div[style*="background: #F8FAFF"],
+html.dark div[style*="background: #F0F5FA"] {
+  background-color: #0B192E !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark h2[style*="color: #0A0F1E"],
+html.dark h2[style*="color: #0A192F"],
+html.dark h3[style*="color: #0A0F1E"],
+html.dark h3[style*="color: #0A192F"],
+html.dark h4[style*="color: #0A0F1E"] {
+  color: #FFFFFF !important;
+}
+
+html.dark p[style*="color: #64748B"],
+html.dark p[style*="color: #6B7280"],
+html.dark p[style*="color: #4B5563"],
+html.dark p[style*="color: #475569"],
+html.dark p[style*="color: #374151"],
+html.dark p[style*="color: #334155"] {
+  color: #CBD5E1 !important;
+}
+
+html.dark label {
+  color: #E2E8F0 !important;
+}
+
 
