@@ -79,8 +79,23 @@ export default function HeroSection() {
               zIndex: 2,
             }}
           >
+            {/* Inline reveal keyframes for instant smooth rendering */}
+            <style>{`
+              @keyframes heroTextReveal {
+                0% {
+                  opacity: 0;
+                  transform: translateY(26px);
+                }
+                100% {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+            `}</style>
+
             {/* Welcome Tag */}
             <div
+              className="hero-reveal-tag"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -95,6 +110,7 @@ export default function HeroSection() {
                 padding: '5px 14px',
                 borderRadius: '999px',
                 marginBottom: '20px',
+                animation: 'heroTextReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both',
               }}
             >
               <span
@@ -111,6 +127,7 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1
+              className="hero-reveal-heading"
               style={{
                 fontFamily: 'Outfit, sans-serif',
                 fontSize: 'clamp(2.3rem, 4.4vw, 3.6rem)',
@@ -120,6 +137,7 @@ export default function HeroSection() {
                 marginBottom: '18px',
                 letterSpacing: '-0.025em',
                 textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
+                animation: 'heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both',
               }}
             >
               Practical Software &amp; Digital Solutions
@@ -127,12 +145,14 @@ export default function HeroSection() {
 
             {/* Subheading / Description */}
             <p
+              className="hero-reveal-subtitle"
               style={{
                 fontSize: 'clamp(1.05rem, 1.8vw, 1.2rem)',
                 lineHeight: 1.65,
                 color: '#CBD5E1',
                 marginBottom: '36px',
                 maxWidth: '760px',
+                animation: 'heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both',
               }}
             >
               Business software, ERP, custom development and digital services.
@@ -141,11 +161,13 @@ export default function HeroSection() {
 
             {/* Action Buttons */}
             <div
+              className="hero-reveal-actions"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 alignItems: 'center',
                 gap: '16px',
+                animation: 'heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both',
               }}
             >
               <Link

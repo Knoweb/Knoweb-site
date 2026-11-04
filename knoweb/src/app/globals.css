@@ -884,3 +884,34 @@ textarea::placeholder {
     border-radius: 10px !important;
   }
 }
+
+/* ============================================================
+   HERO ON-LOAD REVEAL ANIMATIONS
+   ============================================================ */
+
+@keyframes heroTextReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal-tag {
+  animation: heroTextReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.hero-reveal-heading {
+  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.hero-reveal-subtitle {
+  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.hero-reveal-actions {
+  animation: heroTextReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both;
+}
