@@ -23,10 +23,10 @@ export default function AboutPage() {
             <section
                 style={{
                     position: 'relative',
-                    paddingTop: '72px',
-                    paddingBottom: '72px',
-                    backgroundColor: '#0D203B',
-                    backgroundImage: `linear-gradient(135deg, rgba(13, 32, 59, 0.82) 0%, rgba(10, 25, 47, 0.70) 50%, rgba(13, 32, 59, 0.85) 100%), url('/hero-bg.jpg')`,
+                    paddingTop: '76px',
+                    paddingBottom: '76px',
+                    backgroundColor: '#071224',
+                    backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.58) 0%, rgba(10, 25, 47, 0.42) 50%, rgba(7, 18, 36, 0.62) 100%), url('/hero-bg.jpg')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -43,7 +43,7 @@ export default function AboutPage() {
                         width: '500px',
                         height: '500px',
                         borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, rgba(0, 102, 255, 0.06) 50%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, rgba(0, 102, 255, 0.06) 50%, transparent 70%)',
                         pointerEvents: 'none',
                         filter: 'blur(30px)',
                     }}
@@ -56,39 +56,39 @@ export default function AboutPage() {
                         width: '450px',
                         height: '450px',
                         borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, transparent 68%)',
+                        background: 'radial-gradient(circle, rgba(0, 102, 255, 0.14) 0%, transparent 68%)',
                         pointerEvents: 'none',
                         filter: 'blur(30px)',
                     }}
                 />
 
                 <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
-                    {/* Modern Glassmorphic Hero Card */}
+                    {/* Modern Translucent Frosted Glass Card */}
                     <div
                         style={{
-                            background: 'linear-gradient(135deg, rgba(13, 32, 59, 0.72) 0%, rgba(10, 25, 47, 0.58) 100%)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
+                            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 32, 59, 0.32) 40%, rgba(7, 18, 36, 0.42) 100%)',
+                            backdropFilter: 'blur(16px)',
+                            WebkitBackdropFilter: 'blur(16px)',
                             borderRadius: '24px',
-                            border: '1px solid rgba(255, 255, 255, 0.14)',
+                            border: '1px solid rgba(255, 255, 255, 0.22)',
                             padding: '48px 44px',
                             position: 'relative',
                             overflow: 'hidden',
-                            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
+                            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px rgba(0, 229, 255, 0.06)',
                         }}
                     >
                         {/* Inner ambient card cyan glow */}
                         <div
                             style={{
                                 position: 'absolute',
-                                top: '10%',
+                                top: '5%',
                                 right: '-30px',
-                                width: '380px',
-                                height: '380px',
+                                width: '420px',
+                                height: '420px',
                                 borderRadius: '50%',
-                                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.05) 55%, transparent 75%)',
+                                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.04) 55%, transparent 75%)',
                                 pointerEvents: 'none',
-                                filter: 'blur(25px)',
+                                filter: 'blur(28px)',
                             }}
                         />
 
@@ -101,6 +101,7 @@ export default function AboutPage() {
                                     gap: '8px',
                                     fontSize: '0.85rem',
                                     marginBottom: '20px',
+                                    textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
                                 }}
                             >
                                 <Link
@@ -124,8 +125,10 @@ export default function AboutPage() {
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '8px',
-                                    background: 'rgba(0, 200, 255, 0.12)',
-                                    border: '1px solid rgba(0, 200, 255, 0.32)',
+                                    background: 'rgba(0, 200, 255, 0.14)',
+                                    border: '1px solid rgba(0, 200, 255, 0.42)',
+                                    backdropFilter: 'blur(8px)',
+                                    WebkitBackdropFilter: 'blur(8px)',
                                     color: '#00E5FF',
                                     fontSize: '0.8rem',
                                     fontWeight: 700,
@@ -158,7 +161,7 @@ export default function AboutPage() {
                                     color: '#FFFFFF',
                                     marginBottom: '16px',
                                     letterSpacing: '-0.02em',
-                                    textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
+                                    textShadow: '0 2px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.5)',
                                 }}
                             >
                                 About Knoweb (Pvt.) Ltd
@@ -169,8 +172,9 @@ export default function AboutPage() {
                                 style={{
                                     fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
                                     lineHeight: 1.65,
-                                    color: '#CBD5E1',
+                                    color: '#F1F5F9',
                                     maxWidth: '740px',
+                                    textShadow: '0 1px 12px rgba(0, 0, 0, 0.75)',
                                 }}
                             >
                                 A hybrid technology company delivering subscription-based SaaS platforms and custom software solutions — built for growing businesses and designed for global standards.
