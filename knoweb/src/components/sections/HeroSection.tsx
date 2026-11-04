@@ -56,17 +56,6 @@ export default function HeroSection() {
           box-shadow: 0 28px 75px rgba(0, 0, 0, 0.55), 0 0 40px rgba(0, 212, 255, 0.14) !important;
         }
 
-        /* Welcome Badge Hover */
-        .hero-badge-tag {
-          transition: all 0.3s ease;
-        }
-        .hero-badge-tag:hover,
-        .hero-glass-card:hover .hero-badge-tag {
-          border-color: rgba(0, 229, 255, 0.65) !important;
-          box-shadow: 0 0 18px rgba(0, 229, 255, 0.45), inset 0 0 10px rgba(0, 229, 255, 0.22) !important;
-          color: #FFFFFF !important;
-        }
-
         /* Main Headline Hover (Glowing & Subtle Scale) */
         .hero-headline-container {
           display: inline-block;
@@ -156,38 +145,6 @@ export default function HeroSection() {
               zIndex: 2,
             }}
           >
-            {/* Welcome Tag */}
-            <div
-              className="hero-badge-tag"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(0, 200, 255, 0.12)',
-                border: '1px solid rgba(0, 200, 255, 0.3)',
-                color: '#00E5FF',
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.06em',
-                padding: '5px 14px',
-                borderRadius: '999px',
-                marginBottom: '20px',
-                animation: 'heroFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both',
-              }}
-            >
-              <span
-                style={{
-                  width: '7px',
-                  height: '7px',
-                  borderRadius: '50%',
-                  background: '#00E5FF',
-                  boxShadow: '0 0 8px #00E5FF',
-                }}
-              />
-              Welcome to Knoweb
-            </div>
-
             {/* Headline with Staggered Letter-by-Letter Reveal */}
             <h1
               className="hero-headline-container"

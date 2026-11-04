@@ -9,7 +9,7 @@ import WhyKnowebCard from '@/components/sections/WhyKnowebCard';
 import BottomCTASection from '@/components/sections/BottomCTASection';
 
 export const metadata: Metadata = {
-  title: 'Knoweb — Practical Software & Digital Solutions',
+  title: 'Knoweb Solutions',
   description:
     'Knoweb provides business software, ERP solutions, custom development and digital services. Solutions for new projects and existing systems.',
 };
