@@ -6,159 +6,209 @@ export default function HeroSection() {
   return (
     <section
       style={{
-        paddingTop: '92px',
-        paddingBottom: '32px',
-        background: '#FFFFFF',
+        position: 'relative',
+        paddingTop: '124px',
+        paddingBottom: '76px',
+        backgroundImage: `linear-gradient(135deg, rgba(13, 32, 59, 0.94) 0%, rgba(10, 25, 47, 0.90) 50%, rgba(13, 32, 59, 0.96) 100%), url('/knowebbc.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        overflow: 'hidden',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
       }}
     >
-      <div className="container-max">
-        {/* Soft light card container as in Wireframe Part 1 */}
+      {/* Ambient background glows */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '-60px',
+          right: '5%',
+          width: '450px',
+          height: '450px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0, 200, 255, 0.12) 0%, transparent 65%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-80px',
+          left: '10%',
+          width: '500px',
+          height: '500px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0, 102, 255, 0.10) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Modern Glassmorphic Hero Card */}
         <div
           style={{
-            background: 'linear-gradient(180deg, #F0F5FA 0%, #EBF2F8 100%)',
-            borderRadius: '16px',
-            border: '1px solid #DCE6F1',
-            padding: '56px 40px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            borderRadius: '20px',
+            border: '1px solid rgba(255, 255, 255, 0.14)',
+            padding: '56px 44px',
             position: 'relative',
             overflow: 'hidden',
+            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.35)',
           }}
         >
-          {/* Subtle decorative glow */}
+          {/* Inner ambient card glow */}
           <div
             style={{
               position: 'absolute',
-              top: '-40px',
-              right: '-40px',
-              width: '280px',
-              height: '280px',
+              top: '-50px',
+              right: '-50px',
+              width: '320px',
+              height: '320px',
               borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(0, 79, 235, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%)',
               pointerEvents: 'none',
             }}
           />
 
           <div
             style={{
-              maxWidth: '840px',
+              maxWidth: '860px',
               position: 'relative',
-              zIndex: 1,
+              zIndex: 2,
             }}
           >
-            {/* Welcome Tag from doc */}
+            {/* Welcome Tag */}
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                background: 'rgba(0, 79, 235, 0.08)',
-                color: '#004FEB',
-                fontSize: '0.78rem',
+                gap: '8px',
+                background: 'rgba(0, 200, 255, 0.12)',
+                border: '1px solid rgba(0, 200, 255, 0.3)',
+                color: '#00E5FF',
+                fontSize: '0.8rem',
                 fontWeight: 700,
                 textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                padding: '4px 10px',
-                borderRadius: '6px',
-                marginBottom: '16px',
+                letterSpacing: '0.06em',
+                padding: '5px 14px',
+                borderRadius: '999px',
+                marginBottom: '20px',
               }}
             >
               <span
                 style={{
-                  width: '6px',
-                  height: '6px',
+                  width: '7px',
+                  height: '7px',
                   borderRadius: '50%',
-                  background: '#004FEB',
+                  background: '#00E5FF',
+                  boxShadow: '0 0 8px #00E5FF',
                 }}
               />
               Welcome to Knoweb
             </div>
 
-            {/* Headline matching Wireframe Part 1 */}
+            {/* Headline */}
             <h1
               style={{
                 fontFamily: 'Outfit, sans-serif',
-                fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)',
+                fontSize: 'clamp(2.3rem, 4.4vw, 3.6rem)',
                 fontWeight: 800,
                 lineHeight: 1.15,
-                color: '#0A192F',
+                color: '#FFFFFF',
                 marginBottom: '18px',
                 letterSpacing: '-0.025em',
+                textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
               }}
             >
               Practical Software &amp; Digital Solutions
             </h1>
 
-            {/* Subheading / Description matching Wireframe Part 1 & Document */}
+            {/* Subheading / Description */}
             <p
               style={{
-                fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
-                lineHeight: 1.6,
-                color: '#475569',
-                marginBottom: '32px',
-                maxWidth: '740px',
+                fontSize: 'clamp(1.05rem, 1.8vw, 1.2rem)',
+                lineHeight: 1.65,
+                color: '#CBD5E1',
+                marginBottom: '36px',
+                maxWidth: '760px',
               }}
             >
               Business software, ERP, custom development and digital services.
               <br className="hidden sm:inline" /> Solutions for new projects and existing systems.
             </p>
 
-            {/* Action Buttons matching Wireframe Part 1 */}
+            {/* Action Buttons */}
             <div
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 alignItems: 'center',
-                gap: '14px',
+                gap: '16px',
               }}
             >
               <Link
                 href="/solutions"
                 style={{
                   textDecoration: 'none',
-                  background: '#004FEB',
+                  background: 'linear-gradient(135deg, #0066FF 0%, #004FEB 100%)',
                   color: '#FFFFFF',
                   fontWeight: 600,
-                  fontSize: '0.94rem',
-                  padding: '12px 26px',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s ease',
+                  fontSize: '0.96rem',
+                  padding: '13px 28px',
+                  borderRadius: '10px',
+                  transition: 'all 0.22s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
+                  boxShadow: '0 4px 18px rgba(0, 102, 255, 0.4)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#0040C8';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 102, 255, 0.55)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#004FEB';
                   e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 18px rgba(0, 102, 255, 0.4)';
                 }}
               >
                 Explore Solutions
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8H13M9 4L13 8L9 12"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
 
               <Link
                 href="/contact"
                 style={{
                   textDecoration: 'none',
-                  background: '#FFFFFF',
-                  color: '#0A192F',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#FFFFFF',
                   fontWeight: 600,
-                  fontSize: '0.94rem',
-                  padding: '11px 24px',
-                  borderRadius: '8px',
-                  border: '1.5px solid #004FEB',
-                  transition: 'all 0.2s ease',
+                  fontSize: '0.96rem',
+                  padding: '12px 26px',
+                  borderRadius: '10px',
+                  border: '1.5px solid rgba(255, 255, 255, 0.28)',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'all 0.22s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#F0F7FF';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#FFFFFF';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
