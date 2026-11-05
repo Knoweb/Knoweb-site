@@ -1090,4 +1090,37 @@ html.dark label {
   color: #E2E8F0 !important;
 }
 
+/* SaaS Product Card Logos: Light & Dark switching */
+.saas-logo-light {
+  display: block !important;
+}
+.saas-logo-dark {
+  display: none !important;
+}
+
+html.dark .saas-logo-light,
+[data-theme="dark"] .saas-logo-light {
+  display: none !important;
+}
+
+html.dark .saas-logo-dark,
+[data-theme="dark"] .saas-logo-dark {
+  display: block !important;
+}
+
+/* SaaS Product Cards in Dark Mode */
+html.dark .saas-product-card,
+[data-theme="dark"] .saas-product-card {
+  background: #0E223D !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html.dark .saas-product-card:hover,
+[data-theme="dark"] .saas-product-card:hover {
+  background: #132A4B !important;
+  border-color: rgba(0, 229, 255, 0.4) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(0, 229, 255, 0.1) !important;
+}
+
+
 

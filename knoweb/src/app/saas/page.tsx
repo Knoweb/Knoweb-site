@@ -3,11 +3,26 @@
 import Link from 'next/link';
 import BottomCTASection from '@/components/sections/BottomCTASection';
 
-const products = [
+interface ProductItem {
+  id: string;
+  name: string;
+  tagline: string;
+  summary: string;
+  details: string;
+  features: string[];
+  url?: string;
+  logoLight?: string;
+  logoDark?: string;
+}
+
+const products: ProductItem[] = [
   {
     id: 'ginum',
     name: 'Ginum',
     tagline: 'Accounting & Finance Management',
+    url: 'http://ginumapps.com/',
+    logoLight: '/logos/ginum.png',
+    logoDark: '/logos/ginum-dark.png',
     summary: 'Accounting records and financial administration.',
     details:
       'Ginum provides small and medium enterprises with dependable bookkeeping, invoicing, expense tracking, and financial statements without unnecessary complexity.',
@@ -24,6 +39,9 @@ const products = [
     id: 'pirisahr',
     name: 'PirisaHR',
     tagline: 'Human Resources & Payroll',
+    url: 'https://pirisahr.com/',
+    logoLight: '/logos/pirisahr.png',
+    logoDark: '/logos/pirisahr-dark.png',
     summary: 'Employee information, attendance and payroll administration.',
     details:
       'PirisaHR streamlines HR administration from employee onboarding and daily attendance to monthly payroll calculations and statutory compliance.',
@@ -40,6 +58,9 @@ const products = [
     id: 'anawuma',
     name: 'Anawuma',
     tagline: 'Order & Delivery Management',
+    url: 'https://anawuma.com/',
+    logoLight: '/logos/anawuma.png',
+    logoDark: '/logos/anawuma-dark.png',
     summary: 'Customer orders, records and follow-up.',
     details:
       'Anawuma manages the entire order cycle from customer inquiry to delivery confirmation, ensuring zero misplaced orders and accurate order fulfilment.',
@@ -56,6 +77,9 @@ const products = [
     id: 'thanayama',
     name: 'Thanayama',
     tagline: 'Hospitality & Accommodation Management',
+    url: 'https://thanayama.com/',
+    logoLight: '/logos/thanayama.png',
+    logoDark: '/logos/thanayama-dark.png',
     summary: 'Reservations, guest information and accommodation administration.',
     details:
       'Thanayama simplifies front desk, room reservations, billing folios, and guest communication for boutique hotels, resorts, and guest houses.',
@@ -205,22 +229,43 @@ export default function SaaSPage() {
                   style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    alignItems: 'baseline',
+                    alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '12px',
-                    marginBottom: '10px',
+                    marginBottom: '14px',
                   }}
                 >
-                  <h2
-                    style={{
-                      fontFamily: 'Outfit, sans-serif',
-                      fontSize: '1.65rem',
-                      fontWeight: 800,
-                      color: '#0A192F',
-                    }}
-                  >
-                    {product.name}
-                  </h2>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    {product.logoLight && (
+                      <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={product.logoLight}
+                          alt={`${product.name} logo`}
+                          className="saas-logo-light"
+                          style={{ maxHeight: '36px', maxWidth: '140px', objectFit: 'contain' }}
+                        />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={product.logoDark}
+                          alt={`${product.name} logo`}
+                          className="saas-logo-dark"
+                          style={{ maxHeight: '36px', maxWidth: '140px', objectFit: 'contain' }}
+                        />
+                      </div>
+                    )}
+                    <h2
+                      style={{
+                        fontFamily: 'Outfit, sans-serif',
+                        fontSize: '1.65rem',
+                        fontWeight: 800,
+                        color: '#0A192F',
+                        margin: 0,
+                      }}
+                    >
+                      {product.name}
+                    </h2>
+                  </div>
                   <span
                     style={{
                       fontSize: '0.9rem',
@@ -300,13 +345,36 @@ export default function SaaSPage() {
                   ))}
                 </div>
 
-                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center' }}>
+                  {product.url && (
+                    <a
+                      href={product.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        textDecoration: 'none',
+                        background: '#004FEB',
+                        color: '#FFFFFF',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        padding: '10px 22px',
+                        borderRadius: '8px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
+                      }}
+                    >
+                      Visit {product.name} ↗
+                    </a>
+                  )}
+
                   <Link
                     href={`/contact?product=${encodeURIComponent(product.name)}`}
                     style={{
                       textDecoration: 'none',
-                      background: '#004FEB',
-                      color: '#FFFFFF',
+                      background: product.url ? 'rgba(0, 79, 235, 0.08)' : '#004FEB',
+                      color: product.url ? '#004FEB' : '#FFFFFF',
                       fontWeight: 600,
                       fontSize: '0.9rem',
                       padding: '10px 22px',
@@ -316,7 +384,7 @@ export default function SaaSPage() {
                       gap: '6px',
                     }}
                   >
-                    Request Demo for {product.name} &gt;
+                    Request Demo &gt;
                   </Link>
 
                   <Link
