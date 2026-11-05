@@ -3,7 +3,10 @@
 import Link from 'next/link';
 
 export default function HeroSection() {
-  const headlineWords = ['Practical', 'Software', '&', 'Digital', 'Solutions'];
+  const headlineLines = [
+    ['Practical', 'Software', '&', 'Digital'],
+    ['Solutions'],
+  ];
   let letterIndex = 0;
 
   return (
@@ -140,7 +143,7 @@ export default function HeroSection() {
 
           <div
             style={{
-              maxWidth: '860px',
+              maxWidth: '1240px',
               position: 'relative',
               zIndex: 2,
             }}
@@ -149,58 +152,70 @@ export default function HeroSection() {
             <h1
               className="hero-headline-container"
               style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: 'clamp(2.3rem, 4.4vw, 3.6rem)',
-                fontWeight: 800,
-                lineHeight: 1.15,
+                fontFamily: "'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                fontSize: 'clamp(44px, 7.4vw, 112px)',
+                fontWeight: 300,
+                lineHeight: 1.05,
                 color: '#FFFFFF',
-                marginBottom: '18px',
-                letterSpacing: '-0.025em',
-                textShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
+                marginBottom: '28px',
+                letterSpacing: '-0.03em',
+                textShadow: '0 2px 20px rgba(0, 0, 0, 0.35)',
               }}
             >
-              {headlineWords.map((word, wIdx) => {
-                const chars = word.split('');
-                return (
-                  <span
-                    key={wIdx}
-                    style={{
-                      display: 'inline-block',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {chars.map((char) => {
-                      const delay = (0.08 + letterIndex * 0.034).toFixed(3);
-                      letterIndex++;
-                      return (
-                        <span
-                          key={letterIndex}
-                          style={{
-                            display: 'inline-block',
-                            animation: `heroLetterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s both`,
-                          }}
-                        >
-                          {char}
-                        </span>
-                      );
-                    })}
-                    {wIdx < headlineWords.length - 1 && (
-                      <span style={{ display: 'inline-block', width: '0.28em' }}>&nbsp;</span>
-                    )}
-                  </span>
-                );
-              })}
+              {headlineLines.map((lineWords, lineIdx) => (
+                <span
+                  key={lineIdx}
+                  style={{
+                    display: 'block',
+                  }}
+                >
+                  {lineWords.map((word, wIdx) => {
+                    const chars = word.split('');
+                    return (
+                      <span
+                        key={wIdx}
+                        style={{
+                          display: 'inline-block',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {chars.map((char) => {
+                          const delay = (0.08 + letterIndex * 0.032).toFixed(3);
+                          letterIndex++;
+                          return (
+                            <span
+                              key={letterIndex}
+                              style={{
+                                display: 'inline-block',
+                                animation: `heroLetterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s both`,
+                              }}
+                            >
+                              {char}
+                            </span>
+                          );
+                        })}
+                        {wIdx < lineWords.length - 1 && (
+                          <span style={{ display: 'inline-block', width: '0.28em' }}>&nbsp;</span>
+                        )}
+                      </span>
+                    );
+                  })}
+                </span>
+              ))}
             </h1>
 
-            {/* Subheading / Description (Gently fades in right after headline finishes) */}
+            {/* Subheading / Description */}
             <p
               className="hero-subtitle-text"
               style={{
-                fontSize: 'clamp(1.05rem, 1.8vw, 1.2rem)',
-                lineHeight: 1.65,
-                color: '#CBD5E1',
-                marginBottom: '36px',
-                maxWidth: '760px',
+                fontFamily: "'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                fontSize: 'clamp(18px, 2.2vw, 32px)',
+                fontWeight: 500,
+                lineHeight: 1.45,
+                color: 'rgba(255, 255, 255, 0.90)',
+                marginBottom: '40px',
+                maxWidth: '1100px',
+                letterSpacing: '-0.01em',
                 animation: 'heroFadeSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.38s both',
               }}
             >
@@ -222,11 +237,11 @@ export default function HeroSection() {
                 href="/solutions"
                 style={{
                   textDecoration: 'none',
-                  background: 'linear-gradient(135deg, #0066FF 0%, #004FEB 100%)',
+                  background: '#0066FF',
                   color: '#FFFFFF',
                   fontWeight: 600,
-                  fontSize: '0.96rem',
-                  padding: '13px 28px',
+                  fontSize: 'clamp(0.95rem, 1.1vw, 1.05rem)',
+                  padding: '14px 32px',
                   borderRadius: '10px',
                   transition: 'all 0.28s ease',
                   display: 'inline-flex',
@@ -259,13 +274,13 @@ export default function HeroSection() {
                 href="/contact"
                 style={{
                   textDecoration: 'none',
-                  background: 'rgba(255, 255, 255, 0.07)',
+                  background: 'rgba(255, 255, 255, 0.05)',
                   color: '#FFFFFF',
                   fontWeight: 600,
-                  fontSize: '0.96rem',
-                  padding: '12px 26px',
+                  fontSize: 'clamp(0.95rem, 1.1vw, 1.05rem)',
+                  padding: '13px 30px',
                   borderRadius: '10px',
-                  border: '1.5px solid rgba(255, 255, 255, 0.24)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.28)',
                   backdropFilter: 'blur(8px)',
                   transition: 'all 0.28s ease',
                   display: 'inline-flex',
