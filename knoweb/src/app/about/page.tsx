@@ -20,166 +20,164 @@ const principles = [
 export default function AboutPage() {
     return (
         <>
+            {/* ── Edge-to-edge Hero Section matching Home Page Design & Typography ── */}
             <section
                 style={{
                     position: 'relative',
-                    paddingTop: '76px',
-                    paddingBottom: '76px',
-                    backgroundColor: '#071224',
-                    backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.58) 0%, rgba(10, 25, 47, 0.42) 50%, rgba(7, 18, 36, 0.62) 100%), url('/hero-bg.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
+                    minHeight: 'calc(100vh - 68px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: '#050811',
                     overflow: 'hidden',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
                 }}
             >
-                {/* Ambient background glows */}
+                {/* Right-Side About Image Visual */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '-40px',
-                        right: '5%',
-                        width: '500px',
-                        height: '500px',
-                        borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, rgba(0, 102, 255, 0.06) 50%, transparent 70%)',
-                        pointerEvents: 'none',
-                        filter: 'blur(30px)',
-                    }}
-                />
-                <div
-                    style={{
-                        position: 'absolute',
-                        bottom: '-80px',
-                        left: '8%',
-                        width: '450px',
-                        height: '450px',
-                        borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(0, 102, 255, 0.14) 0%, transparent 68%)',
-                        pointerEvents: 'none',
-                        filter: 'blur(30px)',
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        width: '64%',
+                        backgroundImage: `url('/hero-bg.jpg')`,
+                        backgroundPosition: 'center 40%',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        opacity: 0.85,
+                        zIndex: 0,
                     }}
                 />
 
-                <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
-                    {/* Modern Translucent Frosted Glass Card */}
-                    <div
-                        style={{
-                            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 32, 59, 0.32) 40%, rgba(7, 18, 36, 0.42) 100%)',
-                            backdropFilter: 'blur(16px)',
-                            WebkitBackdropFilter: 'blur(16px)',
-                            borderRadius: '24px',
-                            border: '1px solid rgba(255, 255, 255, 0.22)',
-                            padding: '48px 44px',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px rgba(0, 229, 255, 0.06)',
-                        }}
-                    >
-                        {/* Inner ambient card cyan glow */}
+                {/* Ambient Pulsating Glow 1 (Violet / Purple) */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '18%',
+                        right: '8%',
+                        width: '680px',
+                        height: '680px',
+                        borderRadius: '50%',
+                        background:
+                            'radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(126, 34, 206, 0.09) 38%, transparent 72%)',
+                        pointerEvents: 'none',
+                        filter: 'blur(50px)',
+                        animation: 'heroAuraPulse 7s ease-in-out infinite',
+                        zIndex: 1,
+                    }}
+                />
+
+                {/* Ambient Pulsating Glow 2 (Electric Cyan / Royal Blue) */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: '12%',
+                        right: '24%',
+                        width: '460px',
+                        height: '460px',
+                        borderRadius: '50%',
+                        background:
+                            'radial-gradient(circle, rgba(0, 229, 255, 0.14) 0%, rgba(59, 130, 246, 0.08) 42%, transparent 70%)',
+                        pointerEvents: 'none',
+                        filter: 'blur(45px)',
+                        animation: 'heroAuraPulseSecondary 9s ease-in-out infinite alternate',
+                        zIndex: 1,
+                    }}
+                />
+
+                {/* Left-to-Right Dark Gradient Vignette for Guaranteed WCAG Contrast */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                            'linear-gradient(90deg, #050811 0%, #050811 38%, rgba(5, 8, 17, 0.88) 56%, rgba(5, 8, 17, 0.28) 82%, transparent 100%)',
+                        pointerEvents: 'none',
+                        zIndex: 2,
+                    }}
+                />
+
+                {/* Mobile Top-to-Bottom Vignette Overlay */}
+                <div
+                    className="block md:hidden"
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                            'linear-gradient(180deg, #050811 0%, #050811 40%, rgba(5, 8, 17, 0.70) 70%, rgba(5, 8, 17, 0.15) 100%)',
+                        pointerEvents: 'none',
+                        zIndex: 2,
+                    }}
+                />
+
+                {/* Edge-to-edge Content Container with Generous Left Alignment matching Home */}
+                <div
+                    className="container-max"
+                    style={{
+                        position: 'relative',
+                        zIndex: 3,
+                        paddingTop: '64px',
+                        paddingBottom: '72px',
+                        width: '100%',
+                    }}
+                >
+                    <div style={{ maxWidth: '680px' }}>
+                        {/* Top Breadcrumb */}
                         <div
                             style={{
-                                position: 'absolute',
-                                top: '5%',
-                                right: '-30px',
-                                width: '420px',
-                                height: '420px',
-                                borderRadius: '50%',
-                                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.04) 55%, transparent 75%)',
-                                pointerEvents: 'none',
-                                filter: 'blur(28px)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                fontSize: '0.85rem',
+                                marginBottom: '24px',
                             }}
-                        />
-
-                        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 2 }}>
-                            {/* Breadcrumb */}
-                            <div
+                        >
+                            <Link
+                                href="/"
                                 style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '8px',
-                                    fontSize: '0.85rem',
-                                    marginBottom: '20px',
-                                    textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
-                                }}
-                            >
-                                <Link
-                                    href="/"
-                                    style={{
-                                        color: '#00E5FF',
-                                        textDecoration: 'none',
-                                        fontWeight: 500,
-                                        transition: 'color 0.2s ease',
-                                    }}
-                                >
-                                    Home
-                                </Link>
-                                <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>/</span>
-                                <span style={{ color: '#E2E8F0', fontWeight: 500 }}>About</span>
-                            </div>
-
-                            {/* Tag */}
-                            <div
-                                style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: '8px',
-                                    background: 'rgba(0, 200, 255, 0.14)',
-                                    border: '1px solid rgba(0, 200, 255, 0.42)',
-                                    backdropFilter: 'blur(8px)',
-                                    WebkitBackdropFilter: 'blur(8px)',
                                     color: '#00E5FF',
-                                    fontSize: '0.8rem',
-                                    fontWeight: 700,
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.06em',
-                                    padding: '5px 14px',
-                                    borderRadius: '999px',
-                                    marginBottom: '18px',
+                                    textDecoration: 'none',
+                                    fontWeight: 500,
+                                    transition: 'color 0.2s ease',
                                 }}
                             >
-                                <span
-                                    style={{
-                                        width: '7px',
-                                        height: '7px',
-                                        borderRadius: '50%',
-                                        background: '#00E5FF',
-                                        boxShadow: '0 0 8px #00E5FF',
-                                    }}
-                                />
-                                About Knoweb
-                            </div>
-
-                            {/* Headline */}
-                            <h1
-                                style={{
-                                    fontFamily: 'Inter, sans-serif',
-                                    fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
-                                    fontWeight: 800,
-                                    lineHeight: 1.18,
-                                    color: '#FFFFFF',
-                                    marginBottom: '16px',
-                                    letterSpacing: '-0.02em',
-                                    textShadow: '0 2px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.5)',
-                                }}
-                            >
-                                About Knoweb (Pvt.) Ltd
-                            </h1>
-
-                            {/* Subtitle */}
-                            <p
-                                style={{
-                                    fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
-                                    lineHeight: 1.65,
-                                    color: '#F1F5F9',
-                                    maxWidth: '740px',
-                                    textShadow: '0 1px 12px rgba(0, 0, 0, 0.75)',
-                                }}
-                            >
-                                A hybrid technology company delivering subscription-based SaaS platforms and custom software solutions — built for growing businesses and designed for global standards.
-                            </p>
+                                Home
+                            </Link>
+                            <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>/</span>
+                            <span style={{ color: '#E2E8F0', fontWeight: 500 }}>About</span>
                         </div>
+
+                        {/* Main Headline (H1): Exact styling as Home Hero (Light 300 weight, pure white) */}
+                        <h1
+                            style={{
+                                fontFamily:
+                                    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                                fontSize: 'clamp(2.75rem, 5.8vw, 5.25rem)',
+                                fontWeight: 300,
+                                lineHeight: 1.12,
+                                color: '#FFFFFF',
+                                letterSpacing: '-0.025em',
+                                marginBottom: '24px',
+                            }}
+                        >
+                            About Knoweb (Pvt.) Ltd
+                        </h1>
+
+                        {/* Description Paragraph: Exact styling as Home Hero (400 weight, #94A3B8, max-width ~620px) */}
+                        <p
+                            style={{
+                                fontFamily:
+                                    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                                fontSize: 'clamp(1.05rem, 1.35vw, 1.2rem)',
+                                fontWeight: 400,
+                                lineHeight: 1.65,
+                                color: '#94A3B8',
+                                maxWidth: '620px',
+                                margin: 0,
+                            }}
+                        >
+                            A hybrid technology company delivering subscription-based SaaS platforms and custom software solutions — built for growing businesses and designed for global standards.
+                        </p>
                     </div>
                 </div>
             </section>
