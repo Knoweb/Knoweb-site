@@ -129,281 +129,240 @@ const products: ProductItem[] = [
 export default function SaaSPage() {
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* ── Modern Centered Frosted-Glass Hero Section using saas-hero.jpeg ── */}
+      {/* ── Edge-to-edge Hero Section matching Home Page Design & Typography ── */}
       <section
         style={{
           position: 'relative',
-          paddingTop: '76px',
-          paddingBottom: '76px',
-          backgroundColor: '#071224',
-          backgroundImage: `linear-gradient(135deg, rgba(7, 18, 36, 0.62) 0%, rgba(10, 25, 47, 0.48) 50%, rgba(7, 18, 36, 0.68) 100%), url('/saas-hero.jpeg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 35%',
-          backgroundRepeat: 'no-repeat',
+          minHeight: 'calc(100vh - 68px)',
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: '#050811',
           overflow: 'hidden',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
         }}
       >
-        {/* Ambient background glows */}
+        {/* Right-Side SaaS Hero Image Visual */}
         <div
           style={{
             position: 'absolute',
-            top: '-40px',
-            right: '5%',
-            width: '520px',
-            height: '520px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, rgba(0, 102, 255, 0.06) 50%, transparent 70%)',
-            pointerEvents: 'none',
-            filter: 'blur(32px)',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: '64%',
+            backgroundImage: `url('/saas-hero.jpeg')`,
+            backgroundPosition: 'center 40%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.85,
+            zIndex: 0,
           }}
         />
+
+        {/* Ambient Pulsating Glow 1 (Violet / Purple) */}
         <div
           style={{
             position: 'absolute',
-            bottom: '-80px',
-            left: '8%',
+            top: '18%',
+            right: '8%',
+            width: '680px',
+            height: '680px',
+            borderRadius: '50%',
+            background:
+              'radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(126, 34, 206, 0.09) 38%, transparent 72%)',
+            pointerEvents: 'none',
+            filter: 'blur(50px)',
+            animation: 'heroAuraPulse 7s ease-in-out infinite',
+            zIndex: 1,
+          }}
+        />
+
+        {/* Ambient Pulsating Glow 2 (Electric Cyan / Royal Blue) */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '12%',
+            right: '24%',
             width: '460px',
             height: '460px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(0, 102, 255, 0.16) 0%, transparent 68%)',
+            background:
+              'radial-gradient(circle, rgba(0, 229, 255, 0.14) 0%, rgba(59, 130, 246, 0.08) 42%, transparent 70%)',
             pointerEvents: 'none',
-            filter: 'blur(30px)',
+            filter: 'blur(45px)',
+            animation: 'heroAuraPulseSecondary 9s ease-in-out infinite alternate',
+            zIndex: 1,
           }}
         />
 
-        <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
-          {/* Modern Translucent Frosted Glass Card */}
-          <div
-            style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 32, 59, 0.35) 40%, rgba(7, 18, 36, 0.46) 100%)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              borderRadius: '24px',
-              border: '1px solid rgba(255, 255, 255, 0.22)',
-              padding: '48px 44px',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px rgba(0, 229, 255, 0.06)',
-            }}
-          >
-            {/* Inner ambient card cyan glow */}
+        {/* Left-to-Right Dark Gradient Vignette for Guaranteed WCAG Contrast */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(90deg, #050811 0%, #050811 38%, rgba(5, 8, 17, 0.88) 56%, rgba(5, 8, 17, 0.28) 82%, transparent 100%)',
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}
+        />
+
+        {/* Mobile Top-to-Bottom Vignette Overlay */}
+        <div
+          className="block md:hidden"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(180deg, #050811 0%, #050811 40%, rgba(5, 8, 17, 0.70) 70%, rgba(5, 8, 17, 0.15) 100%)',
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}
+        />
+
+        {/* Edge-to-edge Content Container with Generous Left Alignment matching Home */}
+        <div
+          className="container-max"
+          style={{
+            position: 'relative',
+            zIndex: 3,
+            paddingTop: '64px',
+            paddingBottom: '72px',
+            width: '100%',
+          }}
+        >
+          <div style={{ maxWidth: '680px' }}>
+            {/* Top Breadcrumb */}
             <div
               style={{
-                position: 'absolute',
-                top: '5%',
-                right: '-30px',
-                width: '440px',
-                height: '440px',
-                borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 102, 255, 0.04) 55%, transparent 75%)',
-                pointerEvents: 'none',
-                filter: 'blur(28px)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.85rem',
+                marginBottom: '24px',
               }}
-            />
-
-            <div style={{ maxWidth: '860px', position: 'relative', zIndex: 2 }}>
-              {/* Breadcrumb */}
-              <div
+            >
+              <Link
+                href="/"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '0.85rem',
-                  marginBottom: '20px',
-                  textShadow: '0 1px 8px rgba(0, 0, 0, 0.7)',
+                  color: '#00E5FF',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                  transition: 'color 0.2s ease',
                 }}
               >
-                <Link
-                  href="/"
-                  style={{
-                    color: '#00E5FF',
-                    textDecoration: 'none',
-                    fontWeight: 500,
-                    transition: 'color 0.2s ease',
-                  }}
-                >
-                  Home
-                </Link>
-                <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>/</span>
-                <span style={{ color: '#E2E8F0', fontWeight: 500 }}>SaaS Products</span>
-              </div>
+                Home
+              </Link>
+              <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>/</span>
+              <span style={{ color: '#E2E8F0', fontWeight: 500 }}>SaaS Products</span>
+            </div>
 
-              {/* Pill Badge */}
-              <div
+            {/* Main Headline (H1): Exact styling as Home Hero (Light 300 weight, pure white) */}
+            <h1
+              style={{
+                fontFamily:
+                  "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                fontSize: 'clamp(2.75rem, 5.8vw, 5.25rem)',
+                fontWeight: 300,
+                lineHeight: 1.12,
+                color: '#FFFFFF',
+                letterSpacing: '-0.025em',
+                marginBottom: '24px',
+              }}
+            >
+              Business Software &amp; SaaS Products
+            </h1>
+
+            {/* Description Paragraph: Exact styling as Home Hero (400 weight, #94A3B8, max-width ~600px) */}
+            <p
+              style={{
+                fontFamily:
+                  "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                fontSize: 'clamp(1.05rem, 1.35vw, 1.2rem)',
+                fontWeight: 400,
+                lineHeight: 1.65,
+                color: '#94A3B8',
+                maxWidth: '580px',
+                marginBottom: '38px',
+              }}
+            >
+              Ready-to-use business applications designed to help manage essential activities.
+              Deploy immediately without heavy upfront development.
+            </p>
+
+            {/* Buttons: Exact styling as Home Hero */}
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '16px',
+              }}
+            >
+              {/* Primary Button: Royal Blue matching Home */}
+              <a
+                href="#ginum"
                 style={{
+                  textDecoration: 'none',
+                  borderRadius: '10px',
+                  background: '#0066FF',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  fontSize: '0.98rem',
+                  padding: '13px 30px',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  background: 'rgba(0, 200, 255, 0.14)',
-                  color: '#00E5FF',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  padding: '6px 14px',
-                  borderRadius: '100px',
-                  border: '1px solid rgba(0, 229, 255, 0.35)',
-                  marginBottom: '20px',
-                  boxShadow: '0 0 15px rgba(0, 229, 255, 0.2)',
+                  transition: 'all 0.25s ease',
+                  boxShadow: '0 4px 20px rgba(0, 102, 255, 0.45)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#0052CC';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow =
+                    '0 8px 30px rgba(0, 102, 255, 0.65)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#0066FF';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow =
+                    '0 4px 20px rgba(0, 102, 255, 0.45)';
                 }}
               >
-                <span
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    background: '#00E5FF',
-                    boxShadow: '0 0 8px #00E5FF',
-                  }}
-                />
-                Software for Everyday Business Operations
-              </div>
+                Explore 6 Platforms &darr;
+              </a>
 
-              {/* Headline */}
-              <h1
+              {/* Secondary Button: Dark translucent with subtle border matching Home */}
+              <Link
+                href="/contact"
                 style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
-                  fontWeight: 800,
-                  lineHeight: 1.18,
+                  textDecoration: 'none',
+                  border: '1.5px solid rgba(255, 255, 255, 0.28)',
                   color: '#FFFFFF',
-                  marginBottom: '16px',
-                  letterSpacing: '-0.02em',
-                  textShadow: '0 2px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.5)',
-                }}
-              >
-                Business Software &amp; SaaS Products
-              </h1>
-
-              {/* Subtitle / Lead Paragraph */}
-              <p
-                style={{
-                  fontSize: 'clamp(1.05rem, 1.6vw, 1.18rem)',
-                  lineHeight: 1.65,
-                  color: '#F1F5F9',
-                  maxWidth: '780px',
-                  marginBottom: '14px',
-                  textShadow: '0 1px 12px rgba(0, 0, 0, 0.75)',
-                }}
-              >
-                Ready-to-use business applications designed to help manage essential activities.
-              </p>
-
-              <p
-                style={{
+                  borderRadius: '10px',
+                  padding: '12px 28px',
+                  fontWeight: 600,
                   fontSize: '0.98rem',
-                  lineHeight: 1.65,
-                  color: '#CBD5E1',
-                  maxWidth: '720px',
-                  marginBottom: '28px',
-                  textShadow: '0 1px 10px rgba(0, 0, 0, 0.65)',
-                }}
-              >
-                Deploy immediately without heavy upfront development. Reliable, user-friendly, and backed by local support.
-              </p>
-
-              {/* Value Highlight Pills */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '10px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  marginBottom: '28px',
+                  gap: '6px',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.55)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                {[
-                  { icon: '⚡', label: 'Instant Deployment' },
-                  { icon: '🛡️', label: 'Local Compliance & Tax Ready' },
-                  { icon: '🔄', label: 'Automated Cloud Updates' },
-                  { icon: '💳', label: 'Transparent Subscription' },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      padding: '6px 14px',
-                      borderRadius: '100px',
-                      background: 'rgba(255, 255, 255, 0.08)',
-                      border: '1px solid rgba(255, 255, 255, 0.16)',
-                      color: '#F1F5F9',
-                      fontSize: '0.82rem',
-                      fontWeight: 500,
-                      backdropFilter: 'blur(6px)',
-                    }}
-                  >
-                    <span>{item.icon}</span>
-                    <span>{item.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Quick Actions */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
-                <a
-                  href="#ginum"
-                  style={{
-                    textDecoration: 'none',
-                    borderRadius: '10px',
-                    background: '#0066FF',
-                    color: '#FFFFFF',
-                    fontWeight: 600,
-                    fontSize: '0.94rem',
-                    padding: '12px 26px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    transition: 'all 0.25s ease',
-                    boxShadow: '0 4px 18px rgba(0, 102, 255, 0.45)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#0052CC';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 102, 255, 0.65)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#0066FF';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 18px rgba(0, 102, 255, 0.45)';
-                  }}
-                >
-                  Explore 6 Platforms &darr;
-                </a>
-                <Link
-                  href="/contact"
-                  style={{
-                    textDecoration: 'none',
-                    borderRadius: '10px',
-                    border: '1.5px solid rgba(255, 255, 255, 0.28)',
-                    color: '#FFFFFF',
-                    fontWeight: 600,
-                    fontSize: '0.94rem',
-                    padding: '11px 24px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    backdropFilter: 'blur(8px)',
-                    WebkitBackdropFilter: 'blur(8px)',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    transition: 'all 0.25s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.55)';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  Request a Demo &rarr;
-                </Link>
-              </div>
+                Request a Demo &rarr;
+              </Link>
             </div>
           </div>
         </div>
