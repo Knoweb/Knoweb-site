@@ -813,6 +813,30 @@ textarea::placeholder {
   }
 }
 
+@keyframes heroAuraPulse {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.15) translate(-15px, 10px);
+    opacity: 0.85;
+  }
+}
+
+@keyframes heroAuraPulseSecondary {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.22) translate(12px, -8px);
+    opacity: 0.75;
+  }
+}
+
 @keyframes accentPulse {
 
   0%,

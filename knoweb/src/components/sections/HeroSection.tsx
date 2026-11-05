@@ -12,8 +12,10 @@ interface Node3D {
   z: number;
   size: number;
   color: string;
+  glowColor: string;
   pulsePhase: number;
   pulseSpeed: number;
+  isSatellite: boolean;
 }
 
 export default function HeroSection() {
@@ -27,56 +29,116 @@ export default function HeroSection() {
 
     let animationFrameId: number;
     let isVisible = true;
+    let startTime = performance.now();
 
-    // Palette replicating the glowing violet/purple & cyan neural network in IFS screenshot
-    const colors = [
-      '#C084FC', // soft purple
-      '#A855F7', // bright violet
-      '#E879F9', // magenta
-      '#818CF8', // indigo
-      '#00E5FF', // electric cyan accent
-      '#D8B4FE', // light lavender
+    // Check device type for performance optimization
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+    // Color palette matching brand purple, royal blue, and electric cyan
+    const palette = [
+      { color: '#A855F7', glow: '168, 85, 247' }, // vivid purple
+      { color: '#00E5FF', glow: '0, 229, 255' },   // electric cyan
+      { color: '#3B82F6', glow: '59, 130, 246' },  // royal blue
+      { color: '#E879F9', glow: '232, 121, 249' }, // neon magenta
+      { color: '#C084FC', glow: '192, 132, 252' }, // soft purple
+      { color: '#818CF8', glow: '129, 140, 248' }, // indigo
     ];
 
-    // Generate 3D nodes distributed in an organic spherical/ellipsoid cloud
-    const nodeCount = 78;
-    const nodes: Node3D[] = [];
-    const baseRadius = 220;
+    let nodes: Node3D[] = [];
+    let baseRadius = 220;
+    let nodeCount = 84;
+    let satelliteCount = 26;
 
-    for (let i = 0; i < nodeCount; i++) {
-      const phi = Math.acos(-1 + (2 * i) / nodeCount);
-      const theta = Math.sqrt(nodeCount * Math.PI) * phi;
-      // Slight randomness in radial distance for organic density
-      const r = baseRadius * (0.65 + Math.random() * 0.45);
+    const buildNodes = () => {
+      const width = window.innerWidth;
+      const isMobile = width < 768;
 
-      nodes.push({
-        baseX: r * Math.sin(phi) * Math.cos(theta),
-        baseY: r * Math.sin(phi) * Math.sin(theta) * 0.9,
-        baseZ: r * Math.cos(phi),
-        x: 0,
-        y: 0,
-        z: 0,
-        size: 1.2 + Math.random() * 1.8,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        pulsePhase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.02 + Math.random() * 0.03,
-      });
-    }
+      // Automatically simplify node count on mobile for smooth 60fps
+      nodeCount = isMobile ? 36 : 84;
+      satelliteCount = isMobile ? 10 : 26;
+      baseRadius = isMobile ? 155 : 225;
+      nodes = [];
 
-    let rotX = 0.2;
-    let rotY = 0.4;
-    let targetRotX = 0.2;
-    let targetRotY = 0.4;
+      // 1. Primary constellation cluster (Fibonacci sphere distribution)
+      for (let i = 0; i < nodeCount; i++) {
+        const phi = Math.acos(-1 + (2 * i) / nodeCount);
+        const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+        // Organic volume variation
+        const r = baseRadius * (0.68 + (i % 9) * 0.05 + Math.random() * 0.12);
+
+        const col = palette[i % palette.length];
+        nodes.push({
+          baseX: r * Math.sin(phi) * Math.cos(theta),
+          baseY: r * Math.sin(phi) * Math.sin(theta) * 0.92,
+          baseZ: r * Math.cos(phi),
+          x: 0,
+          y: 0,
+          z: 0,
+          size: isMobile ? 1.4 : 1.3 + Math.random() * 1.7,
+          color: col.color,
+          glowColor: col.glow,
+          pulsePhase: Math.random() * Math.PI * 2,
+          pulseSpeed: 0.02 + Math.random() * 0.03,
+          isSatellite: false,
+        });
+      }
+
+      // 2. Outer ambient stardust / satellite micro-particles
+      for (let i = 0; i < satelliteCount; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(Math.random() * 2 - 1);
+        const r = baseRadius * (1.25 + Math.random() * 0.55);
+
+        const col = palette[Math.floor(Math.random() * palette.length)];
+        nodes.push({
+          baseX: r * Math.sin(phi) * Math.cos(theta),
+          baseY: r * Math.sin(phi) * Math.sin(theta),
+          baseZ: r * Math.cos(phi),
+          x: 0,
+          y: 0,
+          z: 0,
+          size: 0.8 + Math.random() * 0.9,
+          color: col.color,
+          glowColor: col.glow,
+          pulsePhase: Math.random() * Math.PI * 2,
+          pulseSpeed: 0.015 + Math.random() * 0.02,
+          isSatellite: true,
+        });
+      }
+    };
+
+    buildNodes();
+
+    // Mouse tracking & smooth parallax lerp
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+    let currentMouseX = 0;
+    let currentMouseY = 0;
+    let mousePixelX = -9999;
+    let mousePixelY = -9999;
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-      const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-      targetRotY = 0.4 + mouseX * 0.45;
-      targetRotX = 0.2 + mouseY * 0.35;
+      targetMouseX = (e.clientX - rect.left) / rect.width - 0.5;
+      targetMouseY = (e.clientY - rect.top) / rect.height - 0.5;
+      mousePixelX = e.clientX - rect.left;
+      mousePixelY = e.clientY - rect.top;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    const handleMouseLeave = () => {
+      targetMouseX = 0;
+      targetMouseY = 0;
+      mousePixelX = -9999;
+      mousePixelY = -9999;
+    };
+
+    // Disable mouse listeners on touch devices to conserve power
+    if (!isTouchDevice) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+      document.addEventListener('mouseleave', handleMouseLeave);
+    }
 
     const resize = () => {
       if (!canvas) return;
@@ -84,117 +146,183 @@ export default function HeroSection() {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
+      buildNodes();
     };
 
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
-    // Pause canvas if scrolled out of view
-    const observer = new IntersectionObserver((entries) => {
-      isVisible = entries[0].isIntersecting;
-    });
+    // IntersectionObserver to pause rendering when scrolled out of viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible = entries[0].isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
     observer.observe(canvas);
 
-    // Render loop
-    const render = () => {
+    // Continuous rotation angle accumulators (16-20 seconds per idle cycle)
+    let idleRotY = 0.35;
+    let idleRotX = 0.18;
+
+    const render = (now: number) => {
       if (isVisible) {
+        const elapsed = (now - startTime) * 0.001;
         const rect = canvas.getBoundingClientRect();
         const width = rect.width;
         const height = rect.height;
 
         ctx.clearRect(0, 0, width, height);
 
-        // Smooth rotation drift and mouse parallax
-        rotY += 0.0022;
-        rotX += (targetRotX - rotX) * 0.03;
-        rotY += (targetRotY - rotY) * 0.03;
+        // 1. Continuous smooth idle 3D rotation (approx 18s per full cycle)
+        idleRotY += 0.0035;
+        idleRotX += 0.0009;
 
-        // Position cluster on center-right (responsive)
+        // 2. Smooth parallax tilt damped by mouse position (desktop only)
+        if (!isTouchDevice) {
+          currentMouseX += (targetMouseX - currentMouseX) * 0.045;
+          currentMouseY += (targetMouseY - currentMouseY) * 0.045;
+        }
+
+        const rotY = idleRotY + currentMouseX * 0.65;
+        const rotX = 0.22 + Math.sin(idleRotX) * 0.08 + currentMouseY * 0.45;
+
+        // 3. Floating breathing motion
+        const floatY = Math.sin(elapsed * 0.95) * 11;
+
+        // 4. Center-right positioning (keeping typography on the left unobstructed)
         const isMobile = width < 768;
-        const centerX = isMobile ? width * 0.5 : width * 0.68;
-        const centerY = isMobile ? height * 0.62 : height * 0.5;
-        const fov = 420;
+        const isTablet = width >= 768 && width < 1024;
+        const centerX = isMobile
+          ? width * 0.5
+          : isTablet
+          ? width * 0.68
+          : width * 0.73;
+        const centerY = isMobile
+          ? height * 0.66 + floatY
+          : height * 0.48 + floatY;
+        const fov = 430;
 
         const cosY = Math.cos(rotY);
         const sinY = Math.sin(rotY);
         const cosX = Math.cos(rotX);
         const sinX = Math.sin(rotX);
 
-        // Transform all 3D nodes
-        for (let i = 0; i < nodeCount; i++) {
+        const totalNodes = nodes.length;
+
+        // 5. Transform all 3D nodes
+        for (let i = 0; i < totalNodes; i++) {
           const n = nodes[i];
           n.pulsePhase += n.pulseSpeed;
 
-          // Rotate around Y
+          // Rotate around Y-axis
           const x1 = n.baseX * cosY - n.baseZ * sinY;
           const z1 = n.baseZ * cosY + n.baseX * sinY;
 
-          // Rotate around X
+          // Rotate around X-axis
           const y1 = n.baseY * cosX - z1 * sinX;
           const z2 = z1 * cosX + n.baseY * sinX;
 
           // Perspective projection
           const scale = fov / (fov + z2);
-          n.x = centerX + x1 * scale;
-          n.y = centerY + y1 * scale;
+          let px = centerX + x1 * scale;
+          let py = centerY + y1 * scale;
+
+          // Subtle magnetic pull near mouse cursor on desktop
+          if (!isTouchDevice && mousePixelX > 0 && !n.isSatellite) {
+            const mdx = px - mousePixelX;
+            const mdy = py - mousePixelY;
+            const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (mDist < 160 && mDist > 0) {
+              const pullFactor = (1 - mDist / 160) * 12;
+              px += (mdx / mDist) * pullFactor;
+              py += (mdy / mDist) * pullFactor;
+            }
+          }
+
+          n.x = px;
+          n.y = py;
           n.z = z2;
         }
 
-        // Draw connecting filaments/lines between close nodes
-        const maxDist = isMobile ? 85 : 125;
+        // 6. Draw connecting filaments between close primary nodes
+        const maxDist = isMobile ? 65 : 124;
+        const maxDistSq = maxDist * maxDist;
+
         for (let i = 0; i < nodeCount; i++) {
+          const n1 = nodes[i];
           for (let j = i + 1; j < nodeCount; j++) {
-            const n1 = nodes[i];
             const n2 = nodes[j];
 
             const dx = n1.x - n2.x;
             const dy = n1.y - n2.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
+            const distSq = dx * dx + dy * dy;
 
-            if (dist < maxDist) {
-              const alpha = Math.max(0, 1 - dist / maxDist) * 0.35;
+            if (distSq < maxDistSq) {
+              const dist = Math.sqrt(distSq);
+              const distAlpha = 1 - dist / maxDist;
+              // Depth calculation: average Z of the two nodes
+              const avgZ = (n1.z + n2.z) * 0.5;
+              const depthFactor = Math.max(
+                0.15,
+                Math.min(1, (avgZ + baseRadius) / (baseRadius * 2))
+              );
+              const alpha = distAlpha * depthFactor * 0.38;
+
               ctx.beginPath();
               ctx.moveTo(n1.x, n1.y);
               ctx.lineTo(n2.x, n2.y);
-
-              // Depth gradient line
               ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
-              ctx.lineWidth = 0.75;
+              ctx.lineWidth = Math.max(0.4, 0.85 * depthFactor);
               ctx.stroke();
             }
           }
         }
 
-        // Draw nodes with glowing aura
-        for (let i = 0; i < nodeCount; i++) {
+        // 7. Draw nodes with ambient glow halos
+        for (let i = 0; i < totalNodes; i++) {
           const n = nodes[i];
-          const depthAlpha = Math.max(0.15, Math.min(1, (n.z + baseRadius) / (baseRadius * 2)));
-          const pulse = 1 + 0.2 * Math.sin(n.pulsePhase);
+          const depthAlpha = Math.max(
+            0.15,
+            Math.min(1, (n.z + baseRadius) / (baseRadius * 2))
+          );
+          const pulse = 1 + 0.22 * Math.sin(n.pulsePhase);
           const r = n.size * pulse;
 
-          // Outer subtle glow halo
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, r * 2.8, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(192, 132, 252, ${depthAlpha * 0.22})`;
-          ctx.fill();
+          // Outer glowing aura for primary nodes
+          if (!n.isSatellite && depthAlpha > 0.3) {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, r * 2.8, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${n.glowColor}, ${depthAlpha * 0.22})`;
+            ctx.fill();
+          }
 
           // Core bright node
           ctx.beginPath();
           ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
           ctx.fillStyle = n.color;
+          ctx.globalAlpha = depthAlpha;
           ctx.fill();
+          ctx.globalAlpha = 1;
         }
       }
 
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    animationFrameId = requestAnimationFrame((t) => {
+      startTime = t;
+      render(t);
+    });
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (!isTouchDevice) {
+        window.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseleave', handleMouseLeave);
+      }
       window.removeEventListener('resize', resize);
       observer.disconnect();
     };
@@ -212,7 +340,7 @@ export default function HeroSection() {
         borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
       }}
     >
-      {/* 3D Particle Network Canvas in the Center/Right */}
+      {/* ── 3D Particle Network Canvas in the Center/Right ── */}
       <canvas
         ref={canvasRef}
         style={{
@@ -227,44 +355,79 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Atmospheric center-right glowing violet / magenta ambient aura */}
+      {/* ── Soft Pulsating Radial Ambient Glow 1 (Violet / Purple) ── */}
       <div
         style={{
           position: 'absolute',
-          top: '20%',
-          right: '5%',
-          width: '650px',
-          height: '650px',
+          top: '18%',
+          right: '8%',
+          width: '680px',
+          height: '680px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(126, 34, 206, 0.08) 35%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(168, 85, 247, 0.20) 0%, rgba(126, 34, 206, 0.09) 38%, transparent 72%)',
+          pointerEvents: 'none',
+          filter: 'blur(50px)',
+          animation: 'heroAuraPulse 7s ease-in-out infinite',
+          zIndex: 0,
+        }}
+      />
+
+      {/* ── Soft Pulsating Radial Ambient Glow 2 (Electric Cyan / Royal Blue) ── */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '12%',
+          right: '22%',
+          width: '460px',
+          height: '460px',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, rgba(59, 130, 246, 0.08) 42%, transparent 70%)',
           pointerEvents: 'none',
           filter: 'blur(45px)',
+          animation: 'heroAuraPulseSecondary 9s ease-in-out infinite alternate',
           zIndex: 0,
         }}
       />
 
-      {/* Subtle bottom-right cyan accent aura */}
+      {/* ── Left-to-Right Dark Gradient Vignette for Guaranteed WCAG Contrast ── */}
       <div
         style={{
           position: 'absolute',
-          bottom: '10%',
-          right: '25%',
-          width: '420px',
-          height: '420px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 65%)',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          background:
+            'linear-gradient(90deg, #050811 0%, #050811 36%, rgba(5, 8, 17, 0.88) 55%, rgba(5, 8, 17, 0.25) 80%, transparent 100%)',
           pointerEvents: 'none',
-          filter: 'blur(40px)',
-          zIndex: 0,
+          zIndex: 2,
         }}
       />
 
-      {/* Edge-to-edge Content Container with Generous Left Alignment */}
+      {/* Mobile Top-to-Bottom Vignette Overlay */}
+      <div
+        className="block md:hidden"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            'linear-gradient(180deg, #050811 0%, #050811 40%, rgba(5, 8, 17, 0.70) 70%, rgba(5, 8, 17, 0.15) 100%)',
+          pointerEvents: 'none',
+          zIndex: 2,
+        }}
+      />
+
+      {/* ── Edge-to-edge Content Container with Left Alignment ── */}
       <div
         className="container-max"
         style={{
           position: 'relative',
-          zIndex: 2,
+          zIndex: 3,
           paddingTop: '64px',
           paddingBottom: '72px',
           width: '100%',
@@ -274,7 +437,8 @@ export default function HeroSection() {
           {/* Main Headline (H1): Light / Thin stroke (300 weight), Pure White */}
           <h1
             style={{
-              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              fontFamily:
+                "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
               fontSize: 'clamp(2.75rem, 5.8vw, 5.25rem)',
               fontWeight: 300,
               lineHeight: 1.12,
@@ -289,7 +453,8 @@ export default function HeroSection() {
           {/* Description Paragraph: 400 weight, muted slate/grey (#94A3B8), max-width ~600px */}
           <p
             style={{
-              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              fontFamily:
+                "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
               fontSize: 'clamp(1.05rem, 1.35vw, 1.2rem)',
               fontWeight: 400,
               lineHeight: 1.65,
@@ -298,10 +463,11 @@ export default function HeroSection() {
               marginBottom: '38px',
             }}
           >
-            Business software, ERP, custom development and digital services. Solutions for new projects and existing systems.
+            Business software, ERP, custom development and digital services.
+            Solutions for new projects and existing systems.
           </p>
 
-          {/* Buttons: Styling matching Image 2 */}
+          {/* Buttons: Styling matching reference blue and dark aesthetic */}
           <div
             style={{
               display: 'flex',
@@ -310,7 +476,7 @@ export default function HeroSection() {
               gap: '16px',
             }}
           >
-            {/* Primary Button: Vibrant Royal Blue matching Image 2 */}
+            {/* Primary Button: Vibrant Royal Blue */}
             <Link
               href="/solutions"
               style={{
@@ -330,18 +496,20 @@ export default function HeroSection() {
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = '#0052CC';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 102, 255, 0.65)';
+                e.currentTarget.style.boxShadow =
+                  '0 8px 30px rgba(0, 102, 255, 0.65)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = '#0066FF';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 102, 255, 0.45)';
+                e.currentTarget.style.boxShadow =
+                  '0 4px 20px rgba(0, 102, 255, 0.45)';
               }}
             >
               Explore Solutions &rarr;
             </Link>
 
-            {/* Secondary Button: Dark translucent with subtle border matching Image 2 */}
+            {/* Secondary Button: Dark translucent with subtle border */}
             <Link
               href="/contact"
               style={{
