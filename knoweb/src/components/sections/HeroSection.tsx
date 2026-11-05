@@ -301,7 +301,7 @@ export default function HeroSection() {
             Business software, ERP, custom development and digital services. Solutions for new projects and existing systems.
           </p>
 
-          {/* Buttons: Capsule / Pill Style */}
+          {/* Buttons: Styling matching Image 2 */}
           <div
             style={{
               display: 'flex',
@@ -310,61 +310,63 @@ export default function HeroSection() {
               gap: '16px',
             }}
           >
-            {/* Primary Button: Bright neon green pill */}
+            {/* Primary Button: Vibrant Royal Blue matching Image 2 */}
             <Link
               href="/solutions"
               style={{
                 textDecoration: 'none',
-                borderRadius: '9999px',
-                background: '#00E599',
-                color: '#000000',
+                borderRadius: '10px',
+                background: '#0066FF',
+                color: '#FFFFFF',
                 fontWeight: 600,
                 fontSize: '0.98rem',
-                padding: '12px 28px',
+                padding: '13px 30px',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
                 transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(0, 229, 153, 0.32)',
+                boxShadow: '0 4px 20px rgba(0, 102, 255, 0.45)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#15F5A8';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 229, 153, 0.55)';
+                e.currentTarget.style.background = '#0052CC';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 102, 255, 0.65)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#00E599';
+                e.currentTarget.style.background = '#0066FF';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 229, 153, 0.32)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 102, 255, 0.45)';
               }}
             >
               Explore Solutions &rarr;
             </Link>
 
-            {/* Secondary Button: Transparent dark pill with thin border */}
+            {/* Secondary Button: Dark translucent with subtle border matching Image 2 */}
             <Link
               href="/contact"
               style={{
                 textDecoration: 'none',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
+                border: '1.5px solid rgba(255, 255, 255, 0.28)',
                 color: '#FFFFFF',
-                borderRadius: '9999px',
+                borderRadius: '10px',
                 padding: '12px 28px',
                 fontWeight: 600,
                 fontSize: '0.98rem',
-                background: 'transparent',
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 transition: 'all 0.25s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.6)';
-                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.55)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
