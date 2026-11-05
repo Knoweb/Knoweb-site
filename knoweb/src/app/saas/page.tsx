@@ -170,7 +170,7 @@ export default function SaaSPage() {
 
           <h1
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 800,
               color: '#0A192F',
@@ -256,7 +256,7 @@ export default function SaaSPage() {
                     )}
                     <h2
                       style={{
-                        fontFamily: 'Outfit, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontSize: '1.65rem',
                         fontWeight: 800,
                         color: '#0A192F',

@@ -111,7 +111,7 @@ export default function ProblemsSection() {
                                 color: '#fff',
                                 fontWeight: 800, fontSize: '1.25rem',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                fontFamily: 'Outfit, sans-serif', flexShrink: 0,
+                                fontFamily: 'Inter, sans-serif', flexShrink: 0,
                                 boxShadow: '0 8px 20px rgba(37, 99, 235, 0.3)'
                             }}>
                                 {i + 1}

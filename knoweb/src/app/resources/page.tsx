@@ -120,7 +120,7 @@ export default function ResourcesPage() {
                                 }}>
                                     {a.category}
                                 </div>
-                                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '12px', lineHeight: 1.4 }}>
+                                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '12px', lineHeight: 1.4 }}>
                                     {a.title}
                                 </h3>
                                 <p style={{ color: '#6B7280', fontSize: '0.85rem', lineHeight: 1.65, marginBottom: '20px', flex: 1 }}>
@@ -152,7 +152,7 @@ export default function ResourcesPage() {
                         alignItems: 'center',
                     }}>
                         <div>
-                            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#0A0F1E', marginBottom: '8px' }}>
+                            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#0A0F1E', marginBottom: '8px' }}>
                                 Stay Updated with Business Technology Insights
                             </h3>
                             <p style={{ color: '#6B7280', fontSize: '0.9rem' }}>

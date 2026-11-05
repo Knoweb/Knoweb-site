@@ -149,7 +149,7 @@ export default function HeroSection() {
             <h1
               className="hero-headline-container"
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 'clamp(2.3rem, 4.4vw, 3.6rem)',
                 fontWeight: 800,
                 lineHeight: 1.15,

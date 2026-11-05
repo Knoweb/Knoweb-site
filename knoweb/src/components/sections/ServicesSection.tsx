@@ -54,7 +54,7 @@ export default function ServicesSection() {
         <div style={{ marginBottom: '24px' }}>
           <h2
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1.45rem',
               fontWeight: 800,
               color: '#0A192F',
@@ -114,7 +114,7 @@ export default function ServicesSection() {
             >
               <h3
                 style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: '1.15rem',
                   fontWeight: 700,
                   color: '#0A192F',

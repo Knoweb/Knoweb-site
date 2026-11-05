@@ -45,7 +45,7 @@ export default function PlatformCard({ p, large = false }: { p: Platform; large?
                 {p.badge}
             </div>
 
-            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: large ? '1.4rem' : '1.15rem', color: '#0A0F1E', marginBottom: '4px' }}>
+            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: large ? '1.4rem' : '1.15rem', color: '#0A0F1E', marginBottom: '4px' }}>
                 {p.name}
             </h3>
             <div style={{ fontSize: '0.8rem', color: '#0057FF', fontWeight: 600, marginBottom: '12px' }}>{p.tagline}</div>

@@ -166,7 +166,7 @@ export default function QuickAssistPage() {
               {/* Main Headline */}
               <h1
                 style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
                   fontWeight: 800,
                   lineHeight: 1.18,
@@ -221,7 +221,7 @@ export default function QuickAssistPage() {
             >
               <h2
                 style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: '1.45rem',
                   fontWeight: 800,
                   color: '#0A192F',
@@ -269,7 +269,7 @@ export default function QuickAssistPage() {
                   </div>
                   <h3
                     style={{
-                      fontFamily: 'Outfit, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       fontSize: '1.25rem',
                       fontWeight: 700,
                       color: '#166534',
@@ -491,7 +491,7 @@ export default function QuickAssistPage() {
               >
                 <h3
                   style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontSize: '1.25rem',
                     fontWeight: 800,
                     color: '#0A192F',
@@ -547,7 +547,7 @@ export default function QuickAssistPage() {
               >
                 <h3
                   style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontSize: '1.2rem',
                     fontWeight: 800,
                     color: '#0A192F',

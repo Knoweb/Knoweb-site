@@ -32,7 +32,7 @@ export default function WhyKnowebCard() {
         >
           <h2
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1.65rem',
               fontWeight: 800,
               color: '#0A192F',

@@ -32,7 +32,7 @@ export default function PracticalERPSection() {
         >
           <h2
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1.75rem',
               fontWeight: 800,
               color: '#0A192F',

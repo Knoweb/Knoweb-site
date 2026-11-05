@@ -72,10 +72,10 @@ export default function HowWeWorkPage() {
                                     display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                                 }}>
                                     <div>
-                                        <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '3.5rem', fontWeight: 900, color: phase.dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,87,255,0.12)', lineHeight: 1, marginBottom: '16px' }}>
+                                        <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '3.5rem', fontWeight: 900, color: phase.dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,87,255,0.12)', lineHeight: 1, marginBottom: '16px' }}>
                                             {phase.num}
                                         </div>
-                                        <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.15rem', color: phase.dark ? '#fff' : '#0A0F1E', marginBottom: '8px' }}>
+                                        <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.15rem', color: phase.dark ? '#fff' : '#0A0F1E', marginBottom: '8px' }}>
                                             {phase.title}
                                         </h3>
                                         <div style={{ fontSize: '0.75rem', color: phase.dark ? 'rgba(255,255,255,0.5)' : '#6B7280', fontWeight: 600 }}>{phase.duration}</div>

@@ -48,7 +48,7 @@ export default function IndustrySolutionsSection() {
           <div style={{ marginBottom: '26px' }}>
             <h2
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '1.45rem',
                 fontWeight: 800,
                 color: '#0A192F',
@@ -107,7 +107,7 @@ export default function IndustrySolutionsSection() {
                 <div>
                   <h3
                     style={{
-                      fontFamily: 'Outfit, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       fontSize: '1.2rem',
                       fontWeight: 700,
                       color: '#0A192F',

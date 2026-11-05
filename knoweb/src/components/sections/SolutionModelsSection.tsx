@@ -8,7 +8,7 @@ export default function SolutionModelsSection() {
             <div className="container-max">
                 <div className="section-header centered" style={{ marginBottom: '60px' }}>
                     <div className="tag" style={{ marginBottom: '16px', display: 'inline-flex' }}>Our Offering</div>
-                    <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', letterSpacing: '-0.02em' }}>
+                    <h2 style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', letterSpacing: '-0.02em' }}>
                         Three Core Solution Models
                     </h2>
                     <p style={{ color: '#4B5563', fontSize: '1.05rem', lineHeight: 1.7, maxWidth: '600px', margin: '0 auto' }}>
@@ -44,7 +44,7 @@ export default function SolutionModelsSection() {
                             Model A
                         </div>
 
-                        <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.5rem', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', lineHeight: 1.2 }}>
+                        <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.5rem', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', lineHeight: 1.2 }}>
                             Subscription-Based SaaS Platforms
                         </h3>
 
@@ -88,7 +88,7 @@ export default function SolutionModelsSection() {
                             Model B
                         </div>
 
-                        <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.5rem', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', lineHeight: 1.2 }}>
+                        <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.5rem', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', lineHeight: 1.2 }}>
                             Custom Software Solutions
                         </h3>
 
@@ -132,7 +132,7 @@ export default function SolutionModelsSection() {
                             Model C
                         </div>
 
-                        <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.5rem', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', lineHeight: 1.2 }}>
+                        <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.5rem', fontWeight: 800, color: '#0A0F1E', marginBottom: '16px', lineHeight: 1.2 }}>
                             AI Product Development
                         </h3>
 

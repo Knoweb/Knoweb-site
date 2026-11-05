@@ -94,7 +94,7 @@ export default function BusinessBenefitsSection() {
                         BUSINESS BENEFITS
                     </div>
                     <h2 style={{
-                        fontFamily: 'Outfit, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontSize: 'clamp(2.5rem, 5vw, 3.25rem)',
                         fontWeight: 800,
                         color: '#0F172A',
@@ -154,7 +154,7 @@ export default function BusinessBenefitsSection() {
                                 {b.icon}
                             </div>
                             <h3 style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontWeight: 800,
                                 fontSize: '1.25rem',
                                 color: '#0F172A',

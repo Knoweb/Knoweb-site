@@ -154,7 +154,7 @@ export default function AboutPage() {
                             {/* Headline */}
                             <h1
                                 style={{
-                                    fontFamily: 'Outfit, sans-serif',
+                                    fontFamily: 'Inter, sans-serif',
                                     fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
                                     fontWeight: 800,
                                     lineHeight: 1.18,
@@ -190,7 +190,7 @@ export default function AboutPage() {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
                         <div>
                             <div className="tag" style={{ marginBottom: '20px' }}>Company Overview</div>
-                            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 800, marginBottom: '20px', color: '#0A0F1E' }}>
+                            <h2 style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 800, marginBottom: '20px', color: '#0A0F1E' }}>
                                 What Knoweb Is
                             </h2>
                             <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '20px', fontSize: '0.95rem' }}>
@@ -218,7 +218,7 @@ export default function AboutPage() {
                                         padding: '24px',
                                         border: '1px solid rgba(0,87,255,0.1)',
                                     }}>
-                                        <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '2rem', fontWeight: 900, color: '#0057FF', lineHeight: 1 }}>{m.value}</div>
+                                        <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '2rem', fontWeight: 900, color: '#0057FF', lineHeight: 1 }}>{m.value}</div>
                                         <div style={{ fontWeight: 600, color: '#0A0F1E', fontSize: '0.85rem', marginTop: '6px' }}>{m.label}</div>
                                         <div style={{ color: '#6B7280', fontSize: '0.75rem', marginTop: '2px' }}>{m.sub}</div>
                                     </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
                                 </svg>
                             </div>
                             <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#00C6FF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>Our Vision</div>
-                            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#fff', marginBottom: '14px' }}>
+                            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#fff', marginBottom: '14px' }}>
                                 To be the trusted technology platform of choice for growing businesses across South Asia and beyond.
                             </h3>
                             <p style={{ color: '#CBD5E1', lineHeight: 1.7, fontSize: '0.9rem' }}>
@@ -278,7 +278,7 @@ export default function AboutPage() {
                                 </svg>
                             </div>
                             <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#00C6FF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>Our Mission</div>
-                            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#fff', marginBottom: '14px' }}>
+                            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.2rem', color: '#fff', marginBottom: '14px' }}>
                                 To deliver practical business systems that genuinely improve how organizations operate and grow.
                             </h3>
                             <p style={{ color: '#CBD5E1', lineHeight: 1.7, fontSize: '0.9rem' }}>
@@ -301,7 +301,7 @@ export default function AboutPage() {
                         {principles.map((p) => (
                             <div key={p.title} className="card">
                                 <div className="divider" />
-                                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '10px' }}>{p.title}</h3>
+                                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '10px' }}>{p.title}</h3>
                                 <p style={{ color: '#6B7280', fontSize: '0.875rem', lineHeight: 1.65 }}>{p.desc}</p>
                             </div>
                         ))}
@@ -324,7 +324,7 @@ export default function AboutPage() {
                     }}>
                         <div>
                             <div className="tag-dark" style={{ marginBottom: '20px' }}>Strategic Intent</div>
-                            <h2 style={{ color: '#fff', fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 800, marginBottom: '16px' }}>
+                            <h2 style={{ color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 800, marginBottom: '16px' }}>
                                 Sri Lanka to Global — A Structured Growth Path
                             </h2>
                             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem', marginBottom: '16px' }}>

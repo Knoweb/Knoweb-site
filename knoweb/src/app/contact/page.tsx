@@ -116,7 +116,7 @@ export default function ContactPage() {
             const marker = L.marker(pinCoords, { icon: redPinIcon });
             marker.addTo(map);
             marker.bindPopup(`
-                <div style="font-family: Outfit, Inter, sans-serif; padding: 4px 6px; min-width: 190px;">
+                <div style="font-family: Inter, sans-serif; padding: 4px 6px; min-width: 190px;">
                     <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
                         <span style="width: 7px; height: 7px; border-radius: 50%; background: #00E5FF; box-shadow: 0 0 6px #00E5FF;"></span>
                         <span style="font-weight: 700; color: #FFFFFF; font-size: 13px;">Knoweb (Pvt) Ltd</span>
@@ -309,7 +309,7 @@ export default function ContactPage() {
                         {/* Headline */}
                         <h1
                             style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontSize: 'clamp(2.4rem, 4.4vw, 3.6rem)',
                                 fontWeight: 800,
                                 lineHeight: 1.15,
@@ -348,7 +348,7 @@ export default function ContactPage() {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '64px', alignItems: 'start' }}>
                         {/* Left — info */}
                         <div>
-                            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: '#0A0F1E', marginBottom: '20px' }}>
+                            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: '#0A0F1E', marginBottom: '20px' }}>
                                 Choose How to Connect
                             </h2>
                             <p style={{ color: '#6B7280', lineHeight: 1.7, marginBottom: '40px', fontSize: '0.95rem' }}>
@@ -444,7 +444,7 @@ export default function ContactPage() {
                                     <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#004FEB' }} />
                                     Urgent Problem Guidance
                                 </div>
-                                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.2rem', fontWeight: 800, color: '#0A192F', marginBottom: '6px' }}>
+                                <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.2rem', fontWeight: 800, color: '#0A192F', marginBottom: '6px' }}>
                                     QuickAssist Triage
                                 </h3>
                                 <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '16px' }}>
@@ -475,7 +475,7 @@ export default function ContactPage() {
                                     textAlign: 'center',
                                 }}>
                                     <div style={{ fontSize: '3rem', marginBottom: '16px' }}>✅</div>
-                                    <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.3rem', color: '#065F46', marginBottom: '12px' }}>
+                                    <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.3rem', color: '#065F46', marginBottom: '12px' }}>
                                         Message Received
                                     </h3>
                                     <p style={{ color: '#047857', fontSize: '0.9rem', lineHeight: 1.65 }}>
@@ -495,7 +495,7 @@ export default function ContactPage() {
                                         gap: '20px',
                                     }}
                                 >
-                                    <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.3rem', color: '#0A0F1E', marginBottom: '4px' }}>
+                                    <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.3rem', color: '#0A0F1E', marginBottom: '4px' }}>
                                         Send Us a Message
                                     </h3>
                                     <p style={{ color: '#6B7280', fontSize: '0.875rem', marginBottom: '8px' }}>

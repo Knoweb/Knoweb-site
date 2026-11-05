@@ -40,7 +40,7 @@ export default function BottomCTASection() {
           <div style={{ position: 'relative', zIndex: 1, maxWidth: '820px' }}>
             <h2
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 'clamp(1.75rem, 3.2vw, 2.3rem)',
                 fontWeight: 800,
                 color: '#FFFFFF',

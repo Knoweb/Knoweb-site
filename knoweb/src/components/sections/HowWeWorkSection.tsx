@@ -35,13 +35,13 @@ export default function HowWeWorkSection() {
                                 (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
                             }}
                         >
-                            <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '3rem', fontWeight: 900, color: 'rgba(0,87,255,0.06)', position: 'absolute', top: '16px', right: '20px', lineHeight: 1 }}>
+                            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '3rem', fontWeight: 900, color: 'rgba(0,87,255,0.06)', position: 'absolute', top: '16px', right: '20px', lineHeight: 1 }}>
                                 {step.num}
                             </div>
-                            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'linear-gradient(135deg,#0057FF,#00C6FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', color: '#fff', fontWeight: 800, fontSize: '0.8rem', fontFamily: 'Outfit, sans-serif' }}>
+                            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'linear-gradient(135deg,#0057FF,#00C6FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', color: '#fff', fontWeight: 800, fontSize: '0.8rem', fontFamily: 'Inter, sans-serif' }}>
                                 {idx + 1}
                             </div>
-                            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '10px' }}>{step.title}</h3>
+                            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '10px' }}>{step.title}</h3>
                             <p style={{ color: '#6B7280', fontSize: '0.875rem', lineHeight: 1.65 }}>{step.desc}</p>
                         </div>
                     ))}

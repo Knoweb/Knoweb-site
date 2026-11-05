@@ -82,7 +82,7 @@ export default function SaaSProductsSection() {
         <div style={{ marginBottom: '24px' }}>
           <h2
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1.45rem',
               fontWeight: 800,
               color: '#0A192F',
@@ -248,7 +248,7 @@ export default function SaaSProductsSection() {
 
                   <h3
                     style={{
-                      fontFamily: 'Outfit, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       fontSize: '1.25rem',
                       fontWeight: 700,
                       color: '#0A192F',

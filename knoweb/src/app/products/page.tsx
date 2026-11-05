@@ -32,7 +32,7 @@ export default function ProductsPage() {
 
           <h1
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 800,
               color: '#0A192F',
@@ -124,7 +124,7 @@ export default function ProductsPage() {
                 </span>
                 <h2
                   style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontSize: '1.55rem',
                     fontWeight: 800,
                     color: '#0A192F',
@@ -181,7 +181,7 @@ export default function ProductsPage() {
                 </span>
                 <h2
                   style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontSize: '1.55rem',
                     fontWeight: 800,
                     color: '#0A192F',
@@ -239,7 +239,7 @@ export default function ProductsPage() {
                 </span>
                 <h2
                   style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontSize: '1.55rem',
                     fontWeight: 800,
                     color: '#004FEB',

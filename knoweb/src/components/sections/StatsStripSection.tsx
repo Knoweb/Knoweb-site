@@ -144,7 +144,7 @@ export default function StatsStripSection() {
                                 {/* Large number */}
                                 <div
                                     style={{
-                                        fontFamily: 'Outfit, sans-serif',
+                                        fontFamily: 'Inter, sans-serif',
                                         fontSize: '2.4rem', fontWeight: 800,
                                         color: '#111827', lineHeight: 1,
                                         letterSpacing: '-0.03em',

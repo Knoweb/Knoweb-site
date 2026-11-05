@@ -119,7 +119,7 @@ export default function Footer() {
           <div>
             <h4
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '1rem',
                 fontWeight: 700,
                 color: '#0A192F',
@@ -163,7 +163,7 @@ export default function Footer() {
           <div>
             <h4
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '1rem',
                 fontWeight: 700,
                 color: '#0A192F',
@@ -201,7 +201,7 @@ export default function Footer() {
           <div>
             <h4
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '1rem',
                 fontWeight: 700,
                 color: '#0A192F',

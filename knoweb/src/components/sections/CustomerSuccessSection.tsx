@@ -34,7 +34,7 @@ export default function CustomerSuccessSection() {
                 {/* Section Header */}
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                     <h2 style={{
-                        fontFamily: 'Outfit, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontSize: 'clamp(2rem, 4vw, 2.5rem)',
                         fontWeight: 700,
                         color: '#ffffff',
@@ -76,7 +76,7 @@ export default function CustomerSuccessSection() {
 
                             {/* Title */}
                             <h3 style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontSize: '1.2rem',
                                 fontWeight: 700,
                                 color: '#ffffff',

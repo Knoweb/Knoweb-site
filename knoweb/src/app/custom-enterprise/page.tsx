@@ -117,7 +117,7 @@ export default function CustomEnterprisePage() {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
                         <div>
                             <div className="tag" style={{ marginBottom: '20px' }}>When Custom Is Right</div>
-                            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 800, marginBottom: '20px', color: '#0A0F1E' }}>
+                            <h2 style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 800, marginBottom: '20px', color: '#0A0F1E' }}>
                                 When Custom Software Is the Right Choice
                             </h2>
                             <p style={{ color: '#6B7280', lineHeight: 1.7, marginBottom: '24px', fontSize: '0.95rem' }}>
@@ -166,7 +166,7 @@ export default function CustomEnterprisePage() {
                         {deliverables.map((d) => (
                             <div key={d.title} className="card">
                                 <div className="icon-box">{d.icon}</div>
-                                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '10px' }}>{d.title}</h3>
+                                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#0A0F1E', marginBottom: '10px' }}>{d.title}</h3>
                                 <p style={{ color: '#6B7280', fontSize: '0.875rem', lineHeight: 1.65 }}>{d.desc}</p>
                             </div>
                         ))}
@@ -192,7 +192,7 @@ export default function CustomEnterprisePage() {
                                 position: 'relative',
                             }}>
                                 <div style={{
-                                    fontFamily: 'Outfit, sans-serif',
+                                    fontFamily: 'Inter, sans-serif',
                                     fontSize: '2.5rem',
                                     fontWeight: 900,
                                     color: 'rgba(0,87,255,0.05)',
@@ -209,12 +209,12 @@ export default function CustomEnterprisePage() {
                                     background: 'linear-gradient(135deg,#0057FF,#00C6FF)',
                                     color: '#fff',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '0.75rem',
+                                    fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '0.75rem',
                                     marginBottom: '16px',
                                 }}>
                                     {parseInt(m.step)}
                                 </div>
-                                <h3 style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0A0F1E', marginBottom: '8px', fontFamily: 'Outfit, sans-serif' }}>{m.title}</h3>
+                                <h3 style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0A0F1E', marginBottom: '8px', fontFamily: 'Inter, sans-serif' }}>{m.title}</h3>
                                 <p style={{ color: '#6B7280', fontSize: '0.85rem', lineHeight: 1.6 }}>{m.desc}</p>
                             </div>
                         ))}

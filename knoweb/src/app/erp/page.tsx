@@ -100,7 +100,7 @@ export default function ERPPage() {
 
           <h1
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 800,
               color: '#0A192F',
@@ -145,7 +145,7 @@ export default function ERPPage() {
           <div style={{ marginBottom: '32px' }}>
             <h2
               style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '1.45rem',
                 fontWeight: 800,
                 color: '#0A192F',
@@ -194,7 +194,7 @@ export default function ERPPage() {
                 <div>
                   <h3
                     style={{
-                      fontFamily: 'Outfit, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       fontSize: '1.3rem',
                       fontWeight: 700,
                       color: '#0A192F',
@@ -262,7 +262,7 @@ export default function ERPPage() {
             <div style={{ maxWidth: '680px' }}>
               <h3
                 style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: '1.35rem',
                   fontWeight: 800,
                   color: '#0A192F',

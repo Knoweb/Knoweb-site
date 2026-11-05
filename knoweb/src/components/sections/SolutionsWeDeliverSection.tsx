@@ -61,7 +61,7 @@ export default function SolutionsWeDeliverSection() {
                 <div style={{ textAlign: 'center', marginBottom: '64px' }}>
                     <h2
                         style={{
-                            fontFamily: 'Outfit, sans-serif',
+                            fontFamily: 'Inter, sans-serif',
                             fontSize: 'clamp(2rem, 4vw, 3rem)',
                             fontWeight: 800, color: '#111827',
                             lineHeight: 1.1, letterSpacing: '-0.02em',
@@ -137,7 +137,7 @@ export default function SolutionsWeDeliverSection() {
                             {/* Numbered title */}
                             <h3
                                 style={{
-                                    fontFamily: 'Outfit, sans-serif',
+                                    fontFamily: 'Inter, sans-serif',
                                     fontSize: '1.4rem', fontWeight: 700,
                                     color: '#004FEB',
                                     marginBottom: '14px',

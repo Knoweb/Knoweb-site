@@ -35,7 +35,7 @@ export default function ResourcesPreviewSection() {
                     <div style={{ maxWidth: '640px' }}>
                         <div className="tag" style={{ marginBottom: '20px' }}>Our Resources</div>
                         <h2 style={{
-                            fontFamily: 'Outfit, sans-serif',
+                            fontFamily: 'Inter, sans-serif',
                             fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                             fontWeight: 800,
                             color: '#0A0F1E',
@@ -119,7 +119,7 @@ export default function ResourcesPreviewSection() {
                             {/* Content */}
                             <div style={{ padding: '32px 24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                                 <h3 style={{
-                                    fontFamily: 'Outfit, sans-serif',
+                                    fontFamily: 'Inter, sans-serif',
                                     fontWeight: 700,
                                     fontSize: '1.35rem',
                                     color: '#0A0F1E',

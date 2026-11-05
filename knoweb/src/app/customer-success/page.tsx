@@ -83,7 +83,7 @@ export default function CustomerSuccessPage() {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
                         <div>
                             <div className="tag" style={{ marginBottom: '20px' }}>Our Philosophy</div>
-                            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 800, marginBottom: '20px', color: '#0A0F1E' }}>
+                            <h2 style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 800, marginBottom: '20px', color: '#0A0F1E' }}>
                                 Technology Only Works When People Use It Well
                             </h2>
                             <p style={{ color: '#6B7280', lineHeight: 1.7, marginBottom: '20px', fontSize: '0.95rem' }}>
@@ -144,12 +144,12 @@ export default function CustomerSuccessPage() {
                                     background: 'linear-gradient(135deg,#0057FF,#00C6FF)',
                                     color: '#fff',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '0.8rem',
+                                    fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '0.8rem',
                                     marginBottom: '16px',
                                 }}>
                                     {i + 1}
                                 </div>
-                                <h3 style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0A0F1E', marginBottom: '8px', fontFamily: 'Outfit, sans-serif' }}>{s.title}</h3>
+                                <h3 style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0A0F1E', marginBottom: '8px', fontFamily: 'Inter, sans-serif' }}>{s.title}</h3>
                                 <p style={{ color: '#6B7280', fontSize: '0.85rem', lineHeight: 1.6 }}>{s.desc}</p>
                             </div>
                         ))}
@@ -174,7 +174,7 @@ export default function CustomerSuccessPage() {
                                 borderRadius: '12px',
                                 padding: '32px',
                             }}>
-                                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.1rem', color: '#0A0F1E', marginBottom: '8px' }}>{tier.tier}</h3>
+                                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.1rem', color: '#0A0F1E', marginBottom: '8px' }}>{tier.tier}</h3>
                                 <div style={{ fontSize: '0.8rem', color: '#6B7280', marginBottom: '20px', fontWeight: 500 }}>
                                     Initial response: <span style={{ color: tier.color, fontWeight: 700 }}>{tier.response}</span>
                                 </div>

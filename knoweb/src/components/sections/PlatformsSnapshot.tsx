@@ -71,7 +71,7 @@ export default function PlatformsSnapshot() {
                     {platforms.map((p) => (
                         <div key={p.category} className="card" style={{ background: '#fff' }}>
                             <div className="icon-box" style={{ background: p.color }}>{p.icon}</div>
-                            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: '10px', color: '#0A0F1E' }}>
+                            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', marginBottom: '10px', color: '#0A0F1E' }}>
                                 {p.category}
                             </h3>
                             <p style={{ color: '#6B7280', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '16px' }}>

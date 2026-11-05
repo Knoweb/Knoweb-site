@@ -69,7 +69,7 @@ export default function TargetAudienceSection() {
                 {/* Section Header */}
                 <div style={{ textAlign: 'center', marginBottom: '64px' }}>
                     <h2 style={{
-                        fontFamily: 'Outfit, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                         fontWeight: 800, color: '#111827',
                         lineHeight: 1.1, letterSpacing: '-0.02em',
@@ -133,7 +133,7 @@ export default function TargetAudienceSection() {
                 }
                 
                 .audience-card h3 {
-                    font-family: 'Outfit', sans-serif;
+                    font-family: 'Inter', sans-serif;
                     font-size: 0.95rem;
                     font-weight: 800;
                     color: #111827;

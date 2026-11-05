@@ -16,7 +16,7 @@ export default function NeedHelpSection() {
         <div style={{ marginBottom: '24px' }}>
           <h2
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1.45rem',
               fontWeight: 800,
               color: '#0A192F',
@@ -95,7 +95,7 @@ export default function NeedHelpSection() {
             <div>
               <h3
                 style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: '1.65rem',
                   fontWeight: 800,
                   color: '#004FEB',
@@ -199,7 +199,7 @@ export default function NeedHelpSection() {
 
               <h3
                 style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: '1.65rem',
                   fontWeight: 800,
                   color: '#0A192F',

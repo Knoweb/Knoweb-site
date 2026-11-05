@@ -41,7 +41,7 @@ export default function WhyKnowebSection() {
 
                         <h2
                             style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontSize: 'clamp(1.8rem, 3.5vw, 2.7rem)',
                                 fontWeight: 800, lineHeight: 1.15,
                                 color: 'var(--text-primary)', marginBottom: '24px',
@@ -158,7 +158,7 @@ export default function WhyKnowebSection() {
                                 fontSize: '2.4rem', fontWeight: 800,
                                 color: '#ffffff', lineHeight: 1,
                                 marginBottom: '6px',
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                             }}>50+</div>
                             <div style={{
                                 fontSize: '0.68rem', fontWeight: 700,
