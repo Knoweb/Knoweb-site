@@ -215,12 +215,49 @@ export default function Footer() {
                 color: '#475569',
                 fontSize: '0.88rem',
                 lineHeight: 1.6,
-                marginBottom: '18px',
+                marginBottom: '14px',
               }}
             >
               Discuss your project scope, request a software demonstration, or get rapid troubleshooting
               guidance.
             </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
+              <a
+                href="mailto:info@knowebsolutions.com"
+                style={{
+                  color: '#0A192F',
+                  fontWeight: 600,
+                  fontSize: '0.85rem',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#0A192F')}
+              >
+                <span style={{ color: '#004FEB' }}>✉</span> info@knowebsolutions.com
+              </a>
+              <a
+                href="tel:0711102102"
+                style={{
+                  color: '#0A192F',
+                  fontWeight: 600,
+                  fontSize: '0.85rem',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#004FEB')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#0A192F')}
+              >
+                <span style={{ color: '#004FEB' }}>📞</span> 0711 102 102
+              </a>
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Link

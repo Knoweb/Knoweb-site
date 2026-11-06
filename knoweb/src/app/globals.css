@@ -1280,6 +1280,21 @@ html.dark .saas-card-details,
   }
 }
 
+/* Contact Links in Dark Mode */
+html.dark a[href^="mailto:"],
+[data-theme="dark"] a[href^="mailto:"],
+html.dark a[href^="tel:"],
+[data-theme="dark"] a[href^="tel:"] {
+  color: #E2E8F0 !important;
+}
+
+html.dark a[href^="mailto:"]:hover,
+[data-theme="dark"] a[href^="mailto:"]:hover,
+html.dark a[href^="tel:"]:hover,
+[data-theme="dark"] a[href^="tel:"]:hover {
+  color: #00E5FF !important;
+}
+
 
 
 
