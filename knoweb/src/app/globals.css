@@ -1219,10 +1219,17 @@ html.dark .saas-card-edge-light,
 /* Capability boxes in dark mode */
 html.dark .saas-capability-item,
 [data-theme="dark"] .saas-capability-item {
-  background: rgba(15, 30, 54, 0.88) !important;
-  border-color: rgba(255, 255, 255, 0.14) !important;
-  color: #E2E8F0 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  background: #132A4B !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Capability box hover micro-lift */
+.saas-capability-item:hover {
+  transform: translateY(-2px);
+  border-color: #004FEB !important;
+  box-shadow: 0 6px 16px rgba(0, 79, 235, 0.12), 0 2px 4px rgba(0, 0, 0, 0.04) !important;
 }
 
 /* Tagline badge in dark mode */
@@ -1236,7 +1243,7 @@ html.dark .saas-tagline-badge,
 /* Interactive Hover effect */
 .saas-product-card:hover .saas-card-bg-image {
   transform: scale(1.03) translate(-4px, -2px) !important;
-  opacity: 0.90 !important;
+  opacity: 0.75 !important;
 }
 
 @media (max-width: 768px) {

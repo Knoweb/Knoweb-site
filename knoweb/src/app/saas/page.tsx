@@ -420,7 +420,7 @@ export default function SaaSPage() {
                         backgroundPosition: 'right 30%',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        opacity: 0.78,
+                        opacity: 0.60,
                         filter: 'contrast(1.05) saturate(1.15)',
                         transition:
                           'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
@@ -434,7 +434,7 @@ export default function SaaSPage() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 10%, rgba(255, 255, 255, 0.70) 28%, rgba(255, 255, 255, 0.18) 52%, transparent 75%, transparent 100%)',
+                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 18%, rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.35) 72%, rgba(255, 255, 255, 0.08) 100%)',
                         pointerEvents: 'none',
                       }}
                     />
@@ -446,7 +446,7 @@ export default function SaaSPage() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, #0E223D 0%, #0E223D 10%, rgba(14, 34, 61, 0.75) 28%, rgba(14, 34, 61, 0.22) 52%, transparent 75%, transparent 100%)',
+                          'linear-gradient(90deg, #0E223D 0%, #0E223D 18%, rgba(14, 34, 61, 0.90) 42%, rgba(14, 34, 61, 0.40) 72%, rgba(14, 34, 61, 0.12) 100%)',
                         pointerEvents: 'none',
                       }}
                     />
@@ -517,9 +517,9 @@ export default function SaaSPage() {
 
                   <p
                     style={{
-                      fontSize: '1.02rem',
-                      fontWeight: 600,
-                      color: '#334155',
+                      fontSize: '1.05rem',
+                      fontWeight: 700,
+                      color: '#0A192F',
                       marginBottom: '8px',
                     }}
                   >
@@ -528,11 +528,12 @@ export default function SaaSPage() {
 
                   <p
                     style={{
-                      fontSize: '0.94rem',
-                      lineHeight: 1.6,
-                      color: '#64748B',
+                      fontSize: '0.96rem',
+                      lineHeight: 1.65,
+                      color: '#1E293B',
+                      fontWeight: 500,
                       marginBottom: '24px',
-                      maxWidth: '820px',
+                      maxWidth: '740px',
                     }}
                   >
                     {product.details}
@@ -540,14 +541,18 @@ export default function SaaSPage() {
 
                   <h4
                     style={{
-                      fontSize: '0.88rem',
-                      fontWeight: 700,
-                      color: '#0F172A',
+                      fontSize: '0.9rem',
+                      fontWeight: 800,
+                      color: '#0A192F',
                       textTransform: 'uppercase',
                       letterSpacing: '0.04em',
-                      marginBottom: '12px',
+                      marginBottom: '14px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
                   >
+                    <span style={{ width: '4px', height: '14px', background: '#004FEB', borderRadius: '2px' }}></span>
                     Key Capabilities
                   </h4>
 
@@ -555,7 +560,7 @@ export default function SaaSPage() {
                     style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                      gap: '10px',
+                      gap: '12px',
                       marginBottom: '28px',
                     }}
                   >
@@ -567,21 +572,19 @@ export default function SaaSPage() {
                           display: 'flex',
                           alignItems: 'center',
                           gap: '10px',
-                          fontSize: '0.9rem',
-                          color: '#0F172A',
+                          fontSize: '0.92rem',
+                          color: '#0A192F',
                           fontWeight: 600,
-                          background: 'rgba(255, 255, 255, 0.94)',
-                          backdropFilter: 'blur(12px)',
-                          WebkitBackdropFilter: 'blur(12px)',
-                          padding: '11px 16px',
-                          borderRadius: '8px',
-                          border: '1px solid rgba(203, 213, 225, 0.90)',
-                          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+                          background: '#FFFFFF',
+                          padding: '12px 18px',
+                          borderRadius: '10px',
+                          border: '1.5px solid #CBD5E1',
+                          boxShadow: '0 3px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04)',
                           transition: 'all 0.2s ease',
                         }}
                       >
-                        <span style={{ color: '#004FEB', fontWeight: 800, fontSize: '0.95rem' }}>✓</span>
-                        <span>{feature}</span>
+                        <span style={{ color: '#004FEB', fontWeight: 800, fontSize: '1rem', flexShrink: 0 }}>✓</span>
+                        <span style={{ lineHeight: 1.4 }}>{feature}</span>
                       </div>
                     ))}
                   </div>
