@@ -14,6 +14,7 @@ interface ProductItem {
   logoLight?: string;
   logoDark?: string;
   bgImage?: string;
+  bgPosition?: string;
 }
 
 const products: ProductItem[] = [
@@ -25,6 +26,7 @@ const products: ProductItem[] = [
     logoLight: '/logos/ginum.png',
     logoDark: '/logos/ginum-dark.png',
     bgImage: '/ginum-dashboard-bg.jpg',
+    bgPosition: 'center 35%',
     summary: 'Accounting records and financial administration.',
     details:
       'Ginum provides small and medium enterprises with dependable bookkeeping, invoicing, expense tracking, and financial statements without unnecessary complexity.',
@@ -45,6 +47,7 @@ const products: ProductItem[] = [
     logoLight: '/logos/pirisahr.png',
     logoDark: '/logos/pirisahr-dark.png',
     bgImage: '/pirisahr-dashboard-bg.jpg',
+    bgPosition: 'center 35%',
     summary: 'Employee information, attendance and payroll administration.',
     details:
       'PirisaHR streamlines HR administration from employee onboarding and daily attendance to monthly payroll calculations and statutory compliance.',
@@ -65,6 +68,7 @@ const products: ProductItem[] = [
     logoLight: '/logos/anawuma.png',
     logoDark: '/logos/anawuma-dark.png',
     bgImage: '/anawuma-dashboard-bg.jpg',
+    bgPosition: 'center 35%',
     summary: 'Customer orders, records and follow-up.',
     details:
       'Anawuma manages the entire order cycle from customer inquiry to delivery confirmation, ensuring zero misplaced orders and accurate order fulfilment.',
@@ -85,6 +89,7 @@ const products: ProductItem[] = [
     logoLight: '/logos/thanayama.png',
     logoDark: '/logos/thanayama-dark.png',
     bgImage: '/thanayama-dashboard-bg.jpg',
+    bgPosition: 'center 38%',
     summary: 'Reservations, guest information and accommodation administration.',
     details:
       'Thanayama simplifies front desk, room reservations, billing folios, and guest communication for boutique hotels, resorts, and guest houses.',
@@ -400,10 +405,9 @@ export default function SaaSPage() {
                     className="saas-card-bg-wrap"
                     style={{
                       position: 'absolute',
-                      top: 0,
-                      right: 0,
-                      bottom: 0,
-                      width: '60%',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
                       pointerEvents: 'none',
                       zIndex: 0,
                       overflow: 'hidden',
@@ -414,41 +418,40 @@ export default function SaaSPage() {
                       className="saas-card-bg-image"
                       style={{
                         position: 'absolute',
-                        top: '-4%',
-                        right: '-2%',
-                        width: '112%',
-                        height: '112%',
+                        inset: '-2%',
+                        width: '104%',
+                        height: '104%',
                         backgroundImage: `url(${product.bgImage})`,
-                        backgroundPosition: 'right 30%',
+                        backgroundPosition: product.bgPosition || 'center 35%',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        opacity: 0.60,
-                        filter: 'contrast(1.05) saturate(1.15)',
+                        opacity: 0.62,
+                        filter: 'contrast(1.06) saturate(1.15)',
                         transition:
                           'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
                       }}
                     />
 
-                    {/* Left-to-Right Gradient Vignette: Light Mode */}
+                    {/* Left-to-Right Protective Gradient: Light Mode */}
                     <div
                       className="saas-card-vignette-light"
                       style={{
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 18%, rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.35) 72%, rgba(255, 255, 255, 0.08) 100%)',
+                          'linear-gradient(90deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.70) 35%, rgba(255, 255, 255, 0.40) 70%, rgba(255, 255, 255, 0.15) 100%)',
                         pointerEvents: 'none',
                       }}
                     />
 
-                    {/* Left-to-Right Gradient Vignette: Dark Mode */}
+                    {/* Left-to-Right Protective Gradient: Dark Mode */}
                     <div
                       className="saas-card-vignette-dark"
                       style={{
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, #0E223D 0%, #0E223D 18%, rgba(14, 34, 61, 0.90) 42%, rgba(14, 34, 61, 0.40) 72%, rgba(14, 34, 61, 0.12) 100%)',
+                          'linear-gradient(90deg, rgba(14, 34, 61, 0.86) 0%, rgba(14, 34, 61, 0.76) 35%, rgba(14, 34, 61, 0.46) 70%, rgba(14, 34, 61, 0.18) 100%)',
                         pointerEvents: 'none',
                       }}
                     />
@@ -518,6 +521,7 @@ export default function SaaSPage() {
                   </div>
 
                   <p
+                    className="saas-card-summary"
                     style={{
                       fontSize: '1.05rem',
                       fontWeight: 700,
@@ -529,11 +533,12 @@ export default function SaaSPage() {
                   </p>
 
                   <p
+                    className="saas-card-details"
                     style={{
                       fontSize: '0.96rem',
                       lineHeight: 1.65,
                       color: '#1E293B',
-                      fontWeight: 500,
+                      fontWeight: 600,
                       marginBottom: '24px',
                       maxWidth: '740px',
                     }}

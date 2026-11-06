@@ -1242,14 +1242,41 @@ html.dark .saas-tagline-badge,
 
 /* Interactive Hover effect */
 .saas-product-card:hover .saas-card-bg-image {
-  transform: scale(1.03) translate(-4px, -2px) !important;
+  transform: scale(1.025) !important;
   opacity: 0.75 !important;
+}
+
+/* Card Content Crisp Readability Enhancements */
+.saas-card-summary {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+}
+
+.saas-card-details {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+html.dark .saas-card-summary,
+[data-theme="dark"] .saas-card-summary {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+html.dark .saas-card-details,
+[data-theme="dark"] .saas-card-details {
+  color: #E2E8F0 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85) !important;
 }
 
 @media (max-width: 768px) {
   .saas-card-bg-wrap {
     width: 100% !important;
-    opacity: 0.65 !important;
+  }
+  .saas-card-vignette-light {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.72) 45%, rgba(255, 255, 255, 0.35) 100%) !important;
+  }
+  html.dark .saas-card-vignette-dark,
+  [data-theme="dark"] .saas-card-vignette-dark {
+    background: linear-gradient(180deg, rgba(14, 34, 61, 0.88) 0%, rgba(14, 34, 61, 0.75) 45%, rgba(14, 34, 61, 0.40) 100%) !important;
   }
 }
 
