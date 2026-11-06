@@ -64,6 +64,7 @@ const products: ProductItem[] = [
     url: 'https://anawuma.com/',
     logoLight: '/logos/anawuma.png',
     logoDark: '/logos/anawuma-dark.png',
+    bgImage: '/anawuma-dashboard-bg.jpg',
     summary: 'Customer orders, records and follow-up.',
     details:
       'Anawuma manages the entire order cycle from customer inquiry to delivery confirmation, ensuring zero misplaced orders and accurate order fulfilment.',
@@ -83,6 +84,7 @@ const products: ProductItem[] = [
     url: 'https://thanayama.com/',
     logoLight: '/logos/thanayama.png',
     logoDark: '/logos/thanayama-dark.png',
+    bgImage: '/thanayama-dashboard-bg.jpg',
     summary: 'Reservations, guest information and accommodation administration.',
     details:
       'Thanayama simplifies front desk, room reservations, billing folios, and guest communication for boutique hotels, resorts, and guest houses.',
