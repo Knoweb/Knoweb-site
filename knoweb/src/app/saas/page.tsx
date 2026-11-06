@@ -425,21 +425,21 @@ export default function SaaSPage() {
                         backgroundPosition: product.bgPosition || 'center 35%',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        opacity: 0.62,
-                        filter: 'contrast(1.06) saturate(1.15)',
+                        opacity: 0.50,
+                        filter: 'contrast(1.05) saturate(1.10)',
                         transition:
                           'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
                       }}
                     />
 
-                    {/* Left-to-Right Protective Gradient: Light Mode */}
+                    {/* Left-to-Right Protective Gradient: Light Mode (100% Crisp Content Readability) */}
                     <div
                       className="saas-card-vignette-light"
                       style={{
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.70) 35%, rgba(255, 255, 255, 0.40) 70%, rgba(255, 255, 255, 0.15) 100%)',
+                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 28%, rgba(255, 255, 255, 0.94) 50%, rgba(255, 255, 255, 0.65) 75%, rgba(255, 255, 255, 0.15) 100%)',
                         pointerEvents: 'none',
                       }}
                     />
@@ -451,7 +451,7 @@ export default function SaaSPage() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, rgba(14, 34, 61, 0.86) 0%, rgba(14, 34, 61, 0.76) 35%, rgba(14, 34, 61, 0.46) 70%, rgba(14, 34, 61, 0.18) 100%)',
+                          'linear-gradient(90deg, #0E223D 0%, #0E223D 28%, rgba(14, 34, 61, 0.94) 50%, rgba(14, 34, 61, 0.65) 75%, rgba(14, 34, 61, 0.18) 100%)',
                         pointerEvents: 'none',
                       }}
                     />
