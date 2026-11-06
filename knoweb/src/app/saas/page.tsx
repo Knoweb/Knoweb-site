@@ -13,6 +13,7 @@ interface ProductItem {
   url?: string;
   logoLight?: string;
   logoDark?: string;
+  bgImage?: string;
 }
 
 const products: ProductItem[] = [
@@ -23,6 +24,7 @@ const products: ProductItem[] = [
     url: 'http://ginumapps.com/',
     logoLight: '/logos/ginum.png',
     logoDark: '/logos/ginum-dark.png',
+    bgImage: '/ginum-dashboard-bg.jpg',
     summary: 'Accounting records and financial administration.',
     details:
       'Ginum provides small and medium enterprises with dependable bookkeeping, invoicing, expense tracking, and financial statements without unnecessary complexity.',
@@ -376,145 +378,267 @@ export default function SaaSPage() {
               <div
                 key={product.id}
                 id={product.id}
+                className="saas-product-card"
                 style={{
+                  position: 'relative',
                   background: '#FFFFFF',
                   borderRadius: '16px',
                   border: '1.5px solid #CBD5E1',
                   padding: '36px 32px',
                   scrollMarginTop: '110px',
-                  transition: 'border-color 0.2s ease',
+                  overflow: 'hidden',
+                  transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
                 }}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '12px',
-                    marginBottom: '14px',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    {product.logoLight && (
-                      <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={product.logoLight}
-                          alt={`${product.name} logo`}
-                          className="saas-logo-light"
-                          style={{ maxHeight: '36px', maxWidth: '140px', objectFit: 'contain' }}
-                        />
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={product.logoDark}
-                          alt={`${product.name} logo`}
-                          className="saas-logo-dark"
-                          style={{ maxHeight: '36px', maxWidth: '140px', objectFit: 'contain' }}
-                        />
-                      </div>
-                    )}
-                    <h2
-                      style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '1.65rem',
-                        fontWeight: 800,
-                        color: '#0A192F',
-                        margin: 0,
-                      }}
-                    >
-                      {product.name}
-                    </h2>
-                  </div>
-                  <span
+                {/* ── Background UI Visual (Ginum & SaaS Platforms) ── */}
+                {product.bgImage && (
+                  <div
+                    className="saas-card-bg-wrap"
                     style={{
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      color: '#004FEB',
-                      background: 'rgba(0, 79, 235, 0.08)',
-                      padding: '4px 12px',
-                      borderRadius: '6px',
+                      position: 'absolute',
+                      top: 0,
+                      right: 0,
+                      bottom: 0,
+                      width: '56%',
+                      pointerEvents: 'none',
+                      zIndex: 0,
+                      overflow: 'hidden',
                     }}
                   >
-                    {product.tagline}
-                  </span>
-                </div>
-
-                <p
-                  style={{
-                    fontSize: '1.02rem',
-                    fontWeight: 600,
-                    color: '#334155',
-                    marginBottom: '8px',
-                  }}
-                >
-                  {product.summary}
-                </p>
-
-                <p
-                  style={{
-                    fontSize: '0.94rem',
-                    lineHeight: 1.6,
-                    color: '#64748B',
-                    marginBottom: '24px',
-                    maxWidth: '820px',
-                  }}
-                >
-                  {product.details}
-                </p>
-
-                <h4
-                  style={{
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
-                    color: '#0F172A',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.04em',
-                    marginBottom: '12px',
-                  }}
-                >
-                  Key Capabilities
-                </h4>
-
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                    gap: '10px',
-                    marginBottom: '28px',
-                  }}
-                >
-                  {product.features.map((feature, i) => (
+                    {/* Dashboard Mockup Layer */}
                     <div
-                      key={i}
+                      className="saas-card-bg-image"
                       style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
+                        position: 'absolute',
+                        top: '-6%',
+                        right: '-2%',
+                        width: '114%',
+                        height: '114%',
+                        backgroundImage: `url(${product.bgImage})`,
+                        backgroundPosition: 'right 30%',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        opacity: 0.38,
+                        filter: 'contrast(1.06) saturate(1.15)',
+                        transition:
+                          'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
+                      }}
+                    />
+
+                    {/* Left-to-Right Gradient Vignette: Light Mode */}
+                    <div
+                      className="saas-card-vignette-light"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 15%, rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.42) 72%, rgba(255, 255, 255, 0.14) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    {/* Left-to-Right Gradient Vignette: Dark Mode */}
+                    <div
+                      className="saas-card-vignette-dark"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(90deg, #0E223D 0%, #0E223D 15%, rgba(14, 34, 61, 0.90) 42%, rgba(14, 34, 61, 0.50) 72%, rgba(14, 34, 61, 0.22) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    {/* Vertical Edge Fade: Light Mode */}
+                    <div
+                      className="saas-card-edge-light"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 18%, transparent 82%, rgba(255, 255, 255, 0.4) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    {/* Vertical Edge Fade: Dark Mode */}
+                    <div
+                      className="saas-card-edge-dark"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(180deg, rgba(14, 34, 61, 0.3) 0%, transparent 18%, transparent 82%, rgba(14, 34, 61, 0.4) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  </div>
+                )}
+
+                {/* ── Foreground Content Layer (Guaranteed Crisp Readability) ── */}
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: '12px',
+                      marginBottom: '14px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      {product.logoLight && (
+                        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={product.logoLight}
+                            alt={`${product.name} logo`}
+                            className="saas-logo-light"
+                            style={{ maxHeight: '36px', maxWidth: '140px', objectFit: 'contain' }}
+                          />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={product.logoDark}
+                            alt={`${product.name} logo`}
+                            className="saas-logo-dark"
+                            style={{ maxHeight: '36px', maxWidth: '140px', objectFit: 'contain' }}
+                          />
+                        </div>
+                      )}
+                      <h2
+                        style={{
+                          fontFamily: 'Inter, sans-serif',
+                          fontSize: '1.65rem',
+                          fontWeight: 800,
+                          color: '#0A192F',
+                          margin: 0,
+                        }}
+                      >
+                        {product.name}
+                      </h2>
+                    </div>
+                    <span
+                      className="saas-tagline-badge"
+                      style={{
                         fontSize: '0.9rem',
-                        color: '#475569',
-                        background: '#F8FAFC',
-                        padding: '10px 14px',
-                        borderRadius: '8px',
-                        border: '1px solid #E2E8F0',
+                        fontWeight: 600,
+                        color: '#004FEB',
+                        background: 'rgba(238, 244, 255, 0.92)',
+                        backdropFilter: 'blur(8px)',
+                        WebkitBackdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(0, 79, 235, 0.22)',
+                        padding: '5px 14px',
+                        borderRadius: '6px',
+                        boxShadow: '0 2px 6px rgba(0, 79, 235, 0.08)',
                       }}
                     >
-                      <span style={{ color: '#004FEB', fontWeight: 700 }}>✓</span>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
+                      {product.tagline}
+                    </span>
+                  </div>
 
-                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center' }}>
-                  {product.url && (
-                    <a
-                      href={product.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <p
+                    style={{
+                      fontSize: '1.02rem',
+                      fontWeight: 600,
+                      color: '#334155',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    {product.summary}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: '0.94rem',
+                      lineHeight: 1.6,
+                      color: '#64748B',
+                      marginBottom: '24px',
+                      maxWidth: '820px',
+                    }}
+                  >
+                    {product.details}
+                  </p>
+
+                  <h4
+                    style={{
+                      fontSize: '0.88rem',
+                      fontWeight: 700,
+                      color: '#0F172A',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      marginBottom: '12px',
+                    }}
+                  >
+                    Key Capabilities
+                  </h4>
+
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                      gap: '10px',
+                      marginBottom: '28px',
+                    }}
+                  >
+                    {product.features.map((feature, i) => (
+                      <div
+                        key={i}
+                        className="saas-capability-item"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '10px',
+                          fontSize: '0.9rem',
+                          color: '#1E293B',
+                          fontWeight: 500,
+                          background: 'rgba(255, 255, 255, 0.90)',
+                          backdropFilter: 'blur(10px)',
+                          WebkitBackdropFilter: 'blur(10px)',
+                          padding: '11px 16px',
+                          borderRadius: '8px',
+                          border: '1px solid rgba(203, 213, 225, 0.85)',
+                          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                          transition: 'all 0.2s ease',
+                        }}
+                      >
+                        <span style={{ color: '#004FEB', fontWeight: 800, fontSize: '0.95rem' }}>✓</span>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center' }}>
+                    {product.url && (
+                      <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          textDecoration: 'none',
+                          background: '#004FEB',
+                          color: '#FFFFFF',
+                          fontWeight: 600,
+                          fontSize: '0.9rem',
+                          padding: '10px 22px',
+                          borderRadius: '8px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
+                        }}
+                      >
+                        Visit {product.name} ↗
+                      </a>
+                    )}
+
+                    <Link
+                      href={`/contact?product=${encodeURIComponent(product.name)}`}
                       style={{
                         textDecoration: 'none',
-                        background: '#004FEB',
-                        color: '#FFFFFF',
+                        background: product.url ? 'rgba(0, 79, 235, 0.08)' : '#004FEB',
+                        color: product.url ? '#004FEB' : '#FFFFFF',
                         fontWeight: 600,
                         fontSize: '0.9rem',
                         padding: '10px 22px',
@@ -522,46 +646,27 @@ export default function SaaSPage() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '6px',
-                        boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
                       }}
                     >
-                      Visit {product.name} ↗
-                    </a>
-                  )}
+                      Request Demo &gt;
+                    </Link>
 
-                  <Link
-                    href={`/contact?product=${encodeURIComponent(product.name)}`}
-                    style={{
-                      textDecoration: 'none',
-                      background: product.url ? 'rgba(0, 79, 235, 0.08)' : '#004FEB',
-                      color: product.url ? '#004FEB' : '#FFFFFF',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      padding: '10px 22px',
-                      borderRadius: '8px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                    }}
-                  >
-                    Request Demo &gt;
-                  </Link>
-
-                  <Link
-                    href="/quickassist"
-                    style={{
-                      textDecoration: 'none',
-                      background: '#FFFFFF',
-                      color: '#475569',
-                      border: '1px solid #CBD5E1',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      padding: '10px 20px',
-                      borderRadius: '8px',
-                    }}
-                  >
-                    Replacing an existing system?
-                  </Link>
+                    <Link
+                      href="/quickassist"
+                      style={{
+                        textDecoration: 'none',
+                        background: '#FFFFFF',
+                        color: '#475569',
+                        border: '1px solid #CBD5E1',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        padding: '10px 20px',
+                        borderRadius: '8px',
+                      }}
+                    >
+                      Replacing an existing system?
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
