@@ -44,6 +44,7 @@ const products: ProductItem[] = [
     url: 'https://pirisahr.com/',
     logoLight: '/logos/pirisahr.png',
     logoDark: '/logos/pirisahr-dark.png',
+    bgImage: '/pirisahr-dashboard-bg.jpg',
     summary: 'Employee information, attendance and payroll administration.',
     details:
       'PirisaHR streamlines HR administration from employee onboarding and daily attendance to monthly payroll calculations and statutory compliance.',
