@@ -1236,13 +1236,13 @@ html.dark .saas-tagline-badge,
 /* Interactive Hover effect */
 .saas-product-card:hover .saas-card-bg-image {
   transform: scale(1.03) translate(-4px, -2px) !important;
-  opacity: 0.46 !important;
+  opacity: 0.90 !important;
 }
 
 @media (max-width: 768px) {
   .saas-card-bg-wrap {
     width: 100% !important;
-    opacity: 0.45;
+    opacity: 0.65 !important;
   }
 }
 

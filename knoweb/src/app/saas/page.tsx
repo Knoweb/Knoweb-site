@@ -401,7 +401,7 @@ export default function SaaSPage() {
                       top: 0,
                       right: 0,
                       bottom: 0,
-                      width: '56%',
+                      width: '60%',
                       pointerEvents: 'none',
                       zIndex: 0,
                       overflow: 'hidden',
@@ -412,16 +412,16 @@ export default function SaaSPage() {
                       className="saas-card-bg-image"
                       style={{
                         position: 'absolute',
-                        top: '-6%',
+                        top: '-4%',
                         right: '-2%',
-                        width: '114%',
-                        height: '114%',
+                        width: '112%',
+                        height: '112%',
                         backgroundImage: `url(${product.bgImage})`,
                         backgroundPosition: 'right 30%',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        opacity: 0.38,
-                        filter: 'contrast(1.06) saturate(1.15)',
+                        opacity: 0.78,
+                        filter: 'contrast(1.05) saturate(1.15)',
                         transition:
                           'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
                       }}
@@ -434,7 +434,7 @@ export default function SaaSPage() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 15%, rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.42) 72%, rgba(255, 255, 255, 0.14) 100%)',
+                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 10%, rgba(255, 255, 255, 0.70) 28%, rgba(255, 255, 255, 0.18) 52%, transparent 75%, transparent 100%)',
                         pointerEvents: 'none',
                       }}
                     />
@@ -446,31 +446,7 @@ export default function SaaSPage() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(90deg, #0E223D 0%, #0E223D 15%, rgba(14, 34, 61, 0.90) 42%, rgba(14, 34, 61, 0.50) 72%, rgba(14, 34, 61, 0.22) 100%)',
-                        pointerEvents: 'none',
-                      }}
-                    />
-
-                    {/* Vertical Edge Fade: Light Mode */}
-                    <div
-                      className="saas-card-edge-light"
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background:
-                          'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 18%, transparent 82%, rgba(255, 255, 255, 0.4) 100%)',
-                        pointerEvents: 'none',
-                      }}
-                    />
-
-                    {/* Vertical Edge Fade: Dark Mode */}
-                    <div
-                      className="saas-card-edge-dark"
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background:
-                          'linear-gradient(180deg, rgba(14, 34, 61, 0.3) 0%, transparent 18%, transparent 82%, rgba(14, 34, 61, 0.4) 100%)',
+                          'linear-gradient(90deg, #0E223D 0%, #0E223D 10%, rgba(14, 34, 61, 0.75) 28%, rgba(14, 34, 61, 0.22) 52%, transparent 75%, transparent 100%)',
                         pointerEvents: 'none',
                       }}
                     />
@@ -592,15 +568,15 @@ export default function SaaSPage() {
                           alignItems: 'center',
                           gap: '10px',
                           fontSize: '0.9rem',
-                          color: '#1E293B',
-                          fontWeight: 500,
-                          background: 'rgba(255, 255, 255, 0.90)',
-                          backdropFilter: 'blur(10px)',
-                          WebkitBackdropFilter: 'blur(10px)',
+                          color: '#0F172A',
+                          fontWeight: 600,
+                          background: 'rgba(255, 255, 255, 0.94)',
+                          backdropFilter: 'blur(12px)',
+                          WebkitBackdropFilter: 'blur(12px)',
                           padding: '11px 16px',
                           borderRadius: '8px',
-                          border: '1px solid rgba(203, 213, 225, 0.85)',
-                          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                          border: '1px solid rgba(203, 213, 225, 0.90)',
+                          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
                           transition: 'all 0.2s ease',
                         }}
                       >
