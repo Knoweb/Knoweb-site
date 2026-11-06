@@ -9,6 +9,7 @@ const quickLinks = [
   { label: 'Practical ERP', href: '/erp' },
   { label: 'Industry Solutions', href: '/solutions' },
   { label: 'Services', href: '/services' },
+  { label: 'Blogs & Insights', href: '/blogs' },
   { label: 'QuickAssist (Tech Help)', href: '/quickassist', highlight: true },
   { label: 'About Knoweb', href: '/about' },
   { label: 'Contact', href: '/contact' },

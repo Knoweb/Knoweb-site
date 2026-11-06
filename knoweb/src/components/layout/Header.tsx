@@ -11,6 +11,7 @@ const navLinks = [
   { label: 'ERP', href: '/erp' },
   { label: 'Solutions', href: '/solutions' },
   { label: 'Services', href: '/services' },
+  { label: 'Blogs', href: '/blogs' },
   { label: 'QuickAssist', href: '/quickassist' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },

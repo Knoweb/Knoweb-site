@@ -1295,6 +1295,21 @@ html.dark a[href^="tel:"]:hover,
   color: #00E5FF !important;
 }
 
+/* ============================================================
+   BLOGS SECTION DARK MODE STYLING
+   ============================================================ */
+html.dark .blog-card-item,
+[data-theme="dark"] .blog-card-item {
+  background: #0B192C !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .blog-card-item:hover,
+[data-theme="dark"] .blog-card-item:hover {
+  border-color: rgba(0, 229, 255, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 229, 255, 0.15) !important;
+}
+
 
 
 
