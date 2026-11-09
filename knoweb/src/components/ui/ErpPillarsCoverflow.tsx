@@ -1,23 +1,25 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import { motion, PanInfo } from 'framer-motion';
 
 export interface ErpPillarItem {
   id: string;
   pillarNumber: string;
+  shortTitle: string;
   title: string;
   summary: string;
   points: string[];
   icon: React.ReactNode;
   accentColor: string;
-  glowColor: string;
+  lightBg: string;
 }
 
 export const ERP_PILLARS_DATA: ErpPillarItem[] = [
   {
     id: 'sales',
     pillarNumber: '01',
+    shortTitle: 'Sales & Distrib.',
     title: 'Sales & Distribution',
     summary:
       'Quotations, sales orders, delivery dispatch notes, and receivables tracking across all sales channels.',
@@ -27,8 +29,8 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
       'Delivery scheduling & fulfillment tracking',
       'Customer credit limits & aging analyses',
     ],
-    accentColor: '#38BDF8',
-    glowColor: 'rgba(56, 189, 248, 0.35)',
+    accentColor: '#0284C7',
+    lightBg: 'rgba(2, 132, 199, 0.08)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="20" x2="12" y2="10" />
@@ -40,6 +42,7 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
   {
     id: 'purchasing',
     pillarNumber: '02',
+    shortTitle: 'Purchasing',
     title: 'Purchasing & Procurement',
     summary:
       'Standardized purchase requests, supplier quotations, purchase orders, and goods receipt verification.',
@@ -49,8 +52,8 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
       'Goods Receipt Notes (GRN) & 3-way matching',
       'Supplier payment tracking & credit control',
     ],
-    accentColor: '#818CF8',
-    glowColor: 'rgba(129, 140, 248, 0.35)',
+    accentColor: '#4F46E5',
+    lightBg: 'rgba(79, 70, 229, 0.08)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -64,6 +67,7 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
   {
     id: 'inventory',
     pillarNumber: '03',
+    shortTitle: 'Inventory',
     title: 'Inventory & Warehouse',
     summary:
       'Complete inventory visibility across warehouses, retail locations, and transit hubs.',
@@ -73,8 +77,8 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
       'Inter-branch stock transfers & transit records',
       'Automated re-order levels & stock valuation (FIFO/Weighted Avg)',
     ],
-    accentColor: '#00E5FF',
-    glowColor: 'rgba(0, 229, 255, 0.4)',
+    accentColor: '#0052FF',
+    lightBg: 'rgba(0, 82, 255, 0.08)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -86,6 +90,7 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
   {
     id: 'finance',
     pillarNumber: '04',
+    shortTitle: 'Financial Mgmt',
     title: 'Financial Management',
     summary:
       'Automated accounting entries linked directly to sales, purchases, payroll, and banking operations.',
@@ -95,8 +100,8 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
       'Real-time P&L, balance sheets & tax reports',
       'Multi-currency transactions & audit logging',
     ],
-    accentColor: '#34D399',
-    glowColor: 'rgba(52, 211, 153, 0.35)',
+    accentColor: '#0D9488',
+    lightBg: 'rgba(13, 148, 136, 0.08)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -108,6 +113,7 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
   {
     id: 'governance',
     pillarNumber: '05',
+    shortTitle: 'Governance',
     title: 'Administration & Governance',
     summary:
       'Granular security roles, approval hierarchies, and executive dashboards for complete operational control.',
@@ -117,8 +123,8 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
       'Automated daily/weekly executive summary alerts',
       'Configurable report generator for audits',
     ],
-    accentColor: '#A78BFA',
-    glowColor: 'rgba(167, 139, 250, 0.35)',
+    accentColor: '#7C3AED',
+    lightBg: 'rgba(124, 58, 237, 0.08)',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -129,7 +135,7 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
 
 interface ErpPillarsCoverflowProps {
   items?: ErpPillarItem[];
-  autoPlayInterval?: number; // ms, default 5000
+  autoPlayInterval?: number;
   title?: string;
   subtitle?: string;
 }
@@ -140,7 +146,8 @@ export default function ErpPillarsCoverflow({
   title = 'The 5 Connected Pillars',
   subtitle = 'Configured to your business structure so your departments operate on one single source of truth.',
 }: ErpPillarsCoverflowProps) {
-  const [activeIndex, setActiveIndex] = useState(2); // Center on Inventory by default
+  // Center on Inventory & Warehouse (Index 2) by default
+  const [activeIndex, setActiveIndex] = useState(2);
   const [isPaused, setIsPaused] = useState(false);
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -176,9 +183,9 @@ export default function ErpPillarsCoverflow({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextCard, prevCard]);
 
-  // Handle Drag / Swipe gestures
+  // Handle Drag / Swipe gestures with natural threshold
   const handleDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const threshold = 40;
+    const threshold = 35;
     if (info.offset.x < -threshold) {
       nextCard();
     } else if (info.offset.x > threshold) {
@@ -187,26 +194,36 @@ export default function ErpPillarsCoverflow({
   };
 
   /**
-   * Calculate 3D transformation along the cylindrical curve
-   * Offset diff represents distance from active index (-2, -1, 0, 1, 2)
+   * Calculate 3D cylindrical transform along the curved cylindrical arc.
+   * - Diff represents relative distance from active center card (-2, -1, 0, 1, 2)
+   * - Center card: scale(1.04), rotateY(0deg), translateZ(40px), opacity 1, sharp focus
+   * - Inactive cards: curved outward along Y-axis up to 35deg, translated back in Z-axis, with depth-of-field blur
    */
   const getCardTransform = (index: number) => {
     let diff = index - activeIndex;
 
-    // Wrap around calculation for circular carousel
+    // Wrap around for seamless circular carousel
     if (diff > 2) diff -= count;
     if (diff < -2) diff += count;
 
-    // Responsive spread based on offset
     const isCenter = diff === 0;
+    const absDiff = Math.abs(diff);
 
-    // Cylindrical angle and coordinate calculations
-    const rotateY = diff * -28; // Negative for convex cylinder facing viewer
-    const translateX = diff * 280; // Distance between card centers in 3D space
-    const translateZ = isCenter ? 30 : -Math.abs(diff) * 110; // Bend cards backward in depth
-    const scale = isCenter ? 1.02 : Math.max(0.72, 1 - Math.abs(diff) * 0.14);
-    const opacity = isCenter ? 1 : Math.max(0.38, 0.85 - Math.abs(diff) * 0.28);
-    const zIndex = 30 - Math.abs(diff) * 8;
+    // Cylindrical arc mathematics:
+    // Inward Y-axis perspective rotation up to 32 degrees
+    const rotateY = diff * -30;
+    // Horizontal spacing along the perspective arc
+    const translateX = diff * 290;
+    // Deep Z-axis recession bending cards into the background cylinder
+    const translateZ = isCenter ? 40 : -absDiff * 125;
+    // Scale down inactive cards smoothly
+    const scale = isCenter ? 1.04 : Math.max(0.76, 1 - absDiff * 0.13);
+    // Smooth opacity falloff
+    const opacity = isCenter ? 1 : Math.max(0.48, 0.88 - absDiff * 0.22);
+    // Depth-of-field blur distortion
+    const blur = isCenter ? 0 : absDiff === 1 ? 1.5 : 3.5;
+    // Z-index hierarchy
+    const zIndex = 30 - absDiff * 8;
 
     return {
       rotateY,
@@ -214,12 +231,12 @@ export default function ErpPillarsCoverflow({
       translateZ,
       scale,
       opacity,
+      blur,
       zIndex,
       isCenter,
+      diff,
     };
   };
-
-  const activePillar = items[activeIndex];
 
   return (
     <section
@@ -228,35 +245,35 @@ export default function ErpPillarsCoverflow({
       onMouseLeave={() => setIsPaused(false)}
       className="relative w-full overflow-hidden select-none py-16 md:py-24"
       style={{
-        background: 'linear-gradient(180deg, #050811 0%, #080E1C 50%, #060B14 100%)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 45%, #F8FAFC 100%)',
+        borderTop: '1px solid #E2E8F0',
+        borderBottom: '1px solid #E2E8F0',
       }}
     >
-      {/* ── Ambient Radial Atmosphere Glows ── */}
+      {/* ── Crisp Studio Light Atmosphere (Radial Soft Lighting) ── */}
       <div
-        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full blur-[100px] opacity-25"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[110px] opacity-60"
         style={{
-          background: 'radial-gradient(circle, rgba(0, 229, 255, 0.4) 0%, rgba(59, 130, 246, 0.2) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(0, 82, 255, 0.08) 0%, rgba(2, 132, 199, 0.04) 40%, transparent 70%)',
         }}
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] rounded-full blur-[90px] opacity-20"
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[650px] h-[260px] rounded-full blur-[90px] opacity-40"
         style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(124, 58, 237, 0.06) 0%, transparent 70%)',
         }}
       />
 
       <div className="container-max relative z-10 mx-auto px-4">
         {/* ── Section Header ── */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-bold tracking-wider uppercase mb-4 shadow-[0_0_15px_rgba(0,229,255,0.15)]">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
             Unified ERP Architecture
           </div>
 
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A192F] tracking-tight leading-tight mb-4"
             style={{
               fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
             }}
@@ -264,20 +281,20 @@ export default function ErpPillarsCoverflow({
             {title}
           </h2>
 
-          <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
             {subtitle}
           </p>
         </div>
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[520px] sm:h-[540px] flex items-center justify-center"
+          className="relative w-full h-[520px] sm:h-[550px] flex items-center justify-center"
           style={{
-            perspective: '1200px',
+            perspective: '1400px',
             perspectiveOrigin: 'center center',
           }}
         >
-          {/* Framer Motion Drag Surface */}
+          {/* Framer Motion Gesture Drag Surface */}
           <motion.div
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -287,7 +304,7 @@ export default function ErpPillarsCoverflow({
             style={{ transformStyle: 'preserve-3d' }}
           >
             {items.map((pillar, index) => {
-              const { rotateY, translateX, translateZ, scale, opacity, zIndex, isCenter } =
+              const { rotateY, translateX, translateZ, scale, opacity, blur, zIndex, isCenter, diff } =
                 getCardTransform(index);
 
               return (
@@ -300,103 +317,113 @@ export default function ErpPillarsCoverflow({
                     rotateY: rotateY,
                     scale: scale,
                     opacity: opacity,
+                    filter: `blur(${blur}px)`,
                   }}
                   transition={{
                     type: 'spring',
-                    stiffness: 260,
-                    damping: 26,
-                    mass: 0.8,
+                    stiffness: 220,
+                    damping: 24,
+                    mass: 0.85,
                   }}
-                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] sm:w-[360px] md:w-[380px] h-[450px] sm:h-[470px] rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-shadow duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] sm:w-[360px] md:w-[385px] h-[455px] sm:h-[475px] rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-shadow duration-300 ${
                     isCenter
-                      ? 'cursor-default ring-1 ring-cyan-400/40'
-                      : 'cursor-pointer hover:ring-1 hover:ring-white/20'
+                      ? 'cursor-default'
+                      : 'cursor-pointer hover:shadow-lg'
                   }`}
                   style={{
                     zIndex,
                     transformStyle: 'preserve-3d',
+                    willChange: 'transform, opacity, filter',
+                    // Center card: Solid Crisp White. Side cards: Frosted paper texture
                     background: isCenter
-                      ? 'linear-gradient(145deg, rgba(14, 27, 49, 0.94) 0%, rgba(9, 17, 31, 0.98) 100%)'
-                      : 'linear-gradient(145deg, rgba(11, 21, 38, 0.85) 0%, rgba(7, 13, 24, 0.90) 100%)',
-                    backdropFilter: 'blur(16px)',
+                      ? '#FFFFFF'
+                      : 'rgba(255, 255, 255, 0.88)',
+                    backdropFilter: isCenter ? 'none' : 'blur(12px)',
+                    // Active center card gets a crisp 2px blue accent border (#0052FF)
                     border: isCenter
-                      ? `1.5px solid ${pillar.accentColor}`
-                      : '1px solid rgba(255, 255, 255, 0.1)',
+                      ? '2px solid #0052FF'
+                      : '1px solid rgba(226, 232, 240, 0.9)',
+                    // High-fidelity studio drop shadow with inertial pop
                     boxShadow: isCenter
-                      ? `0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px ${pillar.glowColor}`
-                      : '0 10px 25px -5px rgba(0, 0, 0, 0.6)',
+                      ? '0 25px 50px -12px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(0, 82, 255, 0.12), 0 8px 24px -4px rgba(0, 82, 255, 0.10)'
+                      : '0 10px 25px -6px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04)',
                   }}
                 >
-                  {/* Top Header Row with Icon & Pillar Number */}
-                  <div>
+                  {/* Subtle Cylindrical Shading Overlay (Simulates cylindrical curved lighting) */}
+                  {!isCenter && (
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300"
+                      style={{
+                        background:
+                          diff < 0
+                            ? 'linear-gradient(90deg, rgba(15, 23, 42, 0.06) 0%, transparent 45%)'
+                            : 'linear-gradient(270deg, rgba(15, 23, 42, 0.06) 0%, transparent 45%)',
+                      }}
+                    />
+                  )}
+
+                  {/* Top Card Content */}
+                  <div className="relative z-10">
+                    {/* Header Row: Pillar Icon & Pillar Number Tag */}
                     <div className="flex items-center justify-between mb-4">
                       <div
-                        className="w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-300"
+                        className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 shadow-sm"
                         style={{
-                          background: isCenter
-                            ? `rgba(${parseInt(pillar.accentColor.slice(1, 3), 16)}, ${parseInt(
-                                pillar.accentColor.slice(3, 5),
-                                16
-                              )}, ${parseInt(pillar.accentColor.slice(5, 7), 16)}, 0.15)`
-                            : 'rgba(255, 255, 255, 0.05)',
-                          border: `1px solid ${
-                            isCenter ? pillar.accentColor : 'rgba(255, 255, 255, 0.1)'
-                          }`,
-                          color: isCenter ? pillar.accentColor : '#94A3B8',
+                          background: isCenter ? '#EFF6FF' : pillar.lightBg,
+                          border: isCenter ? '1.5px solid #BFDBFE' : '1px solid rgba(226, 232, 240, 0.8)',
+                          color: isCenter ? '#0052FF' : pillar.accentColor,
                         }}
                       >
                         {pillar.icon}
                       </div>
 
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className="text-xs font-mono font-bold px-2.5 py-1 rounded-md"
-                          style={{
-                            background: isCenter
-                              ? 'rgba(0, 229, 255, 0.12)'
-                              : 'rgba(255, 255, 255, 0.05)',
-                            color: isCenter ? '#00E5FF' : '#64748B',
-                            border: `1px solid ${
-                              isCenter ? 'rgba(0, 229, 255, 0.3)' : 'rgba(255, 255, 255, 0.06)'
-                            }`,
-                          }}
-                        >
-                          PILLAR {pillar.pillarNumber}
-                        </span>
-                      </div>
+                      <span
+                        className="text-xs font-mono font-bold px-2.5 py-1 rounded-full transition-colors duration-300"
+                        style={{
+                          background: isCenter ? '#EFF6FF' : '#F1F5F9',
+                          color: isCenter ? '#0052FF' : '#64748B',
+                          border: isCenter ? '1px solid #BFDBFE' : '1px solid #E2E8F0',
+                        }}
+                      >
+                        PILLAR {pillar.pillarNumber}
+                      </span>
                     </div>
 
-                    {/* Pillar Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">
+                    {/* Pillar Title (Deep Navy Typography) */}
+                    <h3
+                      className="text-xl sm:text-2xl font-bold text-[#0A192F] tracking-tight mb-2.5"
+                      style={{
+                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                      }}
+                    >
                       {pillar.title}
                     </h3>
 
-                    {/* Summary */}
-                    <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-5">
+                    {/* Summary (Fully Legible Slate Typography) */}
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                       {pillar.summary}
                     </p>
 
-                    {/* Thin Separator Line */}
+                    {/* Clean Horizontal Divider */}
                     <div
-                      className="w-full h-px mb-5"
+                      className="w-full h-px mb-4 transition-colors duration-300"
                       style={{
                         background: isCenter
-                          ? `linear-gradient(90deg, ${pillar.accentColor} 0%, rgba(255, 255, 255, 0.05) 100%)`
-                          : 'rgba(255, 255, 255, 0.08)',
+                          ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.1) 70%, transparent 100%)'
+                          : '#E2E8F0',
                       }}
                     />
 
-                    {/* Bullet Points */}
+                    {/* Bullet Points with Crisp Checkmark Bullets */}
                     <ul className="space-y-2.5">
                       {pillar.points.map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-300">
+                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700">
                           <span
-                            className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0"
+                            className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 font-bold text-[10px]"
                             style={{
-                              background: isCenter
-                                ? 'rgba(0, 229, 255, 0.15)'
-                                : 'rgba(255, 255, 255, 0.05)',
-                              color: isCenter ? pillar.accentColor : '#94A3B8',
+                              background: isCenter ? '#EFF6FF' : '#F8FAFC',
+                              color: isCenter ? '#0052FF' : '#64748B',
+                              border: isCenter ? '1px solid #BFDBFE' : '1px solid #CBD5E1',
                             }}
                           >
                             ✓
@@ -407,38 +434,40 @@ export default function ErpPillarsCoverflow({
                     </ul>
                   </div>
 
-                  {/* Bottom Active Card Glow Indicator */}
-                  {isCenter && (
-                    <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
-                      <span className="inline-flex items-center gap-1.5 text-cyan-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#00E5FF]" />
-                        Active Connected Hub
-                      </span>
-                      <span className="text-slate-500 font-mono text-[11px]">ERP Core</span>
-                    </div>
-                  )}
+                  {/* Active Card Bottom Connected Hub Tag */}
+                  <div
+                    className={`relative z-10 pt-3 border-t flex items-center justify-between text-xs font-medium transition-colors duration-300 ${
+                      isCenter ? 'border-blue-100 text-slate-600' : 'border-slate-100 text-slate-400'
+                    }`}
+                  >
+                    <span className="inline-flex items-center gap-1.5 font-semibold text-[#0052FF]">
+                      <span className="w-2 h-2 rounded-full bg-[#0052FF] animate-pulse" />
+                      Active Connected Hub
+                    </span>
+                    <span className="text-slate-400 font-mono text-[11px]">ERP Core</span>
+                  </div>
                 </motion.div>
               );
             })}
           </motion.div>
         </div>
 
-        {/* ── Bottom Controls Bar (Arrows, Dots, Play/Pause) ── */}
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-6">
-          {/* Left Arrow Button */}
-          <div className="flex items-center gap-4">
+        {/* ── Segmented Bottom Pill Indicator & Controls Dock ── */}
+        <div className="mt-8 flex flex-col items-center justify-center gap-4">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-full bg-white/95 border border-slate-200/90 shadow-sm backdrop-blur-md">
+            {/* Previous Card Button */}
             <button
               onClick={prevCard}
-              aria-label="Previous ERP Pillar"
-              className="w-11 h-11 rounded-full flex items-center justify-center bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-white hover:text-cyan-400 transition-all shadow-lg"
+              aria-label="Previous Pillar"
+              className="w-9 h-9 rounded-full flex items-center justify-center text-slate-600 hover:text-[#0052FF] hover:bg-slate-100 active:scale-95 transition-all"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
 
-            {/* 5 Dot / Pill Indicators */}
-            <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            {/* Segmented Pill Tabs for all 5 Pillars */}
+            <div className="flex items-center gap-1">
               {items.map((item, idx) => {
                 const isActive = idx === activeIndex;
                 return (
@@ -446,56 +475,68 @@ export default function ErpPillarsCoverflow({
                     key={item.id}
                     onClick={() => setActiveIndex(idx)}
                     aria-label={`Jump to ${item.title}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      isActive
-                        ? 'w-8 bg-cyan-400 shadow-[0_0_10px_#00E5FF]'
-                        : 'w-2 bg-slate-600 hover:bg-slate-400'
-                    }`}
-                  />
+                    className="relative px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-200"
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeSegmentedPill"
+                        className="absolute inset-0 bg-[#0052FF] rounded-full shadow-sm"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 350,
+                          damping: 28,
+                        }}
+                      />
+                    )}
+                    <span
+                      className={`relative z-10 transition-colors duration-200 flex items-center gap-1.5 ${
+                        isActive ? 'text-white' : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      <span className="font-mono text-[11px] opacity-80">{item.pillarNumber}</span>
+                      <span className="hidden sm:inline">{item.shortTitle}</span>
+                    </span>
+                  </button>
                 );
               })}
             </div>
 
-            {/* Right Arrow Button */}
+            {/* Next Card Button */}
             <button
               onClick={nextCard}
-              aria-label="Next ERP Pillar"
-              className="w-11 h-11 rounded-full flex items-center justify-center bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-white hover:text-cyan-400 transition-all shadow-lg"
+              aria-label="Next Pillar"
+              className="w-9 h-9 rounded-full flex items-center justify-center text-slate-600 hover:text-[#0052FF] hover:bg-slate-100 active:scale-95 transition-all"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
           </div>
 
-          {/* Autoplay Play/Pause Button */}
-          <button
-            onClick={() => setIsAutoplayActive(!isAutoplayActive)}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-colors"
-          >
-            {isAutoplayActive ? (
-              <>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <rect x="6" y="4" width="4" height="16" />
-                  <rect x="14" y="4" width="4" height="16" />
-                </svg>
-                <span>Autoplay On</span>
-              </>
-            ) : (
-              <>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                <span>Autoplay Paused</span>
-              </>
-            )}
-          </button>
+          {/* Autoplay Pause / Resume Status Toggle Pill */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsAutoplayActive(!isAutoplayActive)}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/80 hover:bg-white border border-slate-200 text-slate-600 hover:text-slate-900 transition-colors shadow-2xs"
+            >
+              {isAutoplayActive ? (
+                <>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Autoplay Active</span>
+                </>
+              ) : (
+                <>
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>Autoplay Paused</span>
+                </>
+              )}
+            </button>
+            <span className="text-slate-400 text-xs">•</span>
+            <span className="text-xs text-slate-500">
+              Swipe or use keyboard arrow keys (<kbd className="font-mono bg-slate-100 px-1 py-0.5 rounded text-[10px] text-slate-700">←</kbd> <kbd className="font-mono bg-slate-100 px-1 py-0.5 rounded text-[10px] text-slate-700">→</kbd>)
+            </span>
+          </div>
         </div>
-
-        {/* Swipe instruction hint for mobile */}
-        <p className="mt-4 text-center text-xs text-slate-500 font-medium">
-          Drag horizontally or click any card to rotate the 3D pillar hub
-        </p>
       </div>
     </section>
   );
