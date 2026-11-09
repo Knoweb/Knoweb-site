@@ -243,7 +243,7 @@ export default function ErpPillarsCoverflow({
       ref={containerRef}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="relative w-full overflow-hidden select-none py-16 md:py-24"
+      className="relative w-full overflow-hidden select-none py-20 md:py-28"
       style={{
         background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 45%, #F8FAFC 100%)',
         borderTop: '1px solid #E2E8F0',
@@ -264,31 +264,65 @@ export default function ErpPillarsCoverflow({
         }}
       />
 
-      <div className="container-max relative z-10 mx-auto px-4">
-        {/* ── Section Header ── */}
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
+      <div
+        className="relative z-10 w-full max-w-[1240px] mx-auto px-4 flex flex-col items-center"
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        {/* ── Section Header (Dead-centered with generous separation from 3D stage) ── */}
+        <div
+          className="w-full flex flex-col items-center justify-center text-center mx-auto mb-16 sm:mb-20 md:mb-28"
+          style={{
+            maxWidth: '820px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center',
+          }}
+        >
+          {/* Badge */}
+          <div
+            className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/95 border border-blue-200/90 text-blue-700 text-xs font-bold tracking-wider uppercase mb-5 shadow-xs"
+            style={{
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          >
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
             Unified ERP Architecture
           </div>
 
+          {/* Heading */}
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A192F] tracking-tight leading-tight mb-4"
+            className="w-full text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A192F] tracking-tight leading-tight mb-5"
             style={{
               fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              textAlign: 'center',
+              marginLeft: 'auto',
+              marginRight: 'auto',
             }}
           >
             {title}
           </h2>
 
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          {/* Subtitle */}
+          <p
+            className="w-full text-slate-600 text-base sm:text-lg leading-relaxed text-center mx-auto"
+            style={{
+              maxWidth: '680px',
+              textAlign: 'center',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          >
             {subtitle}
           </p>
         </div>
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[520px] sm:h-[550px] flex items-center justify-center"
+          className="relative w-full h-[530px] sm:h-[560px] md:h-[580px] flex items-center justify-center pt-2 sm:pt-4"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
@@ -298,7 +332,8 @@ export default function ErpPillarsCoverflow({
           <motion.div
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
+            dragElastic={0.15}
+            dragSnapToOrigin={true}
             onDragEnd={handleDragEnd}
             className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             style={{ transformStyle: 'preserve-3d' }}
