@@ -10,7 +10,6 @@ const quickLinks = [
   { label: 'Industry Solutions', href: '/solutions' },
   { label: 'Services', href: '/services' },
   { label: 'Blogs & Insights', href: '/blogs' },
-  { label: 'QuickAssist (Tech Help)', href: '/quickassist', highlight: true },
   { label: 'About Knoweb', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -58,7 +57,7 @@ export default function Footer() {
           className="footer-grid-layout"
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.3fr 1.25fr 1.15fr 0.9fr',
+            gridTemplateColumns: '1.35fr 1.25fr 1.15fr 0.95fr',
             gap: '44px',
             paddingBottom: '48px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
@@ -214,7 +213,7 @@ export default function Footer() {
               Contact
             </h4>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {/* Location item with Pin SVG */}
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                 <span
@@ -333,38 +332,43 @@ export default function Footer() {
                 </a>
               </div>
 
-              {/* QuickAssist urgent help pill */}
-              <div style={{ marginTop: '8px' }}>
-                <div
+              {/* QuickAssist (Tech Help) — Clean link replacing the button as requested */}
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                <span
                   style={{
-                    display: 'inline-flex',
+                    color: '#38BDF8',
+                    display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    padding: '7px 12px',
-                    borderRadius: '6px',
-                    background: 'rgba(56, 189, 248, 0.1)',
-                    border: '1px solid rgba(56, 189, 248, 0.25)',
+                    justifyContent: 'center',
+                    flexShrink: 0,
                   }}
                 >
-                  <span
-                    style={{
-                      width: '7px',
-                      height: '7px',
-                      borderRadius: '50%',
-                      background: '#38BDF8',
-                      boxShadow: '0 0 8px #38BDF8',
-                    }}
-                  />
-                  <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#38BDF8' }}>
-                    Need urgent help?{' '}
-                    <Link
-                      href="/quickassist"
-                      style={{ color: '#FFFFFF', textDecoration: 'underline' }}
-                    >
-                      QuickAssist
-                    </Link>
-                  </span>
-                </div>
+                  <svg
+                    width="19"
+                    height="19"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                </span>
+                <Link
+                  href="/quickassist"
+                  className="footer-link-hover"
+                  style={{
+                    color: '#38BDF8',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    transition: 'color 0.18s ease',
+                  }}
+                >
+                  QuickAssist (Tech Help)
+                </Link>
               </div>
             </div>
           </div>
@@ -436,7 +440,7 @@ export default function Footer() {
                 margin: 0,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '10px',
+                gap: '12px',
               }}
             >
               {quickLinks.map((item) => (
@@ -445,9 +449,9 @@ export default function Footer() {
                     href={item.href}
                     className="footer-link-hover"
                     style={{
-                      color: item.highlight ? '#38BDF8' : '#CBD5E1',
+                      color: '#CBD5E1',
                       fontSize: '0.88rem',
-                      fontWeight: item.highlight ? 700 : 400,
+                      fontWeight: 400,
                       textDecoration: 'none',
                       transition: 'color 0.18s ease, transform 0.18s ease',
                       display: 'inline-block',
@@ -458,34 +462,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-
-            <div style={{ marginTop: '20px' }}>
-              <Link
-                href="/contact"
-                style={{
-                  display: 'inline-block',
-                  background: '#004FEB',
-                  color: '#FFFFFF',
-                  fontWeight: 600,
-                  fontSize: '0.84rem',
-                  padding: '8px 18px',
-                  borderRadius: '6px',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                  boxShadow: '0 2px 8px rgba(0, 79, 235, 0.35)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#0040C8';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#004FEB';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                Contact Knoweb →
-              </Link>
-            </div>
           </div>
         </div>
 
