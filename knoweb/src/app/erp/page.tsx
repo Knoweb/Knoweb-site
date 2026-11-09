@@ -160,7 +160,7 @@ export default function ERPPage() {
             width: '100%',
           }}
         >
-          <div style={{ maxWidth: '680px' }}>
+          <div style={{ maxWidth: '780px' }}>
             {/* Top Breadcrumb */}
             <div
               style={{
@@ -186,20 +186,28 @@ export default function ERPPage() {
               <span style={{ color: '#E2E8F0', fontWeight: 500 }}>Practical ERP</span>
             </div>
 
-            {/* Main Headline (H1): Exact styling as Home Hero (Light 300 weight, pure white) */}
+            {/* Main Headline (H1): Clean 2-line flow without awkward floating dash line */}
             <h1
               style={{
                 fontFamily:
                   "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                fontSize: 'clamp(2.75rem, 5.8vw, 5.25rem)',
+                fontSize: 'clamp(2.4rem, 4.6vw, 4.1rem)',
                 fontWeight: 300,
-                lineHeight: 1.12,
+                lineHeight: 1.15,
                 color: '#FFFFFF',
                 letterSpacing: '-0.025em',
                 marginBottom: '24px',
               }}
             >
-              Practical ERP &mdash; Bring Your Operations Together
+              Practical ERP
+              <span
+                style={{
+                  display: 'block',
+                  color: '#FFFFFF',
+                }}
+              >
+                Bring Your Operations Together
+              </span>
             </h1>
 
             {/* Description Paragraph: Exact styling as Home Hero (400 weight, #94A3B8, max-width ~620px) */}
