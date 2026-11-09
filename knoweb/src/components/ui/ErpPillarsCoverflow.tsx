@@ -142,15 +142,18 @@ interface ErpPillarsCoverflowProps {
 
 export default function ErpPillarsCoverflow({
   items = ERP_PILLARS_DATA,
-  autoPlayInterval = 5000,
+  autoPlayInterval = 3500,
   title = 'The 5 Connected Pillars',
   subtitle = 'Configured to your business structure so your departments operate on one single source of truth.',
 }: ErpPillarsCoverflowProps) {
   // Center on Inventory & Warehouse (Index 2) by default
   const [activeIndex, setActiveIndex] = useState(2);
-  const [isPaused, setIsPaused] = useState(false);
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const dragStartX = useRef<number | null>(null);
+  const dragStartY = useRef<number | null>(null);
+  const dragMovedRef = useRef<boolean>(false);
   const count = items.length;
 
   const nextCard = useCallback(() => {
@@ -161,14 +164,16 @@ export default function ErpPillarsCoverflow({
     setActiveIndex((prev) => (prev - 1 + count) % count);
   }, [count]);
 
-  // Autoplay functionality
+  // Robust Autoplay functionality: auto-advances every 3.5s and smoothly resets after any swipe/click
   useEffect(() => {
-    if (!isAutoplayActive || isPaused) return;
+    if (!isAutoplayActive || isDragging) return;
+
     const timer = setInterval(() => {
-      nextCard();
+      setActiveIndex((prev) => (prev + 1) % count);
     }, autoPlayInterval);
+
     return () => clearInterval(timer);
-  }, [isAutoplayActive, isPaused, nextCard, autoPlayInterval]);
+  }, [isAutoplayActive, isDragging, activeIndex, autoPlayInterval, count]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -183,14 +188,56 @@ export default function ErpPillarsCoverflow({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextCard, prevCard]);
 
-  // Handle Drag / Swipe gestures with natural threshold
+  // Framer Motion Drag handling for desktop mouse
   const handleDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const threshold = 35;
-    if (info.offset.x < -threshold) {
+    const threshold = 30;
+    const velocityThreshold = 160;
+    if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) {
       nextCard();
-    } else if (info.offset.x > threshold) {
+    } else if (info.offset.x > threshold || info.velocity.x > velocityThreshold) {
       prevCard();
     }
+    setTimeout(() => {
+      dragMovedRef.current = false;
+      setIsDragging(false);
+    }, 80);
+  };
+
+  // Native Touch Swipe Handlers for guaranteed mobile touchscreen swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    dragStartX.current = e.touches[0].clientX;
+    dragStartY.current = e.touches[0].clientY;
+    dragMovedRef.current = false;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (dragStartX.current === null) return;
+    const diffX = e.touches[0].clientX - dragStartX.current;
+    if (Math.abs(diffX) > 10) {
+      dragMovedRef.current = true;
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (dragStartX.current !== null) {
+      const diffX = e.changedTouches[0].clientX - dragStartX.current;
+      const diffY = e.changedTouches[0].clientY - (dragStartY.current ?? 0);
+      // If primarily horizontal and exceeds 30px threshold
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+        if (diffX < 0) {
+          nextCard();
+        } else {
+          prevCard();
+        }
+      }
+    }
+    dragStartX.current = null;
+    dragStartY.current = null;
+    setTimeout(() => {
+      dragMovedRef.current = false;
+      setIsDragging(false);
+    }, 80);
   };
 
   /**
@@ -241,8 +288,6 @@ export default function ErpPillarsCoverflow({
   return (
     <section
       ref={containerRef}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       className="relative w-full overflow-hidden select-none py-20 md:py-28"
       style={{
         background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 45%, #F8FAFC 100%)',
@@ -328,14 +373,21 @@ export default function ErpPillarsCoverflow({
             perspectiveOrigin: 'center center',
           }}
         >
-          {/* Framer Motion Gesture Drag Surface */}
+          {/* Framer Motion Gesture Drag Surface with Dual Touch/Pointer Swipe Support */}
           <motion.div
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.15}
+            dragElastic={0.2}
             dragSnapToOrigin={true}
+            onDragStart={() => {
+              dragMovedRef.current = true;
+              setIsDragging(true);
+            }}
             onDragEnd={handleDragEnd}
-            className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y"
             style={{ transformStyle: 'preserve-3d' }}
           >
             {items.map((pillar, index) => {
@@ -345,7 +397,11 @@ export default function ErpPillarsCoverflow({
               return (
                 <motion.div
                   key={pillar.id}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    if (!dragMovedRef.current) {
+                      setActiveIndex(index);
+                    }
+                  }}
                   animate={{
                     x: translateX,
                     z: translateZ,
