@@ -216,3 +216,4 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ['Software Strategy', 'SaaS', 'Custom Development'],
   },
 ];
+
