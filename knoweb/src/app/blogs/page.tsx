@@ -174,7 +174,7 @@ export default function BlogsPage() {
             width: '100%',
           }}
         >
-          <div style={{ maxWidth: '740px' }}>
+          <div style={{ maxWidth: '680px' }}>
             {/* Top Breadcrumb */}
             <div
               style={{
@@ -205,9 +205,9 @@ export default function BlogsPage() {
               style={{
                 fontFamily:
                   "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                fontSize: 'clamp(2rem, 3.7vw, 3.35rem)',
+                fontSize: 'clamp(2.75rem, 5.8vw, 5.25rem)',
                 fontWeight: 300,
-                lineHeight: 1.16,
+                lineHeight: 1.12,
                 color: '#FFFFFF',
                 letterSpacing: '-0.025em',
                 marginBottom: '24px',
