@@ -2,59 +2,7 @@
 
 import Link from 'next/link';
 import BottomCTASection from '@/components/sections/BottomCTASection';
-
-const pillars = [
-  {
-    title: 'Sales & Distribution',
-    desc: 'Quotations, sales orders, delivery dispatch notes, and receivables tracking across all sales channels.',
-    bullets: [
-      'Multi-channel order capture & approvals',
-      'Flexible price lists, discounts & promotions',
-      'Delivery scheduling & fulfillment tracking',
-      'Customer credit limits & aging analyses',
-    ],
-  },
-  {
-    title: 'Purchasing & Procurement',
-    desc: 'Standardized purchase requests, supplier quotations, purchase orders, and goods receipt verification.',
-    bullets: [
-      'Purchase requisitions & multi-level sign-offs',
-      'Vendor price comparison & purchase orders',
-      'Goods Receipt Notes (GRN) & 3-way matching',
-      'Supplier payment tracking & credit control',
-    ],
-  },
-  {
-    title: 'Inventory & Warehouse',
-    desc: 'Complete inventory visibility across warehouses, retail locations, and transit hubs.',
-    bullets: [
-      'Real-time multi-location stock balances',
-      'Batch numbers, serial tracking & expiry dates',
-      'Inter-branch stock transfers & transit records',
-      'Automated re-order levels & stock valuation (FIFO/Weighted Avg)',
-    ],
-  },
-  {
-    title: 'Financial Management',
-    desc: 'Automated accounting entries linked directly to sales, purchases, payroll, and banking operations.',
-    bullets: [
-      'General ledger, accounts payable & receivable',
-      'Bank reconciliation & cash flow tracking',
-      'Real-time P&L, balance sheets & tax reports',
-      'Multi-currency transactions & audit logging',
-    ],
-  },
-  {
-    title: 'Administration & Governance',
-    desc: 'Granular security roles, approval hierarchies, and executive dashboards for complete operational control.',
-    bullets: [
-      'Role-based permissions & secure audit trails',
-      'Custom approval workflows for high-value actions',
-      'Automated daily/weekly executive summary alerts',
-      'Configurable report generator for audits',
-    ],
-  },
-];
+import ErpPillarsCoverflow from '@/components/ui/ErpPillarsCoverflow';
 
 export default function ERPPage() {
   return (
@@ -230,111 +178,11 @@ export default function ERPPage() {
         </div>
       </section>
 
-      {/* ── 5 Core Pillars ── */}
+      {/* ── 5 Core Connected Pillars (Interactive 3D Curved Cylindrical Carousel) ── */}
+      <ErpPillarsCoverflow />
+
       <section style={{ paddingTop: '56px', paddingBottom: '32px' }}>
         <div className="container-max">
-          <div style={{ marginBottom: '32px' }}>
-            <h2
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '1.45rem',
-                fontWeight: 800,
-                color: '#0A192F',
-                textTransform: 'uppercase',
-                letterSpacing: '0.02em',
-                marginBottom: '8px',
-              }}
-            >
-              The 5 Connected Pillars
-            </h2>
-            <p style={{ color: '#64748B', fontSize: '0.95rem', margin: 0 }}>
-              Configured to your business structure so your departments operate on one single source of truth.
-            </p>
-          </div>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '24px',
-              marginBottom: '48px',
-            }}
-          >
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.title}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: '14px',
-                  border: '1.5px solid #CBD5E1',
-                  padding: '30px 26px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#004FEB';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 79, 235, 0.06)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#CBD5E1';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                <div>
-                  <h3
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '1.3rem',
-                      fontWeight: 700,
-                      color: '#0A192F',
-                      marginBottom: '8px',
-                    }}
-                  >
-                    {pillar.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: '0.92rem',
-                      color: '#475569',
-                      lineHeight: 1.55,
-                      marginBottom: '20px',
-                    }}
-                  >
-                    {pillar.desc}
-                  </p>
-
-                  <ul
-                    style={{
-                      listStyle: 'none',
-                      padding: 0,
-                      margin: 0,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '8px',
-                    }}
-                  >
-                    {pillar.bullets.map((b, i) => (
-                      <li
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'baseline',
-                          gap: '8px',
-                          fontSize: '0.88rem',
-                          color: '#334155',
-                        }}
-                      >
-                        <span style={{ color: '#004FEB', fontWeight: 700 }}>•</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
 
           {/* Differentiating Banner */}
           <div
