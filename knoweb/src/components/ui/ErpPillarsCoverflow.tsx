@@ -382,7 +382,7 @@ export default function ErpPillarsCoverflow({
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[530px] sm:h-[555px] md:h-[580px] flex items-center justify-center pt-1"
+          className="relative w-full h-[515px] sm:h-[540px] md:h-[565px] flex items-center justify-center pt-1"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
@@ -431,7 +431,7 @@ export default function ErpPillarsCoverflow({
                     damping: 24,
                     mass: 0.85,
                   }}
-                  className={`absolute top-1/2 -translate-y-1/2 w-[330px] sm:w-[360px] md:w-[385px] h-[480px] sm:h-[500px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[330px] sm:w-[360px] md:w-[385px] h-[460px] sm:h-[480px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
                     isCenter
                       ? 'cursor-default ring-1 ring-blue-500/20'
                       : 'cursor-pointer hover:shadow-lg'
@@ -516,8 +516,8 @@ export default function ErpPillarsCoverflow({
                     </div>
                   </div>
 
-                  {/* ── Card Body Content (Vertically balanced, center-aligned title & summary, neatly aligned features) ── */}
-                  <div className="px-6 sm:px-7 py-5 sm:py-6 flex-1 flex flex-col justify-center items-center text-center relative z-10">
+                  {/* ── Card Body Content (Moved up to eliminate top white gap, generous gap before bullets) ── */}
+                  <div className="px-6 sm:px-7 pt-3.5 sm:pt-4 pb-5 flex-1 flex flex-col justify-start items-center text-center relative z-10">
                     <div className="w-full flex flex-col items-center">
                       {/* Pillar Title with Hero Inter font - Centered */}
                       <h3
@@ -535,9 +535,9 @@ export default function ErpPillarsCoverflow({
                         {pillar.summary}
                       </p>
 
-                      {/* Clean Centered Accent Divider */}
+                      {/* Clean Centered Accent Divider with generous bottom space */}
                       <div
-                        className="h-[2px] w-16 mb-3.5 mx-auto rounded-full transition-all duration-300"
+                        className="h-[2px] w-16 mb-5 mx-auto rounded-full transition-all duration-300"
                         style={{
                           background: isCenter
                             ? 'linear-gradient(90deg, rgba(0, 82, 255, 0.15) 0%, #0052FF 50%, rgba(0, 82, 255, 0.15) 100%)'
