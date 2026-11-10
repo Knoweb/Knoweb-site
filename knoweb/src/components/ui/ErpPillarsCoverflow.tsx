@@ -382,7 +382,7 @@ export default function ErpPillarsCoverflow({
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[515px] sm:h-[540px] md:h-[565px] flex items-center justify-center pt-1"
+          className="relative w-full h-[495px] sm:h-[515px] md:h-[535px] flex items-center justify-center pt-1"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
@@ -431,7 +431,7 @@ export default function ErpPillarsCoverflow({
                     damping: 24,
                     mass: 0.85,
                   }}
-                  className={`absolute top-1/2 -translate-y-1/2 w-[330px] sm:w-[360px] md:w-[385px] h-[460px] sm:h-[480px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[325px] sm:w-[355px] md:w-[380px] h-[435px] sm:h-[450px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
                     isCenter
                       ? 'cursor-default ring-1 ring-blue-500/20'
                       : 'cursor-pointer hover:shadow-lg'
@@ -469,7 +469,7 @@ export default function ErpPillarsCoverflow({
                   )}
 
                   {/* ── Top Visual Header with Prominent High-Resolution Card Graphic ── */}
-                  <div className="relative w-full h-[170px] sm:h-[185px] overflow-hidden bg-slate-100 shrink-0">
+                  <div className="relative w-full h-[155px] sm:h-[165px] overflow-hidden bg-slate-100 shrink-0">
                     <img
                       src={pillar.image}
                       alt={pillar.title}
@@ -516,12 +516,12 @@ export default function ErpPillarsCoverflow({
                     </div>
                   </div>
 
-                  {/* ── Card Body Content (Moved up to eliminate top white gap, generous gap before bullets) ── */}
-                  <div className="px-6 sm:px-7 pt-3.5 sm:pt-4 pb-5 flex-1 flex flex-col justify-start items-center text-center relative z-10">
+                  {/* ── Card Body Content (Vertically centered, balanced py-6 padding, zero empty bottom space) ── */}
+                  <div className="px-6 sm:px-7 py-6 flex-1 flex flex-col justify-center items-center text-center relative z-10">
                     <div className="w-full flex flex-col items-center">
-                      {/* Pillar Title with Hero Inter font - Centered */}
+                      {/* Pillar Title with Hero Inter font - Centered with top spacing */}
                       <h3
-                        className="text-xl sm:text-[22px] font-extrabold text-[#0A192F] tracking-tight leading-snug mb-2 text-center"
+                        className="text-xl sm:text-[22px] font-extrabold text-[#0A192F] tracking-tight leading-snug mt-1.5 sm:mt-2 mb-2 text-center"
                         style={{
                           fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                           letterSpacing: '-0.025em',
@@ -531,13 +531,13 @@ export default function ErpPillarsCoverflow({
                       </h3>
 
                       {/* Summary with high legibility - Centered */}
-                      <p className="text-slate-600 text-xs sm:text-[13.5px] leading-relaxed mb-3 text-center max-w-[320px] mx-auto">
+                      <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-3 text-center max-w-[320px] mx-auto">
                         {pillar.summary}
                       </p>
 
-                      {/* Clean Centered Accent Divider with generous bottom space */}
+                      {/* Clean Centered Accent Divider */}
                       <div
-                        className="h-[2px] w-16 mb-5 mx-auto rounded-full transition-all duration-300"
+                        className="h-[2px] w-16 mb-4 mx-auto rounded-full transition-all duration-300"
                         style={{
                           background: isCenter
                             ? 'linear-gradient(90deg, rgba(0, 82, 255, 0.15) 0%, #0052FF 50%, rgba(0, 82, 255, 0.15) 100%)'
@@ -545,8 +545,8 @@ export default function ErpPillarsCoverflow({
                         }}
                       />
 
-                      {/* Bullet Points with Crisp Vector SVG Checkmark Icons - Neatly aligned block */}
-                      <ul className="w-full max-w-[315px] sm:max-w-[325px] mx-auto space-y-2.5 text-left">
+                      {/* Bullet Points with Crisp Vector SVG Checkmark Icons & space-y-3 */}
+                      <ul className="w-full max-w-[315px] sm:max-w-[325px] mx-auto space-y-3 text-left">
                         {pillar.points.map((point, idx) => (
                           <li
                             key={idx}
