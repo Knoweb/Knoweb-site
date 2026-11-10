@@ -2,15 +2,26 @@
 
 import Link from 'next/link';
 import BottomCTASection from '@/components/sections/BottomCTASection';
-import SolutionsCoverflow from '@/components/ui/SolutionsCoverflow';
 
-const industrySolutions = [
+interface SolutionItem {
+  id: string;
+  title: string;
+  tagline: string;
+  summary: string;
+  overview: string;
+  bgImage: string;
+  bgPosition: string;
+  features: string[];
+}
+
+const industrySolutions: SolutionItem[] = [
   {
     id: 'wewili',
     title: 'Wewili Plantation Dashboard',
     tagline: 'Plantation Operations & Estate Intelligence',
+    bgImage: '/sol-wavili.png',
+    bgPosition: 'right 30%',
     summary: 'Plantation operations and management information.',
-    image: '/sol-wavili.jpg',
     overview:
       'A specialized digital monitoring system tailored for tea, rubber, coconut, and agro-plantations. It aggregates field data, worker productivity, crop yield, and factory dispatch into real-time executive dashboards.',
     features: [
@@ -26,8 +37,9 @@ const industrySolutions = [
     id: 'inspection',
     title: 'Inspection Dashboard',
     tagline: 'Field Audits & Compliance Verification',
+    bgImage: '/sol-inspection.png',
+    bgPosition: 'right 25%',
     summary: 'Inspection records, observations and follow-up.',
-    image: '/sol-inspection.jpg',
     overview:
       'Standardize quality, safety, and compliance audits across multiple facilities, retail stores, or construction sites with digital mobile forms and instant discrepancy resolution workflows.',
     features: [
@@ -43,8 +55,9 @@ const industrySolutions = [
     id: 'greenhouse',
     title: 'Greenhouse Monitoring System',
     tagline: 'Agri-Tech Environmental Telemetry',
+    bgImage: '/sol-greenhouse.png',
+    bgPosition: 'right 20%',
     summary: 'Environmental conditions and greenhouse monitoring.',
-    image: '/sol-greenhouse.jpg',
     overview:
       'Continuous telemetry monitoring of critical micro-climates in commercial poly-tunnels and smart greenhouses. Protect delicate crops and optimize yield with early warning sensor triggers.',
     features: [
@@ -60,8 +73,9 @@ const industrySolutions = [
     id: 'atm',
     title: 'ATM Alarming System',
     tagline: 'Financial Infrastructure & Physical Security Monitoring',
+    bgImage: '/sol-alarm.png',
+    bgPosition: 'right 30%',
     summary: 'Equipment alerts and ATM monitoring.',
-    image: '/sol-alarm.png',
     overview:
       'Mission-critical physical security and telemetry monitoring for remote ATM kiosks and bank branch vaults. Ensures uninterrupted surveillance and rapid security response.',
     features: [
@@ -231,189 +245,351 @@ export default function SolutionsPage() {
                 lineHeight: 1.65,
                 color: '#94A3B8',
                 maxWidth: '620px',
-                margin: 0,
+                marginBottom: '38px',
               }}
             >
               Purpose-built applications and monitoring systems for specialized operational requirements.
               Engineered for high reliability in demanding environments, giving operational leaders immediate visibility and rapid response capabilities.
             </p>
+
+            {/* Buttons: Exact styling as Home Hero */}
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '16px',
+              }}
+            >
+              <a
+                href="#wewili"
+                style={{
+                  textDecoration: 'none',
+                  borderRadius: '10px',
+                  background: '#0066FF',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  fontSize: '0.98rem',
+                  padding: '13px 30px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.25s ease',
+                  boxShadow: '0 4px 20px rgba(0, 102, 255, 0.45)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#0052CC';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow =
+                    '0 8px 30px rgba(0, 102, 255, 0.65)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#0066FF';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow =
+                    '0 4px 20px rgba(0, 102, 255, 0.45)';
+                }}
+              >
+                Explore 4 Solutions &darr;
+              </a>
+
+              <Link
+                href="/contact"
+                style={{
+                  textDecoration: 'none',
+                  border: '1.5px solid rgba(255, 255, 255, 0.28)',
+                  color: '#FFFFFF',
+                  borderRadius: '10px',
+                  padding: '12px 28px',
+                  fontWeight: 600,
+                  fontSize: '0.98rem',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.55)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                Talk to an Expert &rarr;
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 4 Specialized Operational Solutions (Interactive 3D Curved Cylindrical Carousel) ── */}
-      <SolutionsCoverflow />
-
-      {/* ── Solutions Detailed Specifications & Capabilities ── */}
+      {/* ── Solutions List (Exact SaaS Product Card Architecture & Visual Fidelity) ── */}
       <section style={{ paddingTop: '56px', paddingBottom: '32px' }}>
         <div className="container-max">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
             {industrySolutions.map((item) => (
               <div
                 key={item.id}
                 id={item.id}
+                className="saas-product-card"
                 style={{
+                  position: 'relative',
                   background: '#FFFFFF',
                   borderRadius: '16px',
                   border: '1.5px solid #CBD5E1',
-                  overflow: 'hidden',
+                  padding: '36px 32px',
                   scrollMarginTop: '110px',
-                  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                  overflow: 'hidden',
+                  transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
                 }}
               >
-                {/* Visual Image Banner with Clean Gradient Overlay */}
-                <div className="relative w-full h-[220px] sm:h-[300px] md:h-[360px] overflow-hidden bg-slate-900 border-b border-slate-200">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover object-top"
-                  />
+                {/* ── Background UI Visual Layer (Dashboard Screenshot with Vignette) ── */}
+                {item.bgImage && (
                   <div
-                    className="absolute inset-0 pointer-events-none"
+                    className="saas-card-bg-wrap"
                     style={{
-                      background: 'linear-gradient(180deg, rgba(10, 25, 47, 0.10) 0%, transparent 60%, rgba(10, 25, 47, 0.35) 100%)',
+                      position: 'absolute',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
+                      pointerEvents: 'none',
+                      zIndex: 0,
+                      overflow: 'hidden',
                     }}
-                  />
-                </div>
+                  >
+                    {/* Dashboard Mockup Layer */}
+                    <div
+                      className="saas-card-bg-image"
+                      style={{
+                        position: 'absolute',
+                        inset: '-2%',
+                        width: '104%',
+                        height: '104%',
+                        backgroundImage: `url(${item.bgImage})`,
+                        backgroundPosition: item.bgPosition || 'right 30%',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        opacity: 0.50,
+                        filter: 'contrast(1.05) saturate(1.10)',
+                        transition:
+                          'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
+                      }}
+                    />
 
-                <div style={{ padding: '36px 32px' }}>
+                    {/* Left-to-Right Protective Gradient: Light Mode (100% Crisp Content Readability) */}
+                    <div
+                      className="saas-card-vignette-light"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 28%, rgba(255, 255, 255, 0.94) 50%, rgba(255, 255, 255, 0.65) 75%, rgba(255, 255, 255, 0.15) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    {/* Left-to-Right Protective Gradient: Dark Mode */}
+                    <div
+                      className="saas-card-vignette-dark"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(90deg, #0E223D 0%, #0E223D 28%, rgba(14, 34, 61, 0.94) 50%, rgba(14, 34, 61, 0.65) 75%, rgba(14, 34, 61, 0.18) 100%)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  </div>
+                )}
+
+                {/* ── Foreground Content Layer (Guaranteed Crisp Readability) ── */}
+                <div style={{ position: 'relative', zIndex: 1 }}>
                   <div
                     style={{
                       display: 'flex',
                       flexWrap: 'wrap',
-                      alignItems: 'baseline',
+                      alignItems: 'center',
                       justifyContent: 'space-between',
                       gap: '12px',
-                      marginBottom: '10px',
+                      marginBottom: '14px',
                     }}
                   >
-                  <h2
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '1.65rem',
-                      fontWeight: 800,
-                      color: '#0A192F',
-                    }}
-                  >
-                    {item.title}
-                  </h2>
-                  <span
-                    style={{
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      color: '#004FEB',
-                      background: 'rgba(0, 79, 235, 0.08)',
-                      padding: '4px 12px',
-                      borderRadius: '6px',
-                    }}
-                  >
-                    {item.tagline}
-                  </span>
-                </div>
-
-                <p
-                  style={{
-                    fontSize: '1.02rem',
-                    fontWeight: 600,
-                    color: '#334155',
-                    marginBottom: '8px',
-                  }}
-                >
-                  {item.summary}
-                </p>
-
-                <p
-                  style={{
-                    fontSize: '0.94rem',
-                    lineHeight: 1.6,
-                    color: '#64748B',
-                    marginBottom: '24px',
-                    maxWidth: '820px',
-                  }}
-                >
-                  {item.overview}
-                </p>
-
-                <h4
-                  style={{
-                    fontSize: '0.88rem',
-                    fontWeight: 700,
-                    color: '#0F172A',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.04em',
-                    marginBottom: '12px',
-                  }}
-                >
-                  System Capabilities &amp; Architecture
-                </h4>
-
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                    gap: '10px',
-                    marginBottom: '28px',
-                  }}
-                >
-                  {item.features.map((feature, i) => (
-                    <div
-                      key={i}
+                    <h2
                       style={{
-                        display: 'flex',
-                        alignItems: 'baseline',
-                        gap: '8px',
-                        fontSize: '0.9rem',
-                        color: '#475569',
-                        background: '#F8FAFC',
-                        padding: '10px 14px',
-                        borderRadius: '8px',
-                        border: '1px solid #E2E8F0',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '1.65rem',
+                        fontWeight: 800,
+                        color: '#0A192F',
+                        margin: 0,
                       }}
                     >
-                      <span style={{ color: '#004FEB', fontWeight: 700 }}>✓</span>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
+                      {item.title}
+                    </h2>
+                    <span
+                      className="saas-tagline-badge"
+                      style={{
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        color: '#004FEB',
+                        background: 'rgba(238, 244, 255, 0.92)',
+                        backdropFilter: 'blur(8px)',
+                        WebkitBackdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(0, 79, 235, 0.22)',
+                        padding: '5px 14px',
+                        borderRadius: '6px',
+                        boxShadow: '0 2px 6px rgba(0, 79, 235, 0.08)',
+                      }}
+                    >
+                      {item.tagline}
+                    </span>
+                  </div>
 
-                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                  <Link
-                    href={`/contact?solution=${encodeURIComponent(item.title)}`}
+                  <p
+                    className="saas-card-summary"
                     style={{
-                      textDecoration: 'none',
-                      background: '#004FEB',
-                      color: '#FFFFFF',
+                      fontSize: '1.05rem',
+                      fontWeight: 700,
+                      color: '#0A192F',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    {item.summary}
+                  </p>
+
+                  <p
+                    className="saas-card-details"
+                    style={{
+                      fontSize: '0.96rem',
+                      lineHeight: 1.65,
+                      color: '#1E293B',
                       fontWeight: 600,
+                      marginBottom: '24px',
+                      maxWidth: '740px',
+                    }}
+                  >
+                    {item.overview}
+                  </p>
+
+                  <h4
+                    style={{
                       fontSize: '0.9rem',
-                      padding: '10px 22px',
-                      borderRadius: '8px',
-                      display: 'inline-flex',
+                      fontWeight: 800,
+                      color: '#0A192F',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      marginBottom: '14px',
+                      display: 'flex',
                       alignItems: 'center',
-                      gap: '6px',
+                      gap: '8px',
                     }}
                   >
-                    Request Technical Overview for {item.title} &gt;
-                  </Link>
+                    <span
+                      style={{
+                        width: '4px',
+                        height: '14px',
+                        background: '#004FEB',
+                        borderRadius: '2px',
+                      }}
+                    ></span>
+                    System Capabilities &amp; Architecture
+                  </h4>
 
-                  <Link
-                    href="/quickassist"
+                  <div
                     style={{
-                      textDecoration: 'none',
-                      background: '#FFFFFF',
-                      color: '#475569',
-                      border: '1px solid #CBD5E1',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      padding: '10px 20px',
-                      borderRadius: '8px',
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                      gap: '12px',
+                      marginBottom: '28px',
                     }}
                   >
-                    Need troubleshooting on an existing system?
-                  </Link>
+                    {item.features.map((feature, i) => (
+                      <div
+                        key={i}
+                        className="saas-capability-item"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '10px',
+                          fontSize: '0.92rem',
+                          color: '#0A192F',
+                          fontWeight: 600,
+                          background: '#FFFFFF',
+                          padding: '12px 18px',
+                          borderRadius: '10px',
+                          border: '1.5px solid #CBD5E1',
+                          boxShadow:
+                            '0 3px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04)',
+                          transition: 'all 0.2s ease',
+                        }}
+                      >
+                        <span
+                          style={{
+                            color: '#004FEB',
+                            fontWeight: 800,
+                            fontSize: '1rem',
+                            flexShrink: 0,
+                          }}
+                        >
+                          ✓
+                        </span>
+                        <span style={{ lineHeight: 1.4 }}>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '14px',
+                      flexWrap: 'wrap',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Link
+                      href={`/contact?solution=${encodeURIComponent(item.title)}`}
+                      style={{
+                        textDecoration: 'none',
+                        background: '#004FEB',
+                        color: '#FFFFFF',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        padding: '10px 22px',
+                        borderRadius: '8px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
+                      }}
+                    >
+                      Request Technical Overview for {item.title} &rarr;
+                    </Link>
+
+                    <Link
+                      href="/quickassist"
+                      style={{
+                        textDecoration: 'none',
+                        background: '#FFFFFF',
+                        color: '#475569',
+                        border: '1.5px solid #CBD5E1',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        padding: '10px 20px',
+                        borderRadius: '8px',
+                      }}
+                    >
+                      Need troubleshooting on an existing system?
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
           </div>
         </div>
       </section>
