@@ -373,7 +373,7 @@ export default function ErpPillarsCoverflow({
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[480px] sm:h-[500px] md:h-[520px] flex items-center justify-center pt-1"
+          className="relative w-full h-[510px] sm:h-[530px] md:h-[550px] flex items-center justify-center pt-1"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
@@ -422,7 +422,7 @@ export default function ErpPillarsCoverflow({
                     damping: 24,
                     mass: 0.85,
                   }}
-                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] sm:w-[350px] md:w-[375px] h-[430px] sm:h-[445px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[325px] sm:w-[355px] md:w-[380px] h-[450px] sm:h-[465px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
                     isCenter
                       ? 'cursor-default ring-1 ring-blue-500/20'
                       : 'cursor-pointer hover:shadow-lg'
@@ -460,7 +460,7 @@ export default function ErpPillarsCoverflow({
                   )}
 
                   {/* ── Top Visual Header with High-Resolution Card Graphic ── */}
-                  <div className="relative w-full h-[150px] sm:h-[160px] overflow-hidden bg-slate-100 shrink-0">
+                  <div className="relative w-full h-[145px] sm:h-[155px] overflow-hidden bg-slate-100 shrink-0">
                     <img
                       src={pillar.image}
                       alt={pillar.title}
@@ -507,12 +507,12 @@ export default function ErpPillarsCoverflow({
                     </div>
                   </div>
 
-                  {/* ── Card Body Content (Vertically centered with balanced padding, zero bottom gap) ── */}
-                  <div className="px-5 sm:px-6 py-4 sm:py-5 flex-1 flex flex-col justify-center relative z-10">
+                  {/* ── Card Body Content (Vertically balanced, crisp typography, zero empty bottom space) ── */}
+                  <div className="px-5 sm:px-6 py-5 flex-1 flex flex-col justify-center relative z-10">
                     <div>
                       {/* Pillar Title with Hero Inter font */}
                       <h3
-                        className="text-lg sm:text-[19px] font-bold text-[#0A192F] tracking-tight leading-snug mb-1.5"
+                        className="text-xl sm:text-[22px] font-extrabold text-[#0A192F] tracking-tight leading-snug mb-2"
                         style={{
                           fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                           letterSpacing: '-0.025em',
@@ -521,34 +521,47 @@ export default function ErpPillarsCoverflow({
                         {pillar.title}
                       </h3>
 
-                      {/* Summary */}
-                      <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-2.5">
+                      {/* Summary with high legibility */}
+                      <p className="text-slate-600 text-sm sm:text-[14px] leading-relaxed mb-3">
                         {pillar.summary}
                       </p>
 
                       {/* Clean Divider */}
                       <div
-                        className="w-full h-px mb-2.5 transition-colors duration-300"
+                        className="w-full h-px mb-3 transition-colors duration-300"
                         style={{
                           background: isCenter
-                            ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.1) 75%, transparent 100%)'
+                            ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.15) 75%, transparent 100%)'
                             : '#E2E8F0',
                         }}
                       />
 
-                      {/* Bullet Points with compact, cozy spacing */}
-                      <ul className="space-y-1.5">
+                      {/* Bullet Points with Crisp Vector SVG Checkmark Icons */}
+                      <ul className="space-y-2.5">
                         {pillar.points.map((point, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-xs sm:text-[12.5px] text-slate-700">
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2.5 text-[13.5px] sm:text-[14px] text-slate-800 font-medium"
+                          >
                             <span
-                              className="mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[9px] transition-colors"
-                              style={{
-                                background: isCenter ? '#EFF6FF' : '#F8FAFC',
-                                color: isCenter ? '#0052FF' : '#64748B',
-                                border: isCenter ? '1px solid #BFDBFE' : '1px solid #CBD5E1',
-                              }}
+                              className={`mt-0.5 w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 transition-colors shadow-2xs ${
+                                isCenter
+                                  ? 'bg-[#0052FF] text-white shadow-xs'
+                                  : 'bg-slate-100 text-slate-500 border border-slate-200'
+                              }`}
                             >
-                              ✓
+                              <svg
+                                width="11"
+                                height="11"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="3.2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <polyline points="20 6 9 17 4 12" />
+                              </svg>
                             </span>
                             <span className="leading-snug">{point}</span>
                           </li>
