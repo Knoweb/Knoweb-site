@@ -154,7 +154,7 @@ export default function ErpPillarsCoverflow({
 }: ErpPillarsCoverflowProps) {
   // Center on Inventory & Warehouse (Index 2) by default
   const [activeIndex, setActiveIndex] = useState(2);
-  const [isAutoplayActive, setIsAutoplayActive] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [windowWidth, setWindowWidth] = useState(1200);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -178,16 +178,17 @@ export default function ErpPillarsCoverflow({
     setActiveIndex((prev) => (prev - 1 + count) % count);
   }, [count]);
 
-  // Robust Autoplay functionality: auto-advances every 3.5s and smoothly resets after any swipe/click
+  // Continuous auto swipe functionality:
+  // Automatically advances every 3.5s, pauses smoothly when mouse hovers over cards, and resumes when mouse leaves.
   useEffect(() => {
-    if (!isAutoplayActive || isDragging) return;
+    if (isHovered || isDragging) return;
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % count);
     }, autoPlayInterval);
 
     return () => clearInterval(timer);
-  }, [isAutoplayActive, isDragging, activeIndex, autoPlayInterval, count]);
+  }, [isHovered, isDragging, activeIndex, autoPlayInterval, count]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -382,12 +383,42 @@ export default function ErpPillarsCoverflow({
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className="relative w-full h-[495px] sm:h-[515px] md:h-[535px] flex items-center justify-center pt-1"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
           }}
         >
+          {/* Floating Left Arrow Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevCard();
+            }}
+            aria-label="Previous Pillar"
+            className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white border border-slate-200/90 shadow-md flex items-center justify-center text-slate-700 hover:text-[#0052FF] hover:border-blue-400 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          {/* Floating Right Arrow Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextCard();
+            }}
+            aria-label="Next Pillar"
+            className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-40 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white border border-slate-200/90 shadow-md flex items-center justify-center text-slate-700 hover:text-[#0052FF] hover:border-blue-400 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+
           {/* Framer Motion Gesture Drag Surface with Dual Touch/Pointer Swipe Support */}
           <motion.div
             drag="x"
@@ -412,6 +443,8 @@ export default function ErpPillarsCoverflow({
               return (
                 <motion.div
                   key={pillar.id}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                   onClick={() => {
                     if (!dragMovedRef.current) {
                       setActiveIndex(index);
@@ -585,7 +618,11 @@ export default function ErpPillarsCoverflow({
         </div>
 
         {/* ── Segmented Bottom Pill Indicator & Controls Dock ── */}
-        <div className="mt-8 flex flex-col items-center justify-center gap-4">
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="mt-8 flex flex-col items-center justify-center"
+        >
           <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-full bg-white/95 border border-slate-200/90 shadow-sm backdrop-blur-md">
             {/* Previous Card Button */}
             <button
@@ -643,30 +680,6 @@ export default function ErpPillarsCoverflow({
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
-          </div>
-
-          {/* Autoplay Pause / Resume Status Toggle Pill */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setIsAutoplayActive(!isAutoplayActive)}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/80 hover:bg-white border border-slate-200 text-slate-600 hover:text-slate-900 transition-colors shadow-2xs"
-            >
-              {isAutoplayActive ? (
-                <>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Autoplay Active</span>
-                </>
-              ) : (
-                <>
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>Autoplay Paused</span>
-                </>
-              )}
-            </button>
-            <span className="text-slate-400 text-xs">•</span>
-            <span className="text-xs text-slate-500">
-              Swipe or use keyboard arrow keys (<kbd className="font-mono bg-slate-100 px-1 py-0.5 rounded text-[10px] text-slate-700">←</kbd> <kbd className="font-mono bg-slate-100 px-1 py-0.5 rounded text-[10px] text-slate-700">→</kbd>)
-            </span>
           </div>
         </div>
       </div>
