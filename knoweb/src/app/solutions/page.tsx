@@ -11,6 +11,8 @@ interface SolutionItem {
   overview: string;
   bgImage: string;
   bgPosition: string;
+  url?: string;
+  urlLabel?: string;
   features: string[];
 }
 
@@ -19,6 +21,8 @@ const industrySolutions: SolutionItem[] = [
     id: 'wewili',
     title: 'Wewili Plantation Dashboard',
     tagline: 'Plantation Operations & Estate Intelligence',
+    url: 'https://www.wevili.com/login',
+    urlLabel: 'Visit Wewili Platform ↗',
     bgImage: '/sol-wavili.png',
     bgPosition: 'right 30%',
     summary: 'Plantation operations and management information.',
@@ -55,6 +59,8 @@ const industrySolutions: SolutionItem[] = [
     id: 'greenhouse',
     title: 'Greenhouse Monitoring System',
     tagline: 'Agri-Tech Environmental Telemetry',
+    url: 'mailto:Sanotagreenhouse@sanota.com',
+    urlLabel: 'Contact Sanota Team ↗',
     bgImage: '/sol-greenhouse.png',
     bgPosition: 'right 20%',
     summary: 'Environmental conditions and greenhouse monitoring.',
@@ -73,6 +79,8 @@ const industrySolutions: SolutionItem[] = [
     id: 'atm',
     title: 'ATM Alarming System',
     tagline: 'Financial Infrastructure & Physical Security Monitoring',
+    url: 'http://68.183.235.229/',
+    urlLabel: 'Live Alarm Monitoring Portal ↗',
     bgImage: '/sol-alarm.png',
     bgPosition: 'right 30%',
     summary: 'Equipment alerts and ATM monitoring.',
@@ -552,12 +560,36 @@ export default function SolutionsPage() {
                       alignItems: 'center',
                     }}
                   >
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target={item.url.startsWith('mailto:') ? '_self' : '_blank'}
+                        rel={item.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                        style={{
+                          textDecoration: 'none',
+                          background: '#004FEB',
+                          color: '#FFFFFF',
+                          fontWeight: 600,
+                          fontSize: '0.9rem',
+                          padding: '10px 22px',
+                          borderRadius: '8px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
+                          transition: 'all 0.2s ease',
+                        }}
+                      >
+                        {item.urlLabel || `Visit ${item.title} ↗`}
+                      </a>
+                    )}
+
                     <Link
                       href={`/contact?solution=${encodeURIComponent(item.title)}`}
                       style={{
                         textDecoration: 'none',
-                        background: '#004FEB',
-                        color: '#FFFFFF',
+                        background: item.url ? 'rgba(0, 79, 235, 0.08)' : '#004FEB',
+                        color: item.url ? '#004FEB' : '#FFFFFF',
                         fontWeight: 600,
                         fontSize: '0.9rem',
                         padding: '10px 22px',
@@ -565,10 +597,12 @@ export default function SolutionsPage() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '6px',
-                        boxShadow: '0 2px 8px rgba(0, 79, 235, 0.25)',
+                        border: item.url ? '1px solid rgba(0, 79, 235, 0.22)' : 'none',
+                        boxShadow: item.url ? 'none' : '0 2px 8px rgba(0, 79, 235, 0.25)',
+                        transition: 'all 0.2s ease',
                       }}
                     >
-                      Request Technical Overview for {item.title} &rarr;
+                      Request Technical Overview &rarr;
                     </Link>
 
                     <Link
@@ -582,6 +616,7 @@ export default function SolutionsPage() {
                         fontSize: '0.9rem',
                         padding: '10px 20px',
                         borderRadius: '8px',
+                        transition: 'all 0.2s ease',
                       }}
                     >
                       Need troubleshooting on an existing system?
