@@ -294,7 +294,7 @@ export default function ErpPillarsCoverflow({
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden select-none py-20 md:py-28"
+      className="relative w-full overflow-hidden select-none py-16 md:py-20"
       style={{
         background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 45%, #F8FAFC 100%)',
         borderTop: '1px solid #E2E8F0',
@@ -322,11 +322,11 @@ export default function ErpPillarsCoverflow({
           marginRight: 'auto',
         }}
       >
-        {/* ── Section Header (Dead-centered with generous separation from 3D stage) ── */}
+        {/* ── Section Header (Dead-centered with balanced, compact spacing) ── */}
         <div
-          className="w-full flex flex-col items-center justify-center text-center mx-auto mb-16 sm:mb-20 md:mb-28"
+          className="w-full flex flex-col items-center justify-center text-center mx-auto mb-10 sm:mb-12 md:mb-14"
           style={{
-            maxWidth: '820px',
+            maxWidth: '780px',
             marginLeft: 'auto',
             marginRight: 'auto',
             textAlign: 'center',
@@ -334,7 +334,7 @@ export default function ErpPillarsCoverflow({
         >
           {/* Badge */}
           <div
-            className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/95 border border-blue-200/90 text-blue-700 text-xs font-bold tracking-wider uppercase mb-5 shadow-xs"
+            className="inline-flex items-center justify-center gap-2 px-3.5 py-1 rounded-full bg-blue-50/95 border border-blue-200/90 text-blue-700 text-xs font-bold tracking-wider uppercase mb-3.5 shadow-xs"
             style={{
               marginLeft: 'auto',
               marginRight: 'auto',
@@ -346,7 +346,7 @@ export default function ErpPillarsCoverflow({
 
           {/* Heading */}
           <h2
-            className="w-full text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A192F] tracking-tight leading-tight mb-5"
+            className="w-full text-center text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[#0A192F] tracking-tight leading-tight mb-3.5"
             style={{
               fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
               textAlign: 'center',
@@ -357,11 +357,11 @@ export default function ErpPillarsCoverflow({
             {title}
           </h2>
 
-          {/* Subtitle */}
+          {/* Subtitle with compact, comfortable typography */}
           <p
-            className="w-full text-slate-600 text-base sm:text-lg leading-relaxed text-center mx-auto"
+            className="w-full text-slate-600 text-sm sm:text-[15px] leading-relaxed text-center mx-auto"
             style={{
-              maxWidth: '680px',
+              maxWidth: '620px',
               textAlign: 'center',
               marginLeft: 'auto',
               marginRight: 'auto',
@@ -373,7 +373,7 @@ export default function ErpPillarsCoverflow({
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[540px] sm:h-[570px] md:h-[595px] flex items-center justify-center pt-2 sm:pt-4"
+          className="relative w-full h-[480px] sm:h-[500px] md:h-[520px] flex items-center justify-center pt-1"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
@@ -422,7 +422,7 @@ export default function ErpPillarsCoverflow({
                     damping: 24,
                     mass: 0.85,
                   }}
-                  className={`absolute top-1/2 -translate-y-1/2 w-[330px] sm:w-[370px] md:w-[395px] h-[485px] sm:h-[510px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] sm:w-[350px] md:w-[375px] h-[430px] sm:h-[445px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
                     isCenter
                       ? 'cursor-default ring-1 ring-blue-500/20'
                       : 'cursor-pointer hover:shadow-lg'
@@ -459,8 +459,8 @@ export default function ErpPillarsCoverflow({
                     />
                   )}
 
-                  {/* ── Top Visual Header with Enlarged High-Resolution Card Graphic ── */}
-                  <div className="relative w-full h-[195px] sm:h-[215px] overflow-hidden bg-slate-100 shrink-0">
+                  {/* ── Top Visual Header with High-Resolution Card Graphic ── */}
+                  <div className="relative w-full h-[150px] sm:h-[160px] overflow-hidden bg-slate-100 shrink-0">
                     <img
                       src={pillar.image}
                       alt={pillar.title}
@@ -480,10 +480,10 @@ export default function ErpPillarsCoverflow({
                     />
 
                     {/* Top Badges Row Floating Over Image */}
-                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10 pointer-events-none">
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10 pointer-events-none">
                       {/* Frosted Glass Pillar Icon */}
                       <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center backdrop-blur-md shadow-md transition-all duration-300"
+                        className="w-9 h-9 rounded-xl flex items-center justify-center backdrop-blur-md shadow-md transition-all duration-300"
                         style={{
                           background: isCenter ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)',
                           border: isCenter ? `1.5px solid ${pillar.accentColor}` : '1px solid rgba(255, 255, 255, 0.8)',
@@ -495,7 +495,7 @@ export default function ErpPillarsCoverflow({
 
                       {/* Frosted Pillar Tag */}
                       <span
-                        className="text-xs font-mono font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-md"
+                        className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full backdrop-blur-md shadow-md"
                         style={{
                           background: isCenter ? '#0052FF' : 'rgba(15, 23, 42, 0.80)',
                           color: '#FFFFFF',
@@ -507,52 +507,54 @@ export default function ErpPillarsCoverflow({
                     </div>
                   </div>
 
-                  {/* ── Card Body Content (Positioned elegantly lower down with larger, highly legible typography) ── */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-start relative z-10">
-                    {/* Pillar Title with Hero Inter font */}
-                    <h3
-                      className="text-xl sm:text-[22px] font-bold text-[#0A192F] tracking-tight leading-snug mb-2"
-                      style={{
-                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                        letterSpacing: '-0.025em',
-                      }}
-                    >
-                      {pillar.title}
-                    </h3>
+                  {/* ── Card Body Content (Vertically centered with balanced padding, zero bottom gap) ── */}
+                  <div className="px-5 sm:px-6 py-4 sm:py-5 flex-1 flex flex-col justify-center relative z-10">
+                    <div>
+                      {/* Pillar Title with Hero Inter font */}
+                      <h3
+                        className="text-lg sm:text-[19px] font-bold text-[#0A192F] tracking-tight leading-snug mb-1.5"
+                        style={{
+                          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                          letterSpacing: '-0.025em',
+                        }}
+                      >
+                        {pillar.title}
+                      </h3>
 
-                    {/* Summary with larger font size */}
-                    <p className="text-slate-600 text-[13.5px] sm:text-[14px] leading-relaxed mb-3.5">
-                      {pillar.summary}
-                    </p>
+                      {/* Summary */}
+                      <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-2.5">
+                        {pillar.summary}
+                      </p>
 
-                    {/* Clean Divider */}
-                    <div
-                      className="w-full h-px mb-3.5 transition-colors duration-300"
-                      style={{
-                        background: isCenter
-                          ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.1) 75%, transparent 100%)'
-                          : '#E2E8F0',
-                      }}
-                    />
+                      {/* Clean Divider */}
+                      <div
+                        className="w-full h-px mb-2.5 transition-colors duration-300"
+                        style={{
+                          background: isCenter
+                            ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.1) 75%, transparent 100%)'
+                            : '#E2E8F0',
+                        }}
+                      />
 
-                    {/* Bullet Points with larger, comfortable font size */}
-                    <ul className="space-y-2 sm:space-y-2.5">
-                      {pillar.points.map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-[13px] sm:text-[13.5px] text-slate-700">
-                          <span
-                            className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 font-bold text-[10px] transition-colors"
-                            style={{
-                              background: isCenter ? '#EFF6FF' : '#F8FAFC',
-                              color: isCenter ? '#0052FF' : '#64748B',
-                              border: isCenter ? '1px solid #BFDBFE' : '1px solid #CBD5E1',
-                            }}
-                          >
-                            ✓
-                          </span>
-                          <span className="leading-snug">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      {/* Bullet Points with compact, cozy spacing */}
+                      <ul className="space-y-1.5">
+                        {pillar.points.map((point, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs sm:text-[12.5px] text-slate-700">
+                            <span
+                              className="mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[9px] transition-colors"
+                              style={{
+                                background: isCenter ? '#EFF6FF' : '#F8FAFC',
+                                color: isCenter ? '#0052FF' : '#64748B',
+                                border: isCenter ? '1px solid #BFDBFE' : '1px solid #CBD5E1',
+                              }}
+                            >
+                              ✓
+                            </span>
+                            <span className="leading-snug">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </motion.div>
               );
