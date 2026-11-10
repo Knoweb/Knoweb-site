@@ -13,6 +13,7 @@ export interface ErpPillarItem {
   icon: React.ReactNode;
   accentColor: string;
   lightBg: string;
+  image: string;
 }
 
 export const ERP_PILLARS_DATA: ErpPillarItem[] = [
@@ -31,8 +32,9 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
     ],
     accentColor: '#0284C7',
     lightBg: 'rgba(2, 132, 199, 0.08)',
+    image: '/card1.jpg',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="20" x2="12" y2="10" />
         <line x1="18" y1="20" x2="18" y2="4" />
         <line x1="6" y1="20" x2="6" y2="16" />
@@ -54,8 +56,9 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
     ],
     accentColor: '#4F46E5',
     lightBg: 'rgba(79, 70, 229, 0.08)',
+    image: '/card2.jpg',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
         <polyline points="14 2 14 8 20 8" />
         <line x1="16" y1="13" x2="8" y2="13" />
@@ -79,8 +82,9 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
     ],
     accentColor: '#0052FF',
     lightBg: 'rgba(0, 82, 255, 0.08)',
+    image: '/card3.jpg',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
         <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
         <line x1="12" y1="22.08" x2="12" y2="12" />
@@ -102,8 +106,9 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
     ],
     accentColor: '#0D9488',
     lightBg: 'rgba(13, 148, 136, 0.08)',
+    image: '/card4.jpg',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
         <line x1="12" y1="8" x2="12" y2="16" />
         <line x1="8" y1="12" x2="16" y2="12" />
@@ -125,8 +130,9 @@ export const ERP_PILLARS_DATA: ErpPillarItem[] = [
     ],
     accentColor: '#7C3AED',
     lightBg: 'rgba(124, 58, 237, 0.08)',
+    image: '/card5.jpg',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -367,7 +373,7 @@ export default function ErpPillarsCoverflow({
 
         {/* ── 3D Cylindrical Carousel Stage ── */}
         <div
-          className="relative w-full h-[530px] sm:h-[560px] md:h-[580px] flex items-center justify-center pt-2 sm:pt-4"
+          className="relative w-full h-[540px] sm:h-[570px] md:h-[590px] flex items-center justify-center pt-2 sm:pt-4"
           style={{
             perspective: '1400px',
             perspectiveOrigin: 'center center',
@@ -416,9 +422,9 @@ export default function ErpPillarsCoverflow({
                     damping: 24,
                     mass: 0.85,
                   }}
-                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] sm:w-[360px] md:w-[385px] h-[455px] sm:h-[475px] rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-shadow duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] sm:w-[360px] md:w-[385px] h-[490px] sm:h-[510px] rounded-2xl overflow-hidden flex flex-col justify-between transition-shadow duration-300 ${
                     isCenter
-                      ? 'cursor-default'
+                      ? 'cursor-default ring-1 ring-blue-500/20'
                       : 'cursor-pointer hover:shadow-lg'
                   }`}
                   style={{
@@ -428,12 +434,12 @@ export default function ErpPillarsCoverflow({
                     // Center card: Solid Crisp White. Side cards: Frosted paper texture
                     background: isCenter
                       ? '#FFFFFF'
-                      : 'rgba(255, 255, 255, 0.88)',
+                      : 'rgba(255, 255, 255, 0.94)',
                     backdropFilter: isCenter ? 'none' : 'blur(12px)',
                     // Active center card gets a crisp 2px blue accent border (#0052FF)
                     border: isCenter
                       ? '2px solid #0052FF'
-                      : '1px solid rgba(226, 232, 240, 0.9)',
+                      : '1px solid rgba(226, 232, 240, 0.95)',
                     // High-fidelity studio drop shadow with inertial pop
                     boxShadow: isCenter
                       ? '0 25px 50px -12px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(0, 82, 255, 0.12), 0 8px 24px -4px rgba(0, 82, 255, 0.10)'
@@ -443,99 +449,124 @@ export default function ErpPillarsCoverflow({
                   {/* Subtle Cylindrical Shading Overlay (Simulates cylindrical curved lighting) */}
                   {!isCenter && (
                     <div
-                      className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300"
+                      className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300 z-30"
                       style={{
                         background:
                           diff < 0
-                            ? 'linear-gradient(90deg, rgba(15, 23, 42, 0.06) 0%, transparent 45%)'
-                            : 'linear-gradient(270deg, rgba(15, 23, 42, 0.06) 0%, transparent 45%)',
+                            ? 'linear-gradient(90deg, rgba(15, 23, 42, 0.07) 0%, transparent 45%)'
+                            : 'linear-gradient(270deg, rgba(15, 23, 42, 0.07) 0%, transparent 45%)',
                       }}
                     />
                   )}
 
-                  {/* Top Card Content */}
-                  <div className="relative z-10">
-                    {/* Header Row: Pillar Icon & Pillar Number Tag */}
-                    <div className="flex items-center justify-between mb-4">
+                  {/* ── Top Visual Header with High-Resolution Card Graphic ── */}
+                  <div className="relative w-full h-[160px] sm:h-[175px] overflow-hidden bg-slate-100 shrink-0">
+                    <img
+                      src={pillar.image}
+                      alt={pillar.title}
+                      className={`w-full h-full object-cover object-center transition-transform duration-500 ${
+                        isCenter ? 'scale-100' : 'scale-105 filter brightness-95'
+                      }`}
+                      loading="eager"
+                    />
+
+                    {/* Gradient Overlay for Text & Badge Legibility */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, rgba(10, 25, 47, 0.35) 0%, transparent 45%, rgba(10, 25, 47, 0.50) 100%)',
+                      }}
+                    />
+
+                    {/* Top Badges Row Floating Over Image */}
+                    <div className="absolute top-3 left-3.5 right-3.5 flex items-center justify-between z-10 pointer-events-none">
+                      {/* Frosted Glass Pillar Icon */}
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 shadow-sm"
+                        className="w-9 h-9 rounded-xl flex items-center justify-center backdrop-blur-md shadow-md transition-all duration-300"
                         style={{
-                          background: isCenter ? '#EFF6FF' : pillar.lightBg,
-                          border: isCenter ? '1.5px solid #BFDBFE' : '1px solid rgba(226, 232, 240, 0.8)',
-                          color: isCenter ? '#0052FF' : pillar.accentColor,
+                          background: isCenter ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)',
+                          border: isCenter ? `1.5px solid ${pillar.accentColor}` : '1px solid rgba(255, 255, 255, 0.8)',
+                          color: isCenter ? pillar.accentColor : '#334155',
                         }}
                       >
                         {pillar.icon}
                       </div>
 
+                      {/* Frosted Pillar Tag */}
                       <span
-                        className="text-xs font-mono font-bold px-2.5 py-1 rounded-full transition-colors duration-300"
+                        className="text-[11px] font-mono font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-md"
                         style={{
-                          background: isCenter ? '#EFF6FF' : '#F1F5F9',
-                          color: isCenter ? '#0052FF' : '#64748B',
-                          border: isCenter ? '1px solid #BFDBFE' : '1px solid #E2E8F0',
+                          background: isCenter ? '#0052FF' : 'rgba(15, 23, 42, 0.80)',
+                          color: '#FFFFFF',
+                          border: isCenter ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid rgba(255, 255, 255, 0.2)',
                         }}
                       >
                         PILLAR {pillar.pillarNumber}
                       </span>
                     </div>
-
-                    {/* Pillar Title (Deep Navy Typography) */}
-                    <h3
-                      className="text-xl sm:text-2xl font-bold text-[#0A192F] tracking-tight mb-2.5"
-                      style={{
-                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-                      }}
-                    >
-                      {pillar.title}
-                    </h3>
-
-                    {/* Summary (Fully Legible Slate Typography) */}
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-                      {pillar.summary}
-                    </p>
-
-                    {/* Clean Horizontal Divider */}
-                    <div
-                      className="w-full h-px mb-4 transition-colors duration-300"
-                      style={{
-                        background: isCenter
-                          ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.1) 70%, transparent 100%)'
-                          : '#E2E8F0',
-                      }}
-                    />
-
-                    {/* Bullet Points with Crisp Checkmark Bullets */}
-                    <ul className="space-y-2.5">
-                      {pillar.points.map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700">
-                          <span
-                            className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 font-bold text-[10px]"
-                            style={{
-                              background: isCenter ? '#EFF6FF' : '#F8FAFC',
-                              color: isCenter ? '#0052FF' : '#64748B',
-                              border: isCenter ? '1px solid #BFDBFE' : '1px solid #CBD5E1',
-                            }}
-                          >
-                            ✓
-                          </span>
-                          <span className="leading-snug">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
-                  {/* Active Card Bottom Connected Hub Tag */}
-                  <div
-                    className={`relative z-10 pt-3 border-t flex items-center justify-between text-xs font-medium transition-colors duration-300 ${
-                      isCenter ? 'border-blue-100 text-slate-600' : 'border-slate-100 text-slate-400'
-                    }`}
-                  >
-                    <span className="inline-flex items-center gap-1.5 font-semibold text-[#0052FF]">
-                      <span className="w-2 h-2 rounded-full bg-[#0052FF] animate-pulse" />
-                      Active Connected Hub
-                    </span>
-                    <span className="text-slate-400 font-mono text-[11px]">ERP Core</span>
+                  {/* ── Card Body Content ── */}
+                  <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between relative z-10">
+                    <div>
+                      {/* Pillar Title */}
+                      <h3
+                        className="text-lg sm:text-[19px] font-bold text-[#0A192F] tracking-tight leading-snug mb-1"
+                        style={{
+                          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                        }}
+                      >
+                        {pillar.title}
+                      </h3>
+
+                      {/* Summary */}
+                      <p className="text-slate-600 text-xs sm:text-[12.5px] leading-relaxed mb-3 line-clamp-2">
+                        {pillar.summary}
+                      </p>
+
+                      {/* Clean Divider */}
+                      <div
+                        className="w-full h-px mb-2.5 transition-colors duration-300"
+                        style={{
+                          background: isCenter
+                            ? 'linear-gradient(90deg, #0052FF 0%, rgba(0, 82, 255, 0.1) 75%, transparent 100%)'
+                            : '#E2E8F0',
+                        }}
+                      />
+
+                      {/* Bullet Points */}
+                      <ul className="space-y-1.5 sm:space-y-2">
+                        {pillar.points.map((point, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs sm:text-[12px] text-slate-700">
+                            <span
+                              className="mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[9px] transition-colors"
+                              style={{
+                                background: isCenter ? '#EFF6FF' : '#F8FAFC',
+                                color: isCenter ? '#0052FF' : '#64748B',
+                                border: isCenter ? '1px solid #BFDBFE' : '1px solid #CBD5E1',
+                              }}
+                            >
+                              ✓
+                            </span>
+                            <span className="leading-snug">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Active Card Bottom Connected Hub Tag */}
+                    <div
+                      className={`pt-2 mt-2 border-t flex items-center justify-between text-xs font-medium transition-colors ${
+                        isCenter ? 'border-blue-100 text-slate-600' : 'border-slate-100 text-slate-400'
+                      }`}
+                    >
+                      <span className="inline-flex items-center gap-1.5 font-semibold text-[#0052FF]">
+                        <span className="w-2 h-2 rounded-full bg-[#0052FF] animate-pulse" />
+                        Active Connected Hub
+                      </span>
+                      <span className="text-slate-400 font-mono text-[11px]">ERP Core</span>
+                    </div>
                   </div>
                 </motion.div>
               );
