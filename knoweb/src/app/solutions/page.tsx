@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import BottomCTASection from '@/components/sections/BottomCTASection';
+import SolutionsCoverflow from '@/components/ui/SolutionsCoverflow';
 
 const industrySolutions = [
   {
@@ -9,6 +10,7 @@ const industrySolutions = [
     title: 'Wewili Plantation Dashboard',
     tagline: 'Plantation Operations & Estate Intelligence',
     summary: 'Plantation operations and management information.',
+    image: '/sol-wavili.jpg',
     overview:
       'A specialized digital monitoring system tailored for tea, rubber, coconut, and agro-plantations. It aggregates field data, worker productivity, crop yield, and factory dispatch into real-time executive dashboards.',
     features: [
@@ -25,6 +27,7 @@ const industrySolutions = [
     title: 'Inspection Dashboard',
     tagline: 'Field Audits & Compliance Verification',
     summary: 'Inspection records, observations and follow-up.',
+    image: '/sol-inspection.jpg',
     overview:
       'Standardize quality, safety, and compliance audits across multiple facilities, retail stores, or construction sites with digital mobile forms and instant discrepancy resolution workflows.',
     features: [
@@ -41,6 +44,7 @@ const industrySolutions = [
     title: 'Greenhouse Monitoring System',
     tagline: 'Agri-Tech Environmental Telemetry',
     summary: 'Environmental conditions and greenhouse monitoring.',
+    image: '/sol-greenhouse.jpg',
     overview:
       'Continuous telemetry monitoring of critical micro-climates in commercial poly-tunnels and smart greenhouses. Protect delicate crops and optimize yield with early warning sensor triggers.',
     features: [
@@ -57,6 +61,7 @@ const industrySolutions = [
     title: 'ATM Alarming System',
     tagline: 'Financial Infrastructure & Physical Security Monitoring',
     summary: 'Equipment alerts and ATM monitoring.',
+    image: '/sol-alarm.png',
     overview:
       'Mission-critical physical security and telemetry monitoring for remote ATM kiosks and bank branch vaults. Ensures uninterrupted surveillance and rapid security response.',
     features: [
@@ -236,10 +241,13 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* ── Solutions List ── */}
+      {/* ── 4 Specialized Operational Solutions (Interactive 3D Curved Cylindrical Carousel) ── */}
+      <SolutionsCoverflow />
+
+      {/* ── Solutions Detailed Specifications & Capabilities ── */}
       <section style={{ paddingTop: '56px', paddingBottom: '32px' }}>
         <div className="container-max">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
             {industrySolutions.map((item) => (
               <div
                 key={item.id}
@@ -248,21 +256,37 @@ export default function SolutionsPage() {
                   background: '#FFFFFF',
                   borderRadius: '16px',
                   border: '1.5px solid #CBD5E1',
-                  padding: '36px 32px',
+                  overflow: 'hidden',
                   scrollMarginTop: '110px',
-                  transition: 'border-color 0.2s ease',
+                  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
                 }}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'baseline',
-                    justifyContent: 'space-between',
-                    gap: '12px',
-                    marginBottom: '10px',
-                  }}
-                >
+                {/* Visual Image Banner with Clean Gradient Overlay */}
+                <div className="relative w-full h-[220px] sm:h-[300px] md:h-[360px] overflow-hidden bg-slate-900 border-b border-slate-200">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(10, 25, 47, 0.10) 0%, transparent 60%, rgba(10, 25, 47, 0.35) 100%)',
+                    }}
+                  />
+                </div>
+
+                <div style={{ padding: '36px 32px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      alignItems: 'baseline',
+                      justifyContent: 'space-between',
+                      gap: '12px',
+                      marginBottom: '10px',
+                    }}
+                  >
                   <h2
                     style={{
                       fontFamily: 'Inter, sans-serif',
@@ -388,7 +412,8 @@ export default function SolutionsPage() {
                   </Link>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
           </div>
         </div>
       </section>
