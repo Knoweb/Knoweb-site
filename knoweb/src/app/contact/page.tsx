@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { submitLeadToStrapi } from '@/lib/strapi';
 
 interface LeafletMapInstance {
     remove: () => void;
@@ -56,6 +57,8 @@ export default function ContactPage() {
         message: '',
     });
     const [submitted, setSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const mapContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -168,9 +171,23 @@ export default function ContactPage() {
         };
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSubmitted(true);
+        setIsSubmitting(true);
+        setErrorMessage(null);
+
+        try {
+            const res = await submitLeadToStrapi(formData);
+            if (res.success) {
+                setSubmitted(true);
+            } else {
+                setErrorMessage(res.message || 'Something went wrong. Please try again.');
+            }
+        } catch (err: any) {
+            setErrorMessage(err?.message || 'Failed to submit form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -677,11 +694,43 @@ export default function ContactPage() {
                                         />
                                     </div>
 
-                                    <button type="submit" className="btn-primary" style={{ alignSelf: 'flex-start', padding: '13px 32px', fontSize: '0.95rem' }}>
-                                        Send Message
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                            <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
+                                    {errorMessage && (
+                                        <div
+                                            style={{
+                                                padding: '12px 16px',
+                                                background: '#FEF2F2',
+                                                border: '1px solid #FCA5A5',
+                                                borderRadius: '8px',
+                                                color: '#991B1B',
+                                                fontSize: '0.875rem',
+                                                lineHeight: 1.4,
+                                            }}
+                                        >
+                                            {errorMessage}
+                                        </div>
+                                    )}
+
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="btn-primary"
+                                        style={{
+                                            alignSelf: 'flex-start',
+                                            padding: '13px 32px',
+                                            fontSize: '0.95rem',
+                                            opacity: isSubmitting ? 0.7 : 1,
+                                            cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                        }}
+                                    >
+                                        {isSubmitting ? 'Sending Message...' : 'Send Message'}
+                                        {!isSubmitting && (
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        )}
                                     </button>
                                 </form>
                             )}
