@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { BLOG_POSTS, BlogPost } from '@/data/blogData';
+import { fetchStrapiBlogBySlug, fetchStrapiBlogs } from '@/lib/strapi';
 
 interface PageProps {
   params: Promise<{
@@ -11,14 +12,20 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const livePosts = await fetchStrapiBlogs();
+    const allPosts = [...livePosts, ...BLOG_POSTS];
+    const uniqueSlugs = Array.from(new Set(allPosts.map((p) => p.slug)));
+    return uniqueSlugs.map((slug) => ({ slug }));
+  } catch {
+    return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const strapiPost = await fetchStrapiBlogBySlug(slug);
+  const post = strapiPost || BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) {
     return {
@@ -34,7 +41,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const strapiPost = await fetchStrapiBlogBySlug(slug);
+  const post = strapiPost || BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();

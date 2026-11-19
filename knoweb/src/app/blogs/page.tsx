@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -9,19 +9,42 @@ import {
   FEATURED_PROJECTS,
   BlogPost,
 } from '@/data/blogData';
+import { fetchStrapiBlogs } from '@/lib/strapi';
 
 const POSTS_PER_PAGE = 4;
 
 export default function BlogsPage() {
+  const [posts, setPosts] = useState<BlogPost[]>(BLOG_POSTS);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
+  // Fetch live articles from Strapi
+  useEffect(() => {
+    let isMounted = true;
+    async function loadStrapiPosts() {
+      try {
+        const livePosts = await fetchStrapiBlogs();
+        if (isMounted && livePosts && livePosts.length > 0) {
+          const seenSlugs = new Set(livePosts.map((p) => p.slug));
+          const remainingStatic = BLOG_POSTS.filter((p) => !seenSlugs.has(p.slug));
+          setPosts([...livePosts, ...remainingStatic]);
+        }
+      } catch (err) {
+        console.warn('Failed to load posts from Strapi:', err);
+      }
+    }
+    loadStrapiPosts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   // Filter posts based on search query and selected category
   const filteredPosts = useMemo(() => {
-    return BLOG_POSTS.filter((post) => {
+    return posts.filter((post) => {
       const matchesSearch =
         searchQuery.trim() === '' ||
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -34,7 +57,7 @@ export default function BlogsPage() {
 
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [posts, searchQuery, selectedCategory]);
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE) || 1;
