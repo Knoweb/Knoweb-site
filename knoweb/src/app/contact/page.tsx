@@ -183,8 +183,8 @@ export default function ContactPage() {
             } else {
                 setErrorMessage(res.message || 'Something went wrong. Please try again.');
             }
-        } catch (err: any) {
-            setErrorMessage(err?.message || 'Failed to submit form. Please try again.');
+        } catch (err: unknown) {
+            setErrorMessage(err instanceof Error ? err.message : 'Failed to submit form. Please try again.');
         } finally {
             setIsSubmitting(false);
         }

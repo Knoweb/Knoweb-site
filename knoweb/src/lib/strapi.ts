@@ -27,35 +27,88 @@ export interface StrapiBlogItem {
   createdAt?: string;
   coverImage?: {
     url?: string;
+    data?: { attributes?: { url?: string } };
   };
   category?: {
     name?: string;
     slug?: string;
+    data?: { attributes?: { name?: string } };
   };
   author?: {
     name?: string;
     role?: string;
     avatar?: {
       url?: string;
+      data?: { attributes?: { url?: string } };
+    };
+    data?: {
+      attributes?: {
+        name?: string;
+        role?: string;
+        avatar?: {
+          url?: string;
+          data?: { attributes?: { url?: string } };
+        };
+      };
     };
   };
   tags?: string[] | { name?: string }[];
   // Backwards compatibility for Strapi v4 nested attributes
-  attributes?: Record<string, any>;
+  attributes?: Record<string, unknown>;
+}
+
+interface RawStrapiData {
+  id?: string | number;
+  documentId?: string;
+  title?: string;
+  slug?: string;
+  excerpt?: string;
+  content?: unknown;
+  readTime?: string;
+  featured?: boolean;
+  publishedAt?: string;
+  coverImage?: {
+    url?: string;
+    data?: { attributes?: { url?: string } };
+  };
+  image?: string;
+  category?: string | { name?: string; data?: { attributes?: { name?: string } } };
+  author?: {
+    name?: string;
+    role?: string;
+    avatar?: {
+      url?: string;
+      data?: { attributes?: { url?: string } };
+    };
+    data?: {
+      attributes?: {
+        name?: string;
+        role?: string;
+        avatar?: {
+          url?: string;
+          data?: { attributes?: { url?: string } };
+        };
+      };
+    };
+  };
+  tags?: Array<string | { name?: string }>;
 }
 
 /**
  * Normalizes a Strapi v4 or v5 payload into the frontend BlogPost interface.
  */
 export function normalizeStrapiPost(raw: StrapiBlogItem): BlogPost {
-  const item: any = raw.attributes ? { ...raw.attributes, id: raw.id } : raw;
+  const item: RawStrapiData = (
+    raw.attributes ? { ...raw.attributes, id: raw.id } : raw
+  ) as RawStrapiData;
 
-  const categoryName =
-    typeof item.category === 'object' && item.category !== null
-      ? item.category.name || item.category.data?.attributes?.name || 'Enterprise'
-      : typeof item.category === 'string'
-      ? item.category
-      : 'Enterprise';
+  let categoryName = 'Enterprise';
+  if (typeof item.category === 'object' && item.category !== null) {
+    categoryName =
+      item.category.name || item.category.data?.attributes?.name || 'Enterprise';
+  } else if (typeof item.category === 'string') {
+    categoryName = item.category;
+  }
 
   const authorData = item.author?.data?.attributes || item.author || {};
   const authorAvatarUrl =
@@ -71,21 +124,28 @@ export function normalizeStrapiPost(raw: StrapiBlogItem): BlogPost {
 
   let rawContent: string[] = [];
   if (Array.isArray(item.content)) {
-    rawContent = item.content.map((p: any) =>
-      typeof p === 'string' ? p : p.children?.[0]?.text || ''
-    );
+    rawContent = item.content.map((p: unknown) => {
+      if (typeof p === 'string') return p;
+      if (typeof p === 'object' && p !== null && 'children' in p) {
+        const children = (p as { children?: Array<{ text?: string }> }).children;
+        return children?.[0]?.text || '';
+      }
+      return '';
+    });
   } else if (typeof item.content === 'string') {
     rawContent = item.content.split('\n\n').filter(Boolean);
   }
 
   const rawTags = Array.isArray(item.tags)
-    ? item.tags.map((t: any) => (typeof t === 'string' ? t : t.name || ''))
+    ? item.tags.map((t: string | { name?: string }) =>
+        typeof t === 'string' ? t : t.name || ''
+      )
     : [];
 
   return {
     id: String(item.id || item.documentId || Math.random()),
-    slug: item.slug,
-    title: item.title,
+    slug: item.slug || 'article',
+    title: item.title || 'Untitled Article',
     category: categoryName,
     author: {
       name: authorData.name || 'Knoweb Team',
@@ -165,7 +225,7 @@ export async function fetchStrapiBlogBySlug(slug: string): Promise<BlogPost | nu
     }
 
     return normalizeStrapiPost(json.data[0]);
-  } catch (error) {
+  } catch {
     return BLOG_POSTS.find((p) => p.slug === slug) || null;
   }
 }
@@ -210,11 +270,15 @@ export async function submitLeadToStrapi(
     }
 
     return { success: true };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('[Strapi Lead Submission Error]:', error);
+    const message =
+      error instanceof Error
+        ? error.message
+        : 'Connection error. Please try again or reach out via email.';
     return {
       success: false,
-      message: error?.message || 'Connection error. Please try again or reach out via email.',
+      message,
     };
   }
 }

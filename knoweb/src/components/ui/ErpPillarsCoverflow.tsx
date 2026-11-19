@@ -503,6 +503,7 @@ export default function ErpPillarsCoverflow({
 
                   {/* ── Top Visual Header with Prominent High-Resolution Card Graphic ── */}
                   <div className="relative w-full h-[155px] sm:h-[165px] overflow-hidden bg-slate-100 shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={pillar.image}
                       alt={pillar.title}
